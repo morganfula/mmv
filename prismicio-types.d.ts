@@ -128,6 +128,17 @@ interface NewDocumentData {
   title: prismic.KeyTextField;
 
   /**
+   * Image field in *New*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: new.image
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
    * Slice Zone field in *New*
    *
    * - **Field Type**: Slice Zone
