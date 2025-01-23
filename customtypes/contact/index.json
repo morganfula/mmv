@@ -1,0 +1,18 @@
+{
+  "format": "custom",
+  "id": "contact",
+  "label": "Contact",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "title": {
+        "type": "Text",
+        "config": {
+          "label": "Title",
+          "placeholder": "Page Title"
+        }
+      }
+    }
+  }
+}
