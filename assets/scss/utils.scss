@@ -1,4 +1,4 @@
-@use './mixins';
-@use './fonts';
-@use './variables';
-@use './responsive';
+@import './responsive';
+@import './mixins';
+@import './fonts';
+@import './variables';

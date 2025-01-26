@@ -13,6 +13,20 @@ export default defineNuxtConfig({
     '@/assets/scss/default.scss'
   ],
 
+  vite: {
+    css: {
+      preprocessorOptions: {
+        scss: {
+          // Automatically include utils.scss in every component
+          additionalData: '@use "@/assets/scss/utils.scss" as *;',
+          // Allow SCSS to resolve imports from node_modules
+          includePaths: ['node_modules']
+        }
+      }
+    }
+  },
+
+
   imports: {
     dirs: ['utils', 'store']
   },
