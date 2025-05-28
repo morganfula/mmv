@@ -5,4 +5,5 @@ import { defineSliceZoneComponents } from "@prismicio/vue";
 
 export const components = defineSliceZoneComponents({
   cards_block: defineAsyncComponent(() => import("./CardsBlock/index.vue")),
+  intro_block: defineAsyncComponent(() => import("./IntroBlock/index.vue")),
 });

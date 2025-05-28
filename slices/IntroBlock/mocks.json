@@ -1,0 +1,36 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"title": {
+				"__TYPE__": "FieldContent",
+				"type": "Text",
+				"value": "Capturing the essence of live music for iconic artists with unmatched artistry and innovation."
+			},
+			"description": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Born from the legendary Montreux Jazz Festival, Montreux Media Ventures is an award-winning audiovisual production and distribution company dedicated to crafting immersive live music experiences. Trusted by top artists and industry leaders, our company captures the magic of live performances with artistry, precision, and innovation.",
+							"spans": []
+						},
+						"direction": "ltr"
+					}
+				]
+			},
+			"link": {
+				"__TYPE__": "LinkContent",
+				"key": "9be26563-4bf6-4e63-b99f-49384da0ce04",
+				"value": {
+					"__TYPE__": "ExternalLink",
+					"url": "https://prismic.io",
+					"text": "Learn more about our approach"
+				}
+			}
+		},
+		"items": []
+	}
+]

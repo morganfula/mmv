@@ -3,13 +3,12 @@
 		<NuxtLayout
 			name="custom"
 			:page-name="$route.name">
-			<section>
-				<h1>MMV - Route: {{ $route.name }} | Page: {{ page?.data.title }}</h1>
-				<h1>{{ page?.data.title }}</h1>
-				<!-- <br />
-				<h2>STORE: {{ general }}</h2>
-				<br />
-				<p>{{ page?.data }}</p> -->
+			<section class="">
+				<h1 class="title h1">
+					{{ page?.data.title }}
+				</h1>
+
+				<VimeoBackground :video-url="page?.data.video.url" />
 
 				<PrismicRichText :field="page?.data.description" />
 			</section>
@@ -36,4 +35,17 @@
 	});
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+	section {
+		position: relative;
+		min-height: 100svh;
+	}
+
+	.title {
+		position: absolute;
+		z-index: 2;
+		color: $color-white;
+		bottom: $default-gap;
+		left: $default-gap;
+	}
+</style>

@@ -493,6 +493,71 @@ export type CardsBlockSlice = prismic.SharedSlice<
   CardsBlockSliceVariation
 >;
 
+/**
+ * Primary content in *IntroBlock → Default → Primary*
+ */
+export interface IntroBlockSliceDefaultPrimary {
+  /**
+   * Title field in *IntroBlock → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: intro_block.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Description field in *IntroBlock → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: intro_block.default.primary.description
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  description: prismic.RichTextField;
+
+  /**
+   * Link field in *IntroBlock → Default → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: intro_block.default.primary.link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  link: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
+}
+
+/**
+ * Default variation for IntroBlock Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type IntroBlockSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<IntroBlockSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *IntroBlock*
+ */
+type IntroBlockSliceVariation = IntroBlockSliceDefault;
+
+/**
+ * IntroBlock Shared Slice
+ *
+ * - **API ID**: `intro_block`
+ * - **Description**: IntroBlock
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type IntroBlockSlice = prismic.SharedSlice<
+  "intro_block",
+  IntroBlockSliceVariation
+>;
+
 declare module "@prismicio/client" {
   interface CreateClient {
     (
@@ -543,6 +608,10 @@ declare module "@prismicio/client" {
       CardsBlockSliceDefaultPrimary,
       CardsBlockSliceVariation,
       CardsBlockSliceDefault,
+      IntroBlockSlice,
+      IntroBlockSliceDefaultPrimary,
+      IntroBlockSliceVariation,
+      IntroBlockSliceDefault,
     };
   }
 }
