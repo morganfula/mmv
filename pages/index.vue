@@ -45,6 +45,7 @@
 	useSeoMeta({
 		title: page.value?.data.meta_title,
 		// title: page.value?.data.meta_title ?? undefined,
+
 		// ogTitle: page.value?.data.meta_title ?? undefined,
 		// description: page.value?.data.meta_description ?? undefined,
 
