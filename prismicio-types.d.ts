@@ -82,6 +82,11 @@ export type FooterDocument<Lang extends string = string> =
     Lang
   >;
 
+type HomeDocumentDataSlicesSlice =
+  | CardsGridSlice
+  | VideoBlockSlice
+  | IntroBlockSlice;
+
 /**
  * Content for Home documents
  */
@@ -96,6 +101,28 @@ interface HomeDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   title: prismic.KeyTextField;
+
+  /**
+   * Video field in *Home*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.video
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  video: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
+
+  /**
+   * Slice Zone field in *Home*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<HomeDocumentDataSlicesSlice>;
 }
 
 /**
@@ -110,7 +137,7 @@ interface HomeDocumentData {
 export type HomeDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithoutUID<Simplify<HomeDocumentData>, "home", Lang>;
 
-type NewDocumentDataSlicesSlice = CardsBlockSlice;
+type NewDocumentDataSlicesSlice = never;
 
 /**
  * Content for New documents
@@ -137,6 +164,28 @@ interface NewDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#image
    */
   image: prismic.ImageField<never>;
+
+  /**
+   * Date field in *New*
+   *
+   * - **Field Type**: Date
+   * - **Placeholder**: *None*
+   * - **API ID Path**: new.date
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#date
+   */
+  date: prismic.DateField;
+
+  /**
+   * Category field in *New*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: new.category
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  category: prismic.SelectField<"Highlights" | "Network" | "Insights">;
 
   /**
    * Slice Zone field in *New*
@@ -190,8 +239,6 @@ interface NewsDocumentData {
 export type NewsDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithoutUID<Simplify<NewsDocumentData>, "news", Lang>;
 
-type ProjectDocumentDataSlicesSlice = CardsBlockSlice;
-
 /**
  * Content for Project documents
  */
@@ -208,15 +255,26 @@ interface ProjectDocumentData {
   title: prismic.KeyTextField;
 
   /**
-   * Slice Zone field in *Project*
+   * Image field in *Project*
    *
-   * - **Field Type**: Slice Zone
+   * - **Field Type**: Image
    * - **Placeholder**: *None*
-   * - **API ID Path**: project.slices[]
+   * - **API ID Path**: project.image
    * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#slices
+   * - **Documentation**: https://prismic.io/docs/field#image
    */
-  slices: prismic.SliceZone<ProjectDocumentDataSlicesSlice>;
+  image: prismic.ImageField<never>;
+
+  /**
+   * Category field in *Project*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project.category
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  category: prismic.SelectField<"Live Perfomances" | "Music Videos">;
 }
 
 /**
@@ -494,6 +552,149 @@ export type CardsBlockSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Item in *CardsGrid → Projects → Primary → Item*
+ */
+export interface CardsGridSliceDefaultPrimaryItemItem {
+  /**
+   * Item field in *CardsGrid → Projects → Primary → Item*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: cards_grid.default.primary.item[].item
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  item: prismic.ContentRelationshipField<"new">;
+}
+
+/**
+ * Item in *CardsGrid → News → Primary → Item*
+ */
+export interface CardsGridSliceNewsPrimaryItemItem {
+  /**
+   * Item field in *CardsGrid → News → Primary → Item*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: cards_grid.news.primary.item[].item
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  item: prismic.ContentRelationshipField<"new">;
+}
+
+/**
+ * Primary content in *CardsGrid → Projects → Primary*
+ */
+export interface CardsGridSliceDefaultPrimary {
+  /**
+   * Title field in *CardsGrid → Projects → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: cards_grid.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * SubTitle field in *CardsGrid → Projects → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: cards_grid.default.primary.subtitle
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  subtitle: prismic.KeyTextField;
+
+  /**
+   * Item field in *CardsGrid → Projects → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: cards_grid.default.primary.item[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  item: prismic.GroupField<Simplify<CardsGridSliceDefaultPrimaryItemItem>>;
+}
+
+/**
+ * Projects variation for CardsGrid Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CardsGridSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<CardsGridSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Primary content in *CardsGrid → News → Primary*
+ */
+export interface CardsGridSliceNewsPrimary {
+  /**
+   * Title field in *CardsGrid → News → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: cards_grid.news.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * SubTitle field in *CardsGrid → News → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: cards_grid.news.primary.subtitle
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  subtitle: prismic.KeyTextField;
+
+  /**
+   * Item field in *CardsGrid → News → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: cards_grid.news.primary.item[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  item: prismic.GroupField<Simplify<CardsGridSliceNewsPrimaryItemItem>>;
+}
+
+/**
+ * News variation for CardsGrid Slice
+ *
+ * - **API ID**: `news`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CardsGridSliceNews = prismic.SharedSliceVariation<
+  "news",
+  Simplify<CardsGridSliceNewsPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *CardsGrid*
+ */
+type CardsGridSliceVariation = CardsGridSliceDefault | CardsGridSliceNews;
+
+/**
+ * CardsGrid Shared Slice
+ *
+ * - **API ID**: `cards_grid`
+ * - **Description**: CardsGrid
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CardsGridSlice = prismic.SharedSlice<
+  "cards_grid",
+  CardsGridSliceVariation
+>;
+
+/**
  * Primary content in *IntroBlock → Default → Primary*
  */
 export interface IntroBlockSliceDefaultPrimary {
@@ -558,6 +759,51 @@ export type IntroBlockSlice = prismic.SharedSlice<
   IntroBlockSliceVariation
 >;
 
+/**
+ * Primary content in *VideoBlock → Default → Primary*
+ */
+export interface VideoBlockSliceDefaultPrimary {
+  /**
+   * Video field in *VideoBlock → Default → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: video_block.default.primary.video
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  video: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
+}
+
+/**
+ * Default variation for VideoBlock Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type VideoBlockSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<VideoBlockSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *VideoBlock*
+ */
+type VideoBlockSliceVariation = VideoBlockSliceDefault;
+
+/**
+ * VideoBlock Shared Slice
+ *
+ * - **API ID**: `video_block`
+ * - **Description**: VideoBlock
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type VideoBlockSlice = prismic.SharedSlice<
+  "video_block",
+  VideoBlockSliceVariation
+>;
+
 declare module "@prismicio/client" {
   interface CreateClient {
     (
@@ -587,6 +833,7 @@ declare module "@prismicio/client" {
       FooterDocumentData,
       HomeDocument,
       HomeDocumentData,
+      HomeDocumentDataSlicesSlice,
       NewDocument,
       NewDocumentData,
       NewDocumentDataSlicesSlice,
@@ -594,7 +841,6 @@ declare module "@prismicio/client" {
       NewsDocumentData,
       ProjectDocument,
       ProjectDocumentData,
-      ProjectDocumentDataSlicesSlice,
       ProjectsDocument,
       ProjectsDocumentData,
       ServicesDocument,
@@ -608,10 +854,22 @@ declare module "@prismicio/client" {
       CardsBlockSliceDefaultPrimary,
       CardsBlockSliceVariation,
       CardsBlockSliceDefault,
+      CardsGridSlice,
+      CardsGridSliceDefaultPrimaryItemItem,
+      CardsGridSliceDefaultPrimary,
+      CardsGridSliceNewsPrimaryItemItem,
+      CardsGridSliceNewsPrimary,
+      CardsGridSliceVariation,
+      CardsGridSliceDefault,
+      CardsGridSliceNews,
       IntroBlockSlice,
       IntroBlockSliceDefaultPrimary,
       IntroBlockSliceVariation,
       IntroBlockSliceDefault,
+      VideoBlockSlice,
+      VideoBlockSliceDefaultPrimary,
+      VideoBlockSliceVariation,
+      VideoBlockSliceDefault,
     };
   }
 }

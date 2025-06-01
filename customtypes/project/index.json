@@ -19,15 +19,20 @@
           "placeholder": "Project Title"
         }
       },
-      "slices": {
-        "type": "Slices",
-        "fieldset": "Slice Zone",
+      "image": {
+        "type": "Image",
         "config": {
-          "choices": {
-            "cards_block": {
-              "type": "SharedSlice"
-            }
-          }
+          "label": "Image",
+          "constraint": {},
+          "thumbnails": []
+        }
+      },
+      "category": {
+        "type": "Select",
+        "config": {
+          "label": "Category",
+          "placeholder": "",
+          "options": ["Live Perfomances", "Music Videos"]
         }
       }
     }

@@ -12,6 +12,34 @@
           "label": "Title",
           "placeholder": "Page Title"
         }
+      },
+      "video": {
+        "type": "Link",
+        "config": {
+          "label": "Video",
+          "placeholder": "",
+          "select": null,
+          "allowTargetBlank": false,
+          "allowText": false,
+          "repeat": false
+        }
+      },
+      "slices": {
+        "type": "Slices",
+        "fieldset": "Slice Zone",
+        "config": {
+          "choices": {
+            "cards_grid": {
+              "type": "SharedSlice"
+            },
+            "video_block": {
+              "type": "SharedSlice"
+            },
+            "intro_block": {
+              "type": "SharedSlice"
+            }
+          }
+        }
       }
     }
   }

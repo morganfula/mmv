@@ -2,7 +2,7 @@
 	<div>
 		<NuxtLayout
 			name="custom"
-			:page-name="$route.name">
+			page-name="index">
 			<section class="">
 				<h1 class="title h1">
 					{{ page?.data.title }}
@@ -12,6 +12,11 @@
 
 				<PrismicRichText :field="page?.data.description" />
 			</section>
+
+			<SliceZone
+				wrapper="main"
+				:slices="page?.data.slices ?? []"
+				:components="components" />
 		</NuxtLayout>
 	</div>
 </template>
@@ -22,7 +27,19 @@
 
 	const prismic = usePrismic();
 	const { data: page } = useAsyncData('[home]', () =>
-		prismic.client.getSingle('home')
+		prismic.client.getSingle('home', {
+			fetchLinks: [
+				'project.title',
+				'project.subtitle',
+				'project.category',
+				'project.image',
+				'new.title',
+				'new.subtitle',
+				'new.category',
+				'new.image',
+				'new.date',
+			],
+		})
 	);
 
 	useSeoMeta({
@@ -42,6 +59,8 @@
 	}
 
 	.title {
+		font-size: 3.2vw;
+
 		position: absolute;
 		z-index: 2;
 		color: $color-white;

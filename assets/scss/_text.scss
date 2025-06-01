@@ -1,3 +1,30 @@
 .h1 {
-	font-size: 3vw;
+	font-size: 3.7vw;
+	line-height: 1.1;
+}
+
+.big-title {
+	font-size: 4.8vw;
+	line-height: 1.1;
+	font-variation-settings: 'wght' 480;
+	letter-spacing: -2px;
+	text-transform: uppercase;
+}
+
+.p1--grey {
+	color: $color-grey;
+	font-size: 1.58vw;
+	line-height: 1.2;
+}
+
+.p1--black {
+	color: $color-black;
+	font-size: 1.35vw;
+	line-height: 1.1;
+	font-variation-settings: 'wght' 480;
+}
+
+.link {
+	font-size: 1.58vw;
+	font-variation-settings: 'wght' 500;
 }

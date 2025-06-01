@@ -1,0 +1,98 @@
+{
+  "id": "cards_grid",
+  "type": "SharedSlice",
+  "name": "CardsGrid",
+  "description": "CardsGrid",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Projects",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "Title",
+            "placeholder": ""
+          }
+        },
+        "subtitle": {
+          "type": "Text",
+          "config": {
+            "label": "SubTitle",
+            "placeholder": ""
+          }
+        },
+        "item": {
+          "type": "Group",
+          "config": {
+            "label": "Item",
+            "repeat": true,
+            "fields": {
+              "item": {
+                "type": "Link",
+                "config": {
+                  "label": "Item",
+                  "select": "document",
+                  "repeat": false,
+                  "customtypes": [
+                    "new"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    },
+    {
+      "id": "news",
+      "name": "News",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "Title",
+            "placeholder": ""
+          }
+        },
+        "subtitle": {
+          "type": "Text",
+          "config": {
+            "label": "SubTitle",
+            "placeholder": ""
+          }
+        },
+        "item": {
+          "type": "Group",
+          "config": {
+            "label": "Item",
+            "repeat": true,
+            "fields": {
+              "item": {
+                "type": "Link",
+                "config": {
+                  "label": "Item",
+                  "select": "document",
+                  "repeat": false,
+                  "customtypes": [
+                    "new"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

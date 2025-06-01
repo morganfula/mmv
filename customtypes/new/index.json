@@ -27,15 +27,26 @@
           "thumbnails": []
         }
       },
+      "date": {
+        "type": "Date",
+        "config": {
+          "label": "Date",
+          "placeholder": ""
+        }
+      },
+      "category": {
+        "type": "Select",
+        "config": {
+          "label": "Category",
+          "placeholder": "",
+          "options": ["Highlights", "Network", "Insights"]
+        }
+      },
       "slices": {
         "type": "Slices",
         "fieldset": "Slice Zone",
         "config": {
-          "choices": {
-            "cards_block": {
-              "type": "SharedSlice"
-            }
-          }
+          "choices": {}
         }
       }
     }
