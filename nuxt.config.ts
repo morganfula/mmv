@@ -17,9 +17,9 @@ export default defineNuxtConfig({
     css: {
       preprocessorOptions: {
         scss: {
-          // Automatically include utils.scss in every component
-          additionalData: '@use "@/assets/scss/utils.scss" as *;',
-          // Allow SCSS to resolve imports from node_modules
+         
+          additionalData: '@import "@/assets/scss/utils.scss";',
+  
           includePaths: ['node_modules']
         }
       }
