@@ -47,7 +47,7 @@
 		// title: page.value?.data.meta_title ?? undefined,
 		// ogTitle: page.value?.data.meta_title ?? undefined,
 		// description: page.value?.data.meta_description ?? undefined,
-		// keywords: page.value?.data.meta_keywords ?? undefined,
+
 		// ogImage: asImageSrc(page.value?.data.meta_image),
 	});
 </script>
