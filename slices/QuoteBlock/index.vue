@@ -34,7 +34,8 @@
 		padding: $default-gap 0;
 		min-height: 100svh;
 
-		@include default-grid;
+		display: grid;
+		grid-template-columns: repeat(12, 1fr);
 	}
 
 	.title {
@@ -43,9 +44,11 @@
 		line-height: 1;
 		text-transform: uppercase;
 		font-variation-settings: 'wght' 480;
+		align-self: end;
 	}
 
 	.link {
+		align-self: start;
 		margin-top: $default-gap;
 		grid-column: 2 /12;
 		grid-row-start: 2;

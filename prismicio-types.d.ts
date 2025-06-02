@@ -64,7 +64,150 @@ export type ContactDocument<Lang extends string = string> =
     Lang
   >;
 
-interface FooterDocumentData {}
+/**
+ * Item in *Footer → Links 1*
+ */
+export interface FooterDocumentDataLinks1Item {
+  /**
+   * link field in *Footer → Links 1*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.links_1[].link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  link: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
+}
+
+/**
+ * Item in *Footer → Links 2*
+ */
+export interface FooterDocumentDataLinks2Item {
+  /**
+   * Link field in *Footer → Links 2*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.links_2[].link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  link: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
+}
+
+/**
+ * Content for Footer documents
+ */
+interface FooterDocumentData {
+  /**
+   * Links 1 Title field in *Footer*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.links_1_title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  links_1_title: prismic.KeyTextField;
+
+  /**
+   * Links 1 field in *Footer*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.links_1[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  links_1: prismic.GroupField<Simplify<FooterDocumentDataLinks1Item>>;
+
+  /**
+   * Links 2 Title field in *Footer*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.links_2_title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  links_2_title: prismic.KeyTextField;
+
+  /**
+   * Links 2 field in *Footer*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.links_2[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  links_2: prismic.GroupField<Simplify<FooterDocumentDataLinks2Item>>;
+
+  /**
+   * Logo field in *Footer*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.logo
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  logo: prismic.ImageField<never>;
+
+  /**
+   * Newsletter Title field in *Footer*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.newsletter_title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  newsletter_title: prismic.KeyTextField;
+
+  /**
+   * Newsletter Message field in *Footer*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.newsletter_message
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  newsletter_message: prismic.KeyTextField;
+
+  /**
+   * Newsletter Policy field in *Footer*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.newsletter_policy
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  newsletter_policy: prismic.KeyTextField;
+
+  /**
+   * Button Message field in *Footer*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.button_message
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  button_message: prismic.KeyTextField;
+
+  /**
+   * Copyrights field in *Footer*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.copyrights
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  copyrights: prismic.KeyTextField;
+}
 
 /**
  * Footer document from Prismic
@@ -213,6 +356,8 @@ interface NewDocumentData {
 export type NewDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<NewDocumentData>, "new", Lang>;
 
+type NewsDocumentDataSlicesSlice = HeaderBlockSlice;
+
 /**
  * Content for News documents
  */
@@ -227,6 +372,17 @@ interface NewsDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   title: prismic.KeyTextField;
+
+  /**
+   * Slice Zone field in *News*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: news.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<NewsDocumentDataSlicesSlice>;
 }
 
 /**
@@ -697,6 +853,61 @@ export type CardsGridSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Primary content in *HeaderBlock → Default → Primary*
+ */
+export interface HeaderBlockSliceDefaultPrimary {
+  /**
+   * Title field in *HeaderBlock → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: header_block.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Subtitle field in *HeaderBlock → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: header_block.default.primary.subtitle
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  subtitle: prismic.KeyTextField;
+}
+
+/**
+ * Default variation for HeaderBlock Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type HeaderBlockSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<HeaderBlockSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *HeaderBlock*
+ */
+type HeaderBlockSliceVariation = HeaderBlockSliceDefault;
+
+/**
+ * HeaderBlock Shared Slice
+ *
+ * - **API ID**: `header_block`
+ * - **Description**: HeaderBlock
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type HeaderBlockSlice = prismic.SharedSlice<
+  "header_block",
+  HeaderBlockSliceVariation
+>;
+
+/**
  * Primary content in *IntroBlock → Default → Primary*
  */
 export interface IntroBlockSliceDefaultPrimary {
@@ -976,6 +1187,8 @@ declare module "@prismicio/client" {
       ContactDocumentData,
       FooterDocument,
       FooterDocumentData,
+      FooterDocumentDataLinks1Item,
+      FooterDocumentDataLinks2Item,
       HomeDocument,
       HomeDocumentData,
       HomeDocumentDataSlicesSlice,
@@ -984,6 +1197,7 @@ declare module "@prismicio/client" {
       NewDocumentDataSlicesSlice,
       NewsDocument,
       NewsDocumentData,
+      NewsDocumentDataSlicesSlice,
       ProjectDocument,
       ProjectDocumentData,
       ProjectsDocument,
@@ -1007,6 +1221,10 @@ declare module "@prismicio/client" {
       CardsGridSliceVariation,
       CardsGridSliceDefault,
       CardsGridSliceNews,
+      HeaderBlockSlice,
+      HeaderBlockSliceDefaultPrimary,
+      HeaderBlockSliceVariation,
+      HeaderBlockSliceDefault,
       IntroBlockSlice,
       IntroBlockSliceDefaultPrimary,
       IntroBlockSliceVariation,

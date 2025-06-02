@@ -1,10 +1,108 @@
 {
   "format": "custom",
   "id": "footer",
-  "json": {
-    "Main": {}
-  },
   "label": "Footer",
   "repeatable": false,
-  "status": true
+  "status": true,
+  "json": {
+    "Main": {
+      "links_1_title": {
+        "type": "Text",
+        "config": {
+          "label": "Links 1 Title",
+          "placeholder": ""
+        }
+      },
+      "links_1": {
+        "type": "Group",
+        "config": {
+          "label": "Links 1",
+          "repeat": true,
+          "fields": {
+            "link": {
+              "type": "Link",
+              "config": {
+                "label": "link",
+                "placeholder": "",
+                "select": null,
+                "allowTargetBlank": false,
+                "allowText": true,
+                "repeat": false
+              }
+            }
+          }
+        }
+      },
+      "links_2_title": {
+        "type": "Text",
+        "config": {
+          "label": "Links 2 Title",
+          "placeholder": ""
+        }
+      },
+      "links_2": {
+        "type": "Group",
+        "config": {
+          "label": "Links 2",
+          "repeat": true,
+          "fields": {
+            "link": {
+              "type": "Link",
+              "config": {
+                "label": "Link",
+                "placeholder": "",
+                "select": null,
+                "allowTargetBlank": false,
+                "allowText": true,
+                "repeat": false
+              }
+            }
+          }
+        }
+      },
+      "logo": {
+        "type": "Image",
+        "config": {
+          "label": "Logo",
+          "constraint": {},
+          "thumbnails": []
+        }
+      },
+      "newsletter_title": {
+        "type": "Text",
+        "config": {
+          "label": "Newsletter Title",
+          "placeholder": ""
+        }
+      },
+      "newsletter_message": {
+        "type": "Text",
+        "config": {
+          "label": "Newsletter Message",
+          "placeholder": ""
+        }
+      },
+      "newsletter_policy": {
+        "type": "Text",
+        "config": {
+          "label": "Newsletter Policy",
+          "placeholder": ""
+        }
+      },
+      "button_message": {
+        "type": "Text",
+        "config": {
+          "label": "Button Message",
+          "placeholder": ""
+        }
+      },
+      "copyrights": {
+        "type": "Text",
+        "config": {
+          "label": "Copyrights",
+          "placeholder": ""
+        }
+      }
+    }
+  }
 }

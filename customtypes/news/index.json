@@ -12,6 +12,17 @@
           "label": "Title",
           "placeholder": "Page Title"
         }
+      },
+      "slices": {
+        "type": "Slices",
+        "fieldset": "Slice Zone",
+        "config": {
+          "choices": {
+            "header_block": {
+              "type": "SharedSlice"
+            }
+          }
+        }
       }
     }
   }
