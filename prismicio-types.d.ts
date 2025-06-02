@@ -282,7 +282,11 @@ interface HomeDocumentData {
 export type HomeDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithoutUID<Simplify<HomeDocumentData>, "home", Lang>;
 
-type NewDocumentDataSlicesSlice = never;
+type NewDocumentDataSlicesSlice =
+  | NewTitleSlice
+  | NewTextSlice
+  | ContactBlockSlice
+  | CardsGridSlice;
 
 /**
  * Content for New documents
@@ -333,6 +337,17 @@ interface NewDocumentData {
   category: prismic.SelectField<"Highlights" | "Network" | "Insights">;
 
   /**
+   * Team field in *New*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: new.team
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  team: prismic.ContentRelationshipField<"team">;
+
+  /**
    * Slice Zone field in *New*
    *
    * - **Field Type**: Slice Zone
@@ -356,7 +371,11 @@ interface NewDocumentData {
 export type NewDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<NewDocumentData>, "new", Lang>;
 
-type NewsDocumentDataSlicesSlice = HeaderBlockSlice;
+type NewsDocumentDataSlicesSlice =
+  | ContactBlockSlice
+  | ArticlesBlockSlice
+  | CardsGridSlice
+  | HeaderBlockSlice;
 
 /**
  * Content for News documents
@@ -451,6 +470,8 @@ export type ProjectDocument<Lang extends string = string> =
     Lang
   >;
 
+type ProjectsDocumentDataSlicesSlice = PortfolioBlockSlice;
+
 /**
  * Content for Projects documents
  */
@@ -465,6 +486,17 @@ interface ProjectsDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   title: prismic.KeyTextField;
+
+  /**
+   * Slice Zone field in *Projects*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: projects.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<ProjectsDocumentDataSlicesSlice>;
 }
 
 /**
@@ -483,6 +515,12 @@ export type ProjectsDocument<Lang extends string = string> =
     Lang
   >;
 
+type ServicesDocumentDataSlicesSlice =
+  | QuoteBlockSlice
+  | ContactBlockSlice
+  | PortfolioBlockSlice
+  | HeaderBlockSlice;
+
 /**
  * Content for Services documents
  */
@@ -497,6 +535,17 @@ interface ServicesDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   title: prismic.KeyTextField;
+
+  /**
+   * Slice Zone field in *Services*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: services.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<ServicesDocumentDataSlicesSlice>;
 }
 
 /**
@@ -617,6 +666,45 @@ export type SettingsDocument<Lang extends string = string> =
     Lang
   >;
 
+/**
+ * Content for Team documents
+ */
+interface TeamDocumentData {
+  /**
+   * Name field in *Team*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: team.name
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  name: prismic.KeyTextField;
+
+  /**
+   * Photo field in *Team*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: team.photo
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  photo: prismic.ImageField<never>;
+}
+
+/**
+ * Team document from Prismic
+ *
+ * - **API ID**: `team`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type TeamDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<Simplify<TeamDocumentData>, "team", Lang>;
+
 export type AllDocumentTypes =
   | AboutDocument
   | ContactDocument
@@ -627,7 +715,53 @@ export type AllDocumentTypes =
   | ProjectDocument
   | ProjectsDocument
   | ServicesDocument
-  | SettingsDocument;
+  | SettingsDocument
+  | TeamDocument;
+
+/**
+ * Primary content in *ArticlesBlock → Default → Primary*
+ */
+export interface ArticlesBlockSliceDefaultPrimary {
+  /**
+   * Title field in *ArticlesBlock → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: articles_block.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+}
+
+/**
+ * Default variation for ArticlesBlock Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ArticlesBlockSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<ArticlesBlockSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *ArticlesBlock*
+ */
+type ArticlesBlockSliceVariation = ArticlesBlockSliceDefault;
+
+/**
+ * ArticlesBlock Shared Slice
+ *
+ * - **API ID**: `articles_block`
+ * - **Description**: ArticlesBlock
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ArticlesBlockSlice = prismic.SharedSlice<
+  "articles_block",
+  ArticlesBlockSliceVariation
+>;
 
 /**
  * Item in *CardsBlock → Default → Primary → Cards*
@@ -853,6 +987,51 @@ export type CardsGridSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Primary content in *ContactBlock → Default → Primary*
+ */
+export interface ContactBlockSliceDefaultPrimary {
+  /**
+   * Link field in *ContactBlock → Default → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact_block.default.primary.link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  link: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
+}
+
+/**
+ * Default variation for ContactBlock Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ContactBlockSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<ContactBlockSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *ContactBlock*
+ */
+type ContactBlockSliceVariation = ContactBlockSliceDefault;
+
+/**
+ * ContactBlock Shared Slice
+ *
+ * - **API ID**: `contact_block`
+ * - **Description**: ContactBlock
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ContactBlockSlice = prismic.SharedSlice<
+  "contact_block",
+  ContactBlockSliceVariation
+>;
+
+/**
  * Primary content in *HeaderBlock → Default → Primary*
  */
 export interface HeaderBlockSliceDefaultPrimary {
@@ -1061,6 +1240,188 @@ export type LinkedInBlockSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Primary content in *NewText → Default → Primary*
+ */
+export interface NewTextSliceDefaultPrimary {
+  /**
+   * Text field in *NewText → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: new_text.default.primary.text
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  text: prismic.RichTextField;
+}
+
+/**
+ * Default variation for NewText Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type NewTextSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<NewTextSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *NewText*
+ */
+type NewTextSliceVariation = NewTextSliceDefault;
+
+/**
+ * NewText Shared Slice
+ *
+ * - **API ID**: `new_text`
+ * - **Description**: NewText
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type NewTextSlice = prismic.SharedSlice<
+  "new_text",
+  NewTextSliceVariation
+>;
+
+/**
+ * Primary content in *NewTitle → Default → Primary*
+ */
+export interface NewTitleSliceDefaultPrimary {
+  /**
+   * Title field in *NewTitle → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: new_title.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+}
+
+/**
+ * Default variation for NewTitle Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type NewTitleSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<NewTitleSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *NewTitle*
+ */
+type NewTitleSliceVariation = NewTitleSliceDefault;
+
+/**
+ * NewTitle Shared Slice
+ *
+ * - **API ID**: `new_title`
+ * - **Description**: NewTitle
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type NewTitleSlice = prismic.SharedSlice<
+  "new_title",
+  NewTitleSliceVariation
+>;
+
+/**
+ * Item in *PortfolioBlock → Default → Primary → Items*
+ */
+export interface PortfolioBlockSliceDefaultPrimaryItemsItem {
+  /**
+   * Title field in *PortfolioBlock → Default → Primary → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: portfolio_block.default.primary.items[].title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Description field in *PortfolioBlock → Default → Primary → Items*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: portfolio_block.default.primary.items[].description
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  description: prismic.RichTextField;
+
+  /**
+   * Video field in *PortfolioBlock → Default → Primary → Items*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: portfolio_block.default.primary.items[].video
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  video: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
+
+  /**
+   * Link field in *PortfolioBlock → Default → Primary → Items*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: portfolio_block.default.primary.items[].link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  link: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
+}
+
+/**
+ * Primary content in *PortfolioBlock → Default → Primary*
+ */
+export interface PortfolioBlockSliceDefaultPrimary {
+  /**
+   * Items field in *PortfolioBlock → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: portfolio_block.default.primary.items[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  items: prismic.GroupField<
+    Simplify<PortfolioBlockSliceDefaultPrimaryItemsItem>
+  >;
+}
+
+/**
+ * Default variation for PortfolioBlock Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type PortfolioBlockSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<PortfolioBlockSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *PortfolioBlock*
+ */
+type PortfolioBlockSliceVariation = PortfolioBlockSliceDefault;
+
+/**
+ * PortfolioBlock Shared Slice
+ *
+ * - **API ID**: `portfolio_block`
+ * - **Description**: PortfolioBlock
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type PortfolioBlockSlice = prismic.SharedSlice<
+  "portfolio_block",
+  PortfolioBlockSliceVariation
+>;
+
+/**
  * Primary content in *QuoteBlock → Default → Primary*
  */
 export interface QuoteBlockSliceDefaultPrimary {
@@ -1202,12 +1563,20 @@ declare module "@prismicio/client" {
       ProjectDocumentData,
       ProjectsDocument,
       ProjectsDocumentData,
+      ProjectsDocumentDataSlicesSlice,
       ServicesDocument,
       ServicesDocumentData,
+      ServicesDocumentDataSlicesSlice,
       SettingsDocument,
       SettingsDocumentData,
       SettingsDocumentDataNavigationItem,
+      TeamDocument,
+      TeamDocumentData,
       AllDocumentTypes,
+      ArticlesBlockSlice,
+      ArticlesBlockSliceDefaultPrimary,
+      ArticlesBlockSliceVariation,
+      ArticlesBlockSliceDefault,
       CardsBlockSlice,
       CardsBlockSliceDefaultPrimaryCardsItem,
       CardsBlockSliceDefaultPrimary,
@@ -1221,6 +1590,10 @@ declare module "@prismicio/client" {
       CardsGridSliceVariation,
       CardsGridSliceDefault,
       CardsGridSliceNews,
+      ContactBlockSlice,
+      ContactBlockSliceDefaultPrimary,
+      ContactBlockSliceVariation,
+      ContactBlockSliceDefault,
       HeaderBlockSlice,
       HeaderBlockSliceDefaultPrimary,
       HeaderBlockSliceVariation,
@@ -1234,6 +1607,19 @@ declare module "@prismicio/client" {
       LinkedInBlockSliceDefaultPrimary,
       LinkedInBlockSliceVariation,
       LinkedInBlockSliceDefault,
+      NewTextSlice,
+      NewTextSliceDefaultPrimary,
+      NewTextSliceVariation,
+      NewTextSliceDefault,
+      NewTitleSlice,
+      NewTitleSliceDefaultPrimary,
+      NewTitleSliceVariation,
+      NewTitleSliceDefault,
+      PortfolioBlockSlice,
+      PortfolioBlockSliceDefaultPrimaryItemsItem,
+      PortfolioBlockSliceDefaultPrimary,
+      PortfolioBlockSliceVariation,
+      PortfolioBlockSliceDefault,
       QuoteBlockSlice,
       QuoteBlockSliceDefaultPrimary,
       QuoteBlockSliceVariation,

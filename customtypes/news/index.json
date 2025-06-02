@@ -18,6 +18,15 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "contact_block": {
+              "type": "SharedSlice"
+            },
+            "articles_block": {
+              "type": "SharedSlice"
+            },
+            "cards_grid": {
+              "type": "SharedSlice"
+            },
             "header_block": {
               "type": "SharedSlice"
             }

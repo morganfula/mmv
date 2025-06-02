@@ -3,17 +3,10 @@
 		<NuxtLayout
 			name="custom"
 			:page-name="$route.name">
-			<section>
-				<h1>MMV - Route: {{ $route.name }} | Page: {{ page?.data.title }}</h1>
-				<h1>{{ page?.data.title }}</h1>
-
-				<ul>
-					<NewListItem
-						v-for="item in news"
-						:key="item.id"
-						:new="item" />
-				</ul>
-			</section>
+			<SliceZone
+				wrapper="main"
+				:slices="page?.data.slices ?? []"
+				:components="components" />
 		</NuxtLayout>
 	</div>
 </template>
@@ -27,7 +20,19 @@
 	const prismic = usePrismic();
 
 	const { data: page } = useAsyncData('[news]', () =>
-		prismic.client.getSingle('news')
+		prismic.client.getSingle('news', {
+			fetchLinks: [
+				'project.title',
+				'project.subtitle',
+				'project.category',
+				'project.image',
+				'new.title',
+				'new.subtitle',
+				'new.category',
+				'new.image',
+				'new.date',
+			],
+		})
 	);
 
 	const { data: news } = await useAsyncData('new', () =>
@@ -37,7 +42,6 @@
 	);
 
 	console.log(news);
-
 	useSeoMeta({
 		// title: page.value?.data.meta_title ?? undefined,
 		// ogTitle: page.value?.data.meta_title ?? undefined,

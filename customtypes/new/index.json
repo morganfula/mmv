@@ -42,11 +42,33 @@
           "options": ["Highlights", "Network", "Insights"]
         }
       },
+      "team": {
+        "type": "Link",
+        "config": {
+          "label": "Team",
+          "select": "document",
+          "repeat": false,
+          "customtypes": ["team"]
+        }
+      },
       "slices": {
         "type": "Slices",
         "fieldset": "Slice Zone",
         "config": {
-          "choices": {}
+          "choices": {
+            "new_title": {
+              "type": "SharedSlice"
+            },
+            "new_text": {
+              "type": "SharedSlice"
+            },
+            "contact_block": {
+              "type": "SharedSlice"
+            },
+            "cards_grid": {
+              "type": "SharedSlice"
+            }
+          }
         }
       }
     }

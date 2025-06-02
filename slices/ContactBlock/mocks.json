@@ -1,0 +1,18 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"link": {
+				"__TYPE__": "LinkContent",
+				"key": "2dc41d28-ecf8-4253-b4d2-0bddfbf9a9e0",
+				"value": {
+					"__TYPE__": "ExternalLink",
+					"url": "http://google.com",
+					"text": "union"
+				}
+			}
+		},
+		"items": []
+	}
+]

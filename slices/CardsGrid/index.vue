@@ -18,8 +18,12 @@
 		<section
 			:data-slice-type="slice.slice_type"
 			:data-slice-variation="slice.variation">
-			<div class="titles">
-				<h3 class="h1 big-title">{{ slice.primary.title }}</h3>
+			<div
+				v-if="slice.primary.title"
+				class="titles">
+				<h3 class="h1 big-title">
+					{{ slice.primary.title }}
+				</h3>
 				<h4 class="p1--black subtitle">{{ slice.primary.subtitle }}</h4>
 			</div>
 

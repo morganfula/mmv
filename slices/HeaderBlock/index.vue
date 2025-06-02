@@ -1,52 +1,50 @@
 <script setup lang="ts">
-import type { Content } from "@prismicio/client";
+	import type { Content } from '@prismicio/client';
 
-// The array passed to `getSliceComponentProps` is purely optional.
-// Consider it as a visual hint for you when templating your slice.
-defineProps(
-  getSliceComponentProps<Content.HeaderBlockSlice>([
-    "slice",
-    "index",
-    "slices",
-    "context",
-  ]),
-);
+	// The array passed to `getSliceComponentProps` is purely optional.
+	// Consider it as a visual hint for you when templating your slice.
+	defineProps(
+		getSliceComponentProps<Content.HeaderBlockSlice>([
+			'slice',
+			'index',
+			'slices',
+			'context',
+		])
+	);
 </script>
 
 <template>
-  <section
-    :data-slice-type="slice.slice_type"
-    :data-slice-variation="slice.variation"
-  >
-    Placeholder component for header_block (variation: {{ slice.variation }})
-    slices.
+	<Bounded as="header">
+		<section
+			:data-slice-type="slice.slice_type"
+			:data-slice-variation="slice.variation">
+			<h1 class="title">
+				{{ slice.primary.title }}
+			</h1>
 
-    <br />
-    <strong>You can edit this slice directly in your code editor.</strong>
-    <!--
-	💡 Use Prismic MCP with your code editor
+			<h2 class="subtitle p1--grey">
+				{{ slice.primary.subtitle }}
+			</h2>
+		</section>
+	</Bounded>
+</template>
 
-	Get AI-powered help to build your slice components — based on your actual model.
-
-	▶️ Setup:
-	1. Add a new MCP Server in your code editor:
-
-	{
-		"mcpServers": {
-			"Prismic MCP": {
-				"command": "npx",
-				"args": ["-y", "@prismicio/mcp-server"]
-			}
-		}
+<style lang="scss" scoped>
+	section {
+		min-height: 50svh;
+		padding: $default-gap 0;
 	}
 
-	2. Select Claude 3.7 Sonnet (recommended for optimal output)
+	.title {
+		margin-top: calc($default-gap * 3);
+		font-size: 9vw;
+		font-variation-settings: 'wght' 440;
+		text-transform: uppercase;
+		line-height: 1;
+	}
 
-	✅ Then open your slice file and ask your code editor:
-		"Code this slice"
-
-	Your code editor reads your slice model and helps you code faster ⚡
-	📚 Give your feedback: https://community.prismic.io/t/help-us-shape-the-future-of-slice-creation/19505
--->
-  </section>
-</template>
+	.subtitle {
+		margin-top: $default-gap;
+		font-variation-settings: 'wght' 350;
+	}
+</style>

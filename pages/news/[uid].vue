@@ -3,14 +3,32 @@
 		<NuxtLayout
 			name="custom"
 			:page-name="$route.name">
-			<section>
-				<h1>
-					MMV - Route: {{ $route.params.uid }} | Page: {{ page?.data.title }}
-				</h1>
-				<h1>{{ page?.data.title }}</h1>
+			<Bounded as="section">
+				<div class="title">
+					{{ page?.data.title }}
+				</div>
+			</Bounded>
 
-				{{ page.id }}
-			</section>
+			<Bounded
+				as="section"
+				class="article-wrapper">
+				<div class="infos p1--black">
+					<span> by {{ page?.data.team.data.name }} </span>
+
+					<span>
+						{{ page?.data.category }}
+					</span>
+					<span>
+						{{ page?.data.date }}
+					</span>
+				</div>
+				<div class="articles">
+					<SliceZone
+						wrapper="main"
+						:slices="page?.data.slices ?? []"
+						:components="components" />
+				</div>
+			</Bounded>
 		</NuxtLayout>
 	</div>
 </template>
@@ -24,7 +42,14 @@
 
 	const { data: page } = await useAsyncData(route.params.uid, () =>
 		prismic.client.getByUID('new', route.params.uid, {
-			fetchLinks: ['new.uid', 'new.title'],
+			fetchLinks: [
+				'new.title',
+				'new.subtitle',
+				'new.category',
+				'new.image',
+				'new.date',
+				'team.name',
+			],
 		})
 	);
 
@@ -39,4 +64,42 @@
 	});
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+	// .container {
+	// 	@include test;
+	// 	width: 100%;
+	// 	display: grid;
+	// 	grid-template-columns: repeat(12, 1fr);
+	// }
+
+	.title {
+		padding-top: calc($default-gap * 3);
+		padding-bottom: $default-gap;
+		font-variation-settings: 'wght' 440;
+		text-transform: uppercase;
+		line-height: 1;
+
+		font-size: 5vw;
+		text-transform: none;
+	}
+	.article-wrapper {
+		display: flex;
+	}
+
+	.infos {
+		// @include test;
+		display: flex;
+		flex-direction: column;
+		width: 30%;
+		height: 100svh;
+		position: sticky;
+		top: 0;
+		text-transform: uppercase;
+		gap: 12px;
+	}
+
+	.articles {
+		// flex-grow: 1;
+		width: 60%;
+	}
+</style>

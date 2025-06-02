@@ -12,6 +12,26 @@
           "label": "Title",
           "placeholder": "Page Title"
         }
+      },
+      "slices": {
+        "type": "Slices",
+        "fieldset": "Slice Zone",
+        "config": {
+          "choices": {
+            "quote_block": {
+              "type": "SharedSlice"
+            },
+            "contact_block": {
+              "type": "SharedSlice"
+            },
+            "portfolio_block": {
+              "type": "SharedSlice"
+            },
+            "header_block": {
+              "type": "SharedSlice"
+            }
+          }
+        }
       }
     }
   }
