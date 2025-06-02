@@ -29,6 +29,12 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "quote_block": {
+              "type": "SharedSlice"
+            },
+            "linked_in_block": {
+              "type": "SharedSlice"
+            },
             "cards_grid": {
               "type": "SharedSlice"
             },

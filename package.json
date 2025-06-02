@@ -11,6 +11,7 @@
 		"slicemachine": "start-slicemachine"
 	},
 	"dependencies": {
+		"@extractus/opengraph": "^0.4.2",
 		"@studio-freight/lenis": "^1.0.42",
 		"gsap": "^3.12.7",
 		"include-media": "^2.0.0",

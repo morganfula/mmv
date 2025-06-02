@@ -83,6 +83,8 @@ export type FooterDocument<Lang extends string = string> =
   >;
 
 type HomeDocumentDataSlicesSlice =
+  | QuoteBlockSlice
+  | LinkedInBlockSlice
   | CardsGridSlice
   | VideoBlockSlice
   | IntroBlockSlice;
@@ -760,6 +762,149 @@ export type IntroBlockSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Item in *LinkedInBlock → Default → Primary → Items*
+ */
+export interface LinkedInBlockSliceDefaultPrimaryItemsItem {
+  /**
+   * Post Url field in *LinkedInBlock → Default → Primary → Items*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: linked_in_block.default.primary.items[].post_url
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  post_url: prismic.LinkField<
+    string,
+    string,
+    unknown,
+    prismic.FieldState,
+    never
+  >;
+}
+
+/**
+ * Primary content in *LinkedInBlock → Default → Primary*
+ */
+export interface LinkedInBlockSliceDefaultPrimary {
+  /**
+   * Title field in *LinkedInBlock → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: linked_in_block.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Subtitle field in *LinkedInBlock → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: linked_in_block.default.primary.subtitle
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  subtitle: prismic.KeyTextField;
+
+  /**
+   * Items field in *LinkedInBlock → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: linked_in_block.default.primary.items[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  items: prismic.GroupField<
+    Simplify<LinkedInBlockSliceDefaultPrimaryItemsItem>
+  >;
+}
+
+/**
+ * Default variation for LinkedInBlock Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type LinkedInBlockSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<LinkedInBlockSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *LinkedInBlock*
+ */
+type LinkedInBlockSliceVariation = LinkedInBlockSliceDefault;
+
+/**
+ * LinkedInBlock Shared Slice
+ *
+ * - **API ID**: `linked_in_block`
+ * - **Description**: LinkedInBlock
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type LinkedInBlockSlice = prismic.SharedSlice<
+  "linked_in_block",
+  LinkedInBlockSliceVariation
+>;
+
+/**
+ * Primary content in *QuoteBlock → Default → Primary*
+ */
+export interface QuoteBlockSliceDefaultPrimary {
+  /**
+   * Title field in *QuoteBlock → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: quote_block.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Link field in *QuoteBlock → Default → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: quote_block.default.primary.link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  link: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
+}
+
+/**
+ * Default variation for QuoteBlock Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type QuoteBlockSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<QuoteBlockSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *QuoteBlock*
+ */
+type QuoteBlockSliceVariation = QuoteBlockSliceDefault;
+
+/**
+ * QuoteBlock Shared Slice
+ *
+ * - **API ID**: `quote_block`
+ * - **Description**: QuoteBlock
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type QuoteBlockSlice = prismic.SharedSlice<
+  "quote_block",
+  QuoteBlockSliceVariation
+>;
+
+/**
  * Primary content in *VideoBlock → Default → Primary*
  */
 export interface VideoBlockSliceDefaultPrimary {
@@ -866,6 +1011,15 @@ declare module "@prismicio/client" {
       IntroBlockSliceDefaultPrimary,
       IntroBlockSliceVariation,
       IntroBlockSliceDefault,
+      LinkedInBlockSlice,
+      LinkedInBlockSliceDefaultPrimaryItemsItem,
+      LinkedInBlockSliceDefaultPrimary,
+      LinkedInBlockSliceVariation,
+      LinkedInBlockSliceDefault,
+      QuoteBlockSlice,
+      QuoteBlockSliceDefaultPrimary,
+      QuoteBlockSliceVariation,
+      QuoteBlockSliceDefault,
       VideoBlockSlice,
       VideoBlockSliceDefaultPrimary,
       VideoBlockSliceVariation,

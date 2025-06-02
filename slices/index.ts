@@ -7,5 +7,9 @@ export const components = defineSliceZoneComponents({
   cards_block: defineAsyncComponent(() => import("./CardsBlock/index.vue")),
   cards_grid: defineAsyncComponent(() => import("./CardsGrid/index.vue")),
   intro_block: defineAsyncComponent(() => import("./IntroBlock/index.vue")),
+  linked_in_block: defineAsyncComponent(
+    () => import("./LinkedInBlock/index.vue"),
+  ),
+  quote_block: defineAsyncComponent(() => import("./QuoteBlock/index.vue")),
   video_block: defineAsyncComponent(() => import("./VideoBlock/index.vue")),
 });
