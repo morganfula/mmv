@@ -14,6 +14,11 @@ export default defineNuxtConfig({
   ],
 
   vite: {
+    resolve: {
+      alias: {
+        Lenis: '@studio-freight/lenis'
+      }
+    },
     css: {
       preprocessorOptions: {
         scss: {
