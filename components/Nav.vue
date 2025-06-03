@@ -155,7 +155,7 @@
 	}
 
 	.nav {
-		height: 100vh;
+		height: 100svh;
 		overflow: hidden;
 		list-style-type: none;
 	}
