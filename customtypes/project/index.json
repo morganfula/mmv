@@ -23,7 +23,10 @@
         "type": "Image",
         "config": {
           "label": "Image",
-          "constraint": {},
+          "constraint": {
+            "width": 690,
+            "height": 823
+          },
           "thumbnails": []
         }
       },
@@ -33,6 +36,23 @@
           "label": "Category",
           "placeholder": "",
           "options": ["Live Perfomances", "Music Videos"]
+        }
+      },
+      "slices": {
+        "type": "Slices",
+        "fieldset": "Slice Zone",
+        "config": {
+          "choices": {
+            "video_block": {
+              "type": "SharedSlice"
+            },
+            "clients_block": {
+              "type": "SharedSlice"
+            },
+            "quote_block": {
+              "type": "SharedSlice"
+            }
+          }
         }
       }
     }

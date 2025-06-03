@@ -1,0 +1,96 @@
+{
+  "id": "contact_form",
+  "type": "SharedSlice",
+  "name": "ContactForm",
+  "description": "ContactForm",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "Title",
+            "placeholder": ""
+          }
+        },
+        "fields": {
+          "type": "Group",
+          "config": {
+            "label": "fields",
+            "repeat": true,
+            "fields": {
+              "pid": {
+                "type": "Text",
+                "config": {
+                  "label": "PID",
+                  "placeholder": ""
+                }
+              },
+              "label": {
+                "type": "Text",
+                "config": {
+                  "label": "label",
+                  "placeholder": ""
+                }
+              },
+              "placeholder": {
+                "type": "Text",
+                "config": {
+                  "label": "placeholder",
+                  "placeholder": ""
+                }
+              },
+              "type": {
+                "type": "Select",
+                "config": {
+                  "label": "Type",
+                  "placeholder": "",
+                  "options": [
+                    "text",
+                    "email",
+                    "textarea",
+                    "url"
+                  ]
+                }
+              },
+              "required": {
+                "type": "Boolean",
+                "config": {
+                  "label": "required",
+                  "placeholder_false": "false",
+                  "placeholder_true": "true",
+                  "default_value": true
+                }
+              }
+            }
+          }
+        },
+        "success_message": {
+          "type": "StructuredText",
+          "config": {
+            "label": "success message",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph"
+          }
+        },
+        "error_message": {
+          "type": "StructuredText",
+          "config": {
+            "label": "error message\t",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph"
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

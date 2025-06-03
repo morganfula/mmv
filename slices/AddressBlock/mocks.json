@@ -1,0 +1,25 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"title": {
+				"__TYPE__": "FieldContent",
+				"value": "cowboy",
+				"type": "Text"
+			},
+			"address": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Tempor laborum laboris cillum laboris aliquip pariatur consectetur culpa aliquip nisi ipsum ex."
+						}
+					}
+				]
+			}
+		},
+		"items": []
+	}
+]

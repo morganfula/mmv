@@ -6,11 +6,24 @@
   "status": true,
   "json": {
     "Main": {
-      "title": {
-        "type": "Text",
+      "slices": {
+        "type": "Slices",
+        "fieldset": "Slice Zone",
         "config": {
-          "label": "Title",
-          "placeholder": "Page Title"
+          "choices": {
+            "address_block": {
+              "type": "SharedSlice"
+            },
+            "contact_form": {
+              "type": "SharedSlice"
+            },
+            "contact_block": {
+              "type": "SharedSlice"
+            },
+            "header_block": {
+              "type": "SharedSlice"
+            }
+          }
         }
       }
     }

@@ -33,7 +33,8 @@
 		width: 100vw;
 		display: flex;
 		z-index: 2;
-
+		color: $color-white;
+		mix-blend-mode: difference;
 		justify-content: space-between;
 		align-items: center;
 	}

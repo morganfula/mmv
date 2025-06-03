@@ -18,7 +18,13 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
-            "portfolio_block": {
+            "projects_block": {
+              "type": "SharedSlice"
+            },
+            "quote_block": {
+              "type": "SharedSlice"
+            },
+            "header_block": {
               "type": "SharedSlice"
             }
           }

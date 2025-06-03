@@ -64,7 +64,8 @@
 
 		position: absolute;
 		z-index: 2;
-		color: $color-white;
+		color: #ffffff;
+		// mix-blend-mode: difference;
 		bottom: $default-gap;
 		left: $default-gap;
 	}

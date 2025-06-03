@@ -4,12 +4,14 @@ import { defineAsyncComponent } from "vue";
 import { defineSliceZoneComponents } from "@prismicio/vue";
 
 export const components = defineSliceZoneComponents({
+  address_block: defineAsyncComponent(() => import("./AddressBlock/index.vue")),
   articles_block: defineAsyncComponent(
     () => import("./ArticlesBlock/index.vue"),
   ),
-  cards_block: defineAsyncComponent(() => import("./CardsBlock/index.vue")),
   cards_grid: defineAsyncComponent(() => import("./CardsGrid/index.vue")),
+  clients_block: defineAsyncComponent(() => import("./ClientsBlock/index.vue")),
   contact_block: defineAsyncComponent(() => import("./ContactBlock/index.vue")),
+  contact_form: defineAsyncComponent(() => import("./ContactForm/index.vue")),
   header_block: defineAsyncComponent(() => import("./HeaderBlock/index.vue")),
   intro_block: defineAsyncComponent(() => import("./IntroBlock/index.vue")),
   linked_in_block: defineAsyncComponent(
@@ -20,6 +22,10 @@ export const components = defineSliceZoneComponents({
   portfolio_block: defineAsyncComponent(
     () => import("./PortfolioBlock/index.vue"),
   ),
+  projects_block: defineAsyncComponent(
+    () => import("./ProjectsBlock/index.vue"),
+  ),
   quote_block: defineAsyncComponent(() => import("./QuoteBlock/index.vue")),
+  team_block: defineAsyncComponent(() => import("./TeamBlock/index.vue")),
   video_block: defineAsyncComponent(() => import("./VideoBlock/index.vue")),
 });

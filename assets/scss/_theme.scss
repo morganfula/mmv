@@ -1,0 +1,19 @@
+/* ----------  LIGHT  (default)  ---------- */
+:root {
+	--c-black: #111;
+	--c-white: #fff;
+	--c-grey: #9f9f9f;
+	--c-purple: #9280e6;
+	--c-teal: #3cb7a5;
+	--c-orange: #e9512c;
+}
+
+/* ----------  DARK  ---------- */
+[data-theme='dark'] {
+	--c-black: #f2f2f3; /* <- what should “black” mean in dark mode? */
+	--c-white: #0f0f11;
+	--c-grey: #6c6c6c;
+	--c-purple: #b9a5ff;
+	--c-teal: #4bd1c0;
+	--c-orange: #ff855b;
+}

@@ -1,0 +1,85 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"title": {
+				"__TYPE__": "FieldContent",
+				"value": "desk",
+				"type": "Text"
+			},
+			"fields": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"pid",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "music",
+									"type": "Text"
+								}
+							],
+							[
+								"label",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "oil",
+									"type": "Text"
+								}
+							],
+							[
+								"placeholder",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "mysterious",
+									"type": "Text"
+								}
+							],
+							[
+								"type",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "url",
+									"type": "Select"
+								}
+							],
+							[
+								"required",
+								{
+									"__TYPE__": "BooleanContent",
+									"value": true
+								}
+							]
+						]
+					}
+				]
+			},
+			"success_message": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Cillum laboris proident aute. Sunt aute voluptate proident amet pariatur sit quis ullamco dolor elit esse veniam magna sit. Elit eiusmod consectetur eu est enim labore fugiat ipsum eu."
+						}
+					}
+				]
+			},
+			"error_message": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Duis cupidatat commodo occaecat consequat nostrud ea. Voluptate cupidatat officia eu elit non qui consequat esse pariatur ullamco."
+						}
+					}
+				]
+			}
+		},
+		"items": []
+	}
+]

@@ -3,14 +3,10 @@
 		<NuxtLayout
 			name="custom"
 			:page-name="$route.name">
-			<section>
-				<h1>
-					MMV - Route: {{ $route.params.uid }} | Page: {{ page?.data.title }}
-				</h1>
-				<h1>{{ page?.data.title }}</h1>
-
-				{{ page.id }}
-			</section>
+			<SliceZone
+				wrapper="main"
+				:slices="page?.data.slices ?? []"
+				:components="components" />
 		</NuxtLayout>
 	</div>
 </template>

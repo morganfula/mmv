@@ -5,20 +5,20 @@
 		"primary": {
 			"title": {
 				"__TYPE__": "FieldContent",
-				"value": "ocean",
+				"value": "heavy",
 				"type": "Text"
 			},
-			"cards": {
+			"items": {
 				"__TYPE__": "GroupContentType",
 				"value": [
 					{
 						"__TYPE__": "GroupItemContent",
 						"value": [
 							[
-								"link",
+								"team_member",
 								{
 									"__TYPE__": "LinkContent",
-									"key": "8edee610-cc09-4ca1-bbf8-5837d6735d6c",
+									"key": "ee63adcb-8641-4311-a406-a900cd5b5938",
 									"value": {
 										"__TYPE__": "DocumentLink",
 										"id": "mock_document_id"
@@ -28,15 +28,6 @@
 						]
 					}
 				]
-			},
-			"link": {
-				"key": "540ffeca-8bfa-4e31-92fe-abf6f78bb407",
-				"__TYPE__": "LinkContent",
-				"value": {
-					"__TYPE__": "ExternalLink",
-					"url": "http://google.com",
-					"text": "someone"
-				}
 			}
 		},
 		"items": []

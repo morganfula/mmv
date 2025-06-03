@@ -1,8 +1,8 @@
 {
-  "id": "cards_block",
+  "id": "team_block",
   "type": "SharedSlice",
-  "name": "CardsBlock",
-  "description": "CardsBlock",
+  "name": "TeamBlock",
+  "description": "TeamBlock",
   "variations": [
     {
       "id": "default",
@@ -16,39 +16,27 @@
           "type": "Text",
           "config": {
             "label": "Title",
-            "placeholder": "Block Title"
+            "placeholder": ""
           }
         },
-        "cards": {
+        "items": {
           "type": "Group",
           "config": {
-            "label": "Cards",
+            "label": "Items",
             "repeat": true,
             "fields": {
-              "link": {
+              "team_member": {
                 "type": "Link",
                 "config": {
-                  "label": "Link",
+                  "label": "Team member",
                   "select": "document",
                   "repeat": false,
                   "customtypes": [
-                    "new",
-                    "projects"
+                    "team"
                   ]
                 }
               }
             }
-          }
-        },
-        "link": {
-          "type": "Link",
-          "config": {
-            "label": "Link",
-            "placeholder": "Block Link",
-            "select": null,
-            "allowTargetBlank": false,
-            "allowText": true,
-            "repeat": false
           }
         }
       },

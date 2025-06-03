@@ -3,9 +3,11 @@
 		<NuxtLink
 			class="card__link"
 			:to="`/projects/${props.project.item.uid}`">
-			<img
-				class="image"
-				:src="props.project.item.data.image.url" />
+			<div class="image-wrap">
+				<img
+					class="image"
+					:src="props.project.item.data.image.url" />
+			</div>
 			<div class="text">
 				<h3>{{ props.project.item.data.title }}</h3>
 				<div class="category">{{ props.project.item.data.category }}</div>
@@ -40,8 +42,14 @@
 		display: block;
 	}
 
+	.image-wrap {
+		position: relative;
+		aspect-ratio: 4/5;
+		width: 100%;
+	}
+
 	.image {
-		// position: absolute;
+		position: absolute;
 		// inset: 0;
 		object-fit: cover;
 	}

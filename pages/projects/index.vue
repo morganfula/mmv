@@ -3,17 +3,10 @@
 		<NuxtLayout
 			name="custom"
 			:page-name="$route.name">
-			<section>
-				<h1>MMV - Route: {{ $route.name }} | Page: {{ page?.data.title }}</h1>
-				<h1>{{ page?.data.title }}</h1>
-
-				<ul>
-					<ProjectListItem
-						v-for="item in projects"
-						:key="item.id"
-						:new="item" />
-				</ul>
-			</section>
+			<SliceZone
+				wrapper="main"
+				:slices="page?.data.slices ?? []"
+				:components="components" />
 		</NuxtLayout>
 	</div>
 </template>
