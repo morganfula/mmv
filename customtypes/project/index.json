@@ -52,9 +52,6 @@
             "project_intro": {
               "type": "SharedSlice"
             },
-            "project_hero": {
-              "type": "SharedSlice"
-            },
             "video_block": {
               "type": "SharedSlice"
             },

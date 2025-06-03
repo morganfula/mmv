@@ -533,7 +533,6 @@ type ProjectDocumentDataSlicesSlice =
   | ProjectTextSlice
   | ProjectTitleSlice
   | ProjectIntroSlice
-  | ProjectHeroSlice
   | VideoBlockSlice
   | ClientsBlockSlice
   | QuoteBlockSlice;
@@ -1774,51 +1773,6 @@ export type PortfolioBlockSlice = prismic.SharedSlice<
 >;
 
 /**
- * Primary content in *ProjectHero → Default → Primary*
- */
-export interface ProjectHeroSliceDefaultPrimary {
-  /**
-   * Image field in *ProjectHero → Default → Primary*
-   *
-   * - **Field Type**: Image
-   * - **Placeholder**: *None*
-   * - **API ID Path**: project_hero.default.primary.image
-   * - **Documentation**: https://prismic.io/docs/field#image
-   */
-  image: prismic.ImageField<never>;
-}
-
-/**
- * Default variation for ProjectHero Slice
- *
- * - **API ID**: `default`
- * - **Description**: Default
- * - **Documentation**: https://prismic.io/docs/slice
- */
-export type ProjectHeroSliceDefault = prismic.SharedSliceVariation<
-  "default",
-  Simplify<ProjectHeroSliceDefaultPrimary>,
-  never
->;
-
-/**
- * Slice variation for *ProjectHero*
- */
-type ProjectHeroSliceVariation = ProjectHeroSliceDefault;
-
-/**
- * ProjectHero Shared Slice
- *
- * - **API ID**: `project_hero`
- * - **Description**: ProjectHero
- * - **Documentation**: https://prismic.io/docs/slice
- */
-export type ProjectHeroSlice = prismic.SharedSlice<
-  "project_hero",
-  ProjectHeroSliceVariation
->;
-
-/**
  * Item in *ProjectIntro → Default → Primary → Items*
  */
 export interface ProjectIntroSliceDefaultPrimaryItemsItem {
@@ -2324,10 +2278,6 @@ declare module "@prismicio/client" {
       PortfolioBlockSliceDefaultPrimary,
       PortfolioBlockSliceVariation,
       PortfolioBlockSliceDefault,
-      ProjectHeroSlice,
-      ProjectHeroSliceDefaultPrimary,
-      ProjectHeroSliceVariation,
-      ProjectHeroSliceDefault,
       ProjectIntroSlice,
       ProjectIntroSliceDefaultPrimaryItemsItem,
       ProjectIntroSliceDefaultPrimary,

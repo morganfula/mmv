@@ -23,7 +23,6 @@ export const components = defineSliceZoneComponents({
   portfolio_block: defineAsyncComponent(
     () => import("./PortfolioBlock/index.vue"),
   ),
-  project_hero: defineAsyncComponent(() => import("./ProjectHero/index.vue")),
   project_intro: defineAsyncComponent(() => import("./ProjectIntro/index.vue")),
   project_text: defineAsyncComponent(() => import("./ProjectText/index.vue")),
   project_title: defineAsyncComponent(() => import("./ProjectTitle/index.vue")),
