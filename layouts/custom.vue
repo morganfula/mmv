@@ -1,6 +1,7 @@
 <template>
 	<div :class="`page ${props.pageName}`">
 		<Header />
+		<Nav />
 
 		<div class="page-wrap">
 			<slot />
