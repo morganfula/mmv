@@ -134,6 +134,11 @@
 		> :nth-last-child(-n + 3) {
 			grid-column: 1 / -1;
 		}
+
+		@include media('<phone') {
+			grid-template-columns: 1fr;
+			gap: 0;
+		}
 	}
 
 	.separator {

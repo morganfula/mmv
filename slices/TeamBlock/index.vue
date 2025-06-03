@@ -38,8 +38,12 @@
 <style lang="scss" scoped>
 	section {
 		padding: $default-gap 0;
-		padding-bottom: ($default-gap * 3);
+		padding-bottom: calc($default-gap * 3);
 		background-color: $color-white;
+
+		@include media('<phone') {
+			padding-bottom: calc($default-gap * 6);
+		}
 	}
 	.big-title {
 		margin-bottom: $default-gap;
@@ -51,6 +55,11 @@
 		display: grid;
 		grid-template-columns: repeat(3, 1fr);
 		gap: ($default-gap * 2) ($default-gap / 2);
+
+		@include media('<phone') {
+			grid-template-columns: 1fr;
+			gap: calc($default-gap * 4);
+		}
 	}
 
 	.card {

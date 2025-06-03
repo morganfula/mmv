@@ -46,7 +46,7 @@
 			border: none;
 			min-height: 100%;
 			padding: 0;
-			padding-bottom: calc($default-gap * 4);
+			padding-bottom: calc($default-gap * 2);
 		}
 	}
 

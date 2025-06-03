@@ -63,6 +63,7 @@
 		margin-top: $default-gap;
 		grid-column: 2 /12;
 		grid-row-start: 2;
+		width: max-content;
 
 		@include media('<phone') {
 			margin-top: calc($default-gap * 2);

@@ -37,6 +37,8 @@
 
 		@include media('<phone') {
 			min-height: 100%;
+
+			padding-bottom: calc($default-gap * 2);
 		}
 	}
 

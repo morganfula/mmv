@@ -35,5 +35,9 @@
 	.text {
 		margin-top: 20px;
 		font-size: 1.2vw;
+
+		@include media('<phone') {
+			font-size: 4vw;
+		}
 	}
 </style>

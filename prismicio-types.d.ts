@@ -603,7 +603,11 @@ export type ProjectDocument<Lang extends string = string> =
     Lang
   >;
 
-type ProjectsDocumentDataSlicesSlice = QuoteBlockSlice | HeaderBlockSlice;
+type ProjectsDocumentDataSlicesSlice =
+  | CardsGridSlice
+  | ProjectsBlockSlice
+  | QuoteBlockSlice
+  | HeaderBlockSlice;
 
 /**
  * Content for Projects documents
@@ -2005,6 +2009,36 @@ export type ProjectTitleSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Default variation for ProjectsBlock Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ProjectsBlockSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Record<string, never>,
+  never
+>;
+
+/**
+ * Slice variation for *ProjectsBlock*
+ */
+type ProjectsBlockSliceVariation = ProjectsBlockSliceDefault;
+
+/**
+ * ProjectsBlock Shared Slice
+ *
+ * - **API ID**: `projects_block`
+ * - **Description**: ProjectsBlock
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ProjectsBlockSlice = prismic.SharedSlice<
+  "projects_block",
+  ProjectsBlockSliceVariation
+>;
+
+/**
  * Primary content in *QuoteBlock → Default → Primary*
  */
 export interface QuoteBlockSliceDefaultPrimary {
@@ -2307,6 +2341,9 @@ declare module "@prismicio/client" {
       ProjectTitleSliceDefaultPrimary,
       ProjectTitleSliceVariation,
       ProjectTitleSliceDefault,
+      ProjectsBlockSlice,
+      ProjectsBlockSliceVariation,
+      ProjectsBlockSliceDefault,
       QuoteBlockSlice,
       QuoteBlockSliceDefaultPrimary,
       QuoteBlockSliceVariation,
