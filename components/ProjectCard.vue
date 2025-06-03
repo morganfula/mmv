@@ -45,6 +45,10 @@
 		position: relative;
 		aspect-ratio: 4/5;
 		width: 100%;
+
+		@include media('<phone') {
+			aspect-ratio: 1/1;
+		}
 	}
 
 	.image {
@@ -57,13 +61,15 @@
 
 	.text {
 		margin-top: calc($default-gap / 2);
-		// position: absolute;
-		// bottom: 0;
-		// color: white;
+
 		line-height: 1.2;
 		font-size: 1.35vw;
 		line-height: 1.4;
 		font-variation-settings: 'wght' 480;
+
+		@include media('<phone') {
+			font-size: 4vw;
+		}
 	}
 
 	.category {

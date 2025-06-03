@@ -21,10 +21,14 @@
 		// top: 32px;
 		height: 50px;
 		width: 80px;
-		z-index: 10000000000;
+		z-index: 6;
 		cursor: pointer;
 		transition: transform 0.2s ease-in;
 		will-change: transform;
+
+		@include media('<phone') {
+			width: 50px;
+		}
 	}
 
 	.burger:hover {

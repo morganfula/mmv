@@ -603,10 +603,7 @@ export type ProjectDocument<Lang extends string = string> =
     Lang
   >;
 
-type ProjectsDocumentDataSlicesSlice =
-  | ProjectsBlockSlice
-  | QuoteBlockSlice
-  | HeaderBlockSlice;
+type ProjectsDocumentDataSlicesSlice = QuoteBlockSlice | HeaderBlockSlice;
 
 /**
  * Content for Projects documents
@@ -968,7 +965,7 @@ export interface CardsGridSliceDefaultPrimaryItemItem {
    * - **API ID Path**: cards_grid.default.primary.item[].item
    * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
    */
-  item: prismic.ContentRelationshipField<"new">;
+  item: prismic.ContentRelationshipField<"new" | "project">;
 }
 
 /**
@@ -1019,6 +1016,16 @@ export interface CardsGridSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/field#group
    */
   item: prismic.GroupField<Simplify<CardsGridSliceDefaultPrimaryItemItem>>;
+
+  /**
+   * Link field in *CardsGrid → Projects → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: cards_grid.default.primary.link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  link: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
 }
 
 /**
@@ -1067,6 +1074,16 @@ export interface CardsGridSliceNewsPrimary {
    * - **Documentation**: https://prismic.io/docs/field#group
    */
   item: prismic.GroupField<Simplify<CardsGridSliceNewsPrimaryItemItem>>;
+
+  /**
+   * Link field in *CardsGrid → News → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: cards_grid.news.primary.link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  link: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
 }
 
 /**
@@ -1988,36 +2005,6 @@ export type ProjectTitleSlice = prismic.SharedSlice<
 >;
 
 /**
- * Default variation for ProjectsBlock Slice
- *
- * - **API ID**: `default`
- * - **Description**: Default
- * - **Documentation**: https://prismic.io/docs/slice
- */
-export type ProjectsBlockSliceDefault = prismic.SharedSliceVariation<
-  "default",
-  Record<string, never>,
-  never
->;
-
-/**
- * Slice variation for *ProjectsBlock*
- */
-type ProjectsBlockSliceVariation = ProjectsBlockSliceDefault;
-
-/**
- * ProjectsBlock Shared Slice
- *
- * - **API ID**: `projects_block`
- * - **Description**: ProjectsBlock
- * - **Documentation**: https://prismic.io/docs/slice
- */
-export type ProjectsBlockSlice = prismic.SharedSlice<
-  "projects_block",
-  ProjectsBlockSliceVariation
->;
-
-/**
  * Primary content in *QuoteBlock → Default → Primary*
  */
 export interface QuoteBlockSliceDefaultPrimary {
@@ -2320,9 +2307,6 @@ declare module "@prismicio/client" {
       ProjectTitleSliceDefaultPrimary,
       ProjectTitleSliceVariation,
       ProjectTitleSliceDefault,
-      ProjectsBlockSlice,
-      ProjectsBlockSliceVariation,
-      ProjectsBlockSliceDefault,
       QuoteBlockSlice,
       QuoteBlockSliceDefaultPrimary,
       QuoteBlockSliceVariation,

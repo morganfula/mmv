@@ -37,8 +37,6 @@
 					:key="i"
 					:project="item" />
 
-				<!-- <NewCard :new="{ test: 'Test' }" /> -->
-
 				<NewCard
 					v-if="slice.variation === 'news'"
 					class="card"
@@ -46,13 +44,19 @@
 					:key="i"
 					:new="item" />
 			</div>
+
+			<div class="link-wrap">
+				<PrismicLink
+					class="link"
+					:field="slice.primary.link" />
+			</div>
 		</section>
 	</Bounded>
 </template>
 
 <style lang="scss" scoped>
 	section {
-		padding-top: $default-gap;
+		padding: $default-gap 0;
 		background-color: $color-white;
 	}
 
@@ -67,6 +71,10 @@
 	.subtitle {
 		max-width: 400px;
 		text-align: right;
+
+		@include media('<phone') {
+			display: none;
+		}
 	}
 
 	.cards {
@@ -75,9 +83,19 @@
 		grid-auto-rows: min-content;
 		gap: calc($default-gap / 2);
 		padding-bottom: calc($default-gap * 2);
+
+		@include media('<phone') {
+			grid-template-columns: 1fr;
+			gap: calc($default-gap * 2);
+		}
 	}
 
 	.cards.news {
 		grid-template-columns: repeat(3, 1fr);
+
+		@include media('<phone') {
+			grid-template-columns: 1fr;
+			gap: calc($default-gap * 2);
+		}
 	}
 </style>

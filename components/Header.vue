@@ -72,5 +72,9 @@
 
 	.cta {
 		line-height: 1.1;
+
+		@include media('<phone') {
+			display: none;
+		}
 	}
 </style>

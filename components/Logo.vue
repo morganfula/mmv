@@ -36,5 +36,9 @@
 	svg {
 		height: 120px;
 		width: auto;
+
+		@include media('<phone') {
+			height: 50px;
+		}
 	}
 </style>

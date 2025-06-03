@@ -36,6 +36,12 @@
 		background-color: $color-white;
 		display: grid;
 		grid-template-columns: repeat(12, 1fr);
+
+		@include media('<phone') {
+			display: block;
+
+			padding: calc($default-gap * 5) 0;
+		}
 	}
 
 	.title {
@@ -45,6 +51,11 @@
 		text-transform: uppercase;
 		font-variation-settings: 'wght' 480;
 		align-self: end;
+
+		@include media('<phone') {
+			font-size: 12vw;
+			line-height: 1.2;
+		}
 	}
 
 	.link {
@@ -52,5 +63,9 @@
 		margin-top: $default-gap;
 		grid-column: 2 /12;
 		grid-row-start: 2;
+
+		@include media('<phone') {
+			margin-top: calc($default-gap * 2);
+		}
 	}
 </style>

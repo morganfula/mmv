@@ -17,10 +17,12 @@
 	<section
 		:data-slice-type="slice.slice_type"
 		:data-slice-variation="slice.variation">
-		<VimeoBackground :video-url="slice.primary.video.url" />
 		<h1 class="title h1">
 			{{ slice.primary.title }}
 		</h1>
+		<div class="video-wrap">
+			<VimeoBackground :video-url="slice.primary.video.url" />
+		</div>
 	</section>
 </template>
 
@@ -31,6 +33,13 @@
 		min-height: 100svh;
 		position: relative;
 		background: $color-black;
+
+		@include media('<phone') {
+			height: 80svh;
+			// min-height: 100svh;
+			// aspect-ratio: 7/5;
+			background: $color-white;
+		}
 	}
 	.title {
 		font-size: 3.2vw;
@@ -39,5 +48,23 @@
 		color: $color-white;
 		bottom: $default-gap;
 		left: $default-gap;
+
+		@include media('<phone') {
+			color: $color-black;
+			top: 20%;
+			display: block;
+			height: 100%;
+			font-size: 9.4vw;
+			line-height: 1.1;
+			max-width: 85%;
+		}
+	}
+
+	.video-wrap {
+		position: absolute;
+		bottom: 0;
+		height: 70svh;
+		width: 100%;
+		aspect-ratio: 7/5;
 	}
 </style>

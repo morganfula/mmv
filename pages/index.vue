@@ -44,12 +44,6 @@
 </script>
 
 <style lang="scss" scoped>
-	section {
-		position: fixed;
-		min-height: 100svh;
-		width: 100%;
-	}
-
 	.title {
 		font-size: 3.2vw;
 

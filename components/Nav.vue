@@ -1,5 +1,6 @@
 <script setup>
 	import gsap from 'gsap';
+	const settings = useSettings();
 
 	watch(
 		() => general.isNavOpen,
@@ -141,12 +142,13 @@
 		</ul>
 	</nav>
 </template>
+
 <style lang="scss" scoped>
 	.nav__wrap {
 		background: $color-black;
 		position: fixed;
 		inset: 0;
-		z-index: 5;
+		z-index: 4;
 		opacity: 0;
 		visibility: hidden;
 		pointer-events: none;

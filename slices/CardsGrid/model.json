@@ -39,11 +39,23 @@
                   "select": "document",
                   "repeat": false,
                   "customtypes": [
-                    "new"
+                    "new",
+                    "project"
                   ]
                 }
               }
             }
+          }
+        },
+        "link": {
+          "type": "Link",
+          "config": {
+            "label": "Link",
+            "placeholder": "",
+            "select": null,
+            "allowTargetBlank": false,
+            "allowText": true,
+            "repeat": false
           }
         }
       },
@@ -89,6 +101,17 @@
                 }
               }
             }
+          }
+        },
+        "link": {
+          "type": "Link",
+          "config": {
+            "label": "Link",
+            "placeholder": "",
+            "select": null,
+            "allowTargetBlank": false,
+            "allowText": true,
+            "repeat": false
           }
         }
       },

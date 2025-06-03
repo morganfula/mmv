@@ -27,9 +27,6 @@ export const components = defineSliceZoneComponents({
   project_intro: defineAsyncComponent(() => import("./ProjectIntro/index.vue")),
   project_text: defineAsyncComponent(() => import("./ProjectText/index.vue")),
   project_title: defineAsyncComponent(() => import("./ProjectTitle/index.vue")),
-  projects_block: defineAsyncComponent(
-    () => import("./ProjectsBlock/index.vue"),
-  ),
   quote_block: defineAsyncComponent(() => import("./QuoteBlock/index.vue")),
   team_block: defineAsyncComponent(() => import("./TeamBlock/index.vue")),
   video_block: defineAsyncComponent(() => import("./VideoBlock/index.vue")),

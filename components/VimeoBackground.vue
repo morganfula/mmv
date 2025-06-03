@@ -7,9 +7,6 @@
 			frameborder="0"
 			allow="autoplay; fullscreen; picture-in-picture"
 			allowfullscreen></iframe>
-		<div class="content-overlay">
-			<slot />
-		</div>
 	</div>
 </template>
 
@@ -19,12 +16,16 @@
 	const { embedUrl } = useVimeoEmbedUrl(props.videoUrl);
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 	.video-background {
 		position: relative;
 		width: 100%;
-		height: 100vh;
+		height: 100%;
 		overflow: hidden;
+
+		@include media('<phone') {
+			// aspect-ratio: 7/5;
+		}
 	}
 	.video-background iframe {
 		position: absolute;
@@ -35,12 +36,8 @@
 		transform: scale(1.2);
 		/* transform: translate(-50%, -50%); */
 		pointer-events: none;
-	}
-	.content-overlay {
-		position: relative;
-		z-index: 1;
-		color: white;
-		text-align: center;
-		padding: 2rem;
+
+		@include media('<phone') {
+		}
 	}
 </style>

@@ -68,12 +68,6 @@
 	section {
 		background-color: $color-white;
 	}
-	// .container {
-	// 	@include test;
-	// 	width: 100%;
-	// 	display: grid;
-	// 	grid-template-columns: repeat(12, 1fr);
-	// }
 
 	.title {
 		padding-top: calc($default-gap * 4);
@@ -90,7 +84,6 @@
 	}
 
 	.infos {
-		// @include test;
 		display: flex;
 		flex-direction: column;
 		width: 30%;

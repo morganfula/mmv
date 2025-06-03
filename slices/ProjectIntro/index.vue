@@ -87,7 +87,6 @@
 	}
 
 	.arrow-wrap {
-		@include test;
 		height: 60px;
 		// width: 70px;
 		grid-column: 1 / 2;

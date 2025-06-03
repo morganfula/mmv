@@ -65,6 +65,13 @@
 		display: grid;
 		grid-template-columns: repeat(12, 1fr);
 		grid-template-rows: 1fr 0.7fr;
+
+		@include media('<phone') {
+			padding: calc($default-gap * 2) 0;
+			grid-template-columns: repeat(6, 1fr);
+			grid-template-rows: repeat(6, min-content);
+			gap: 24px 0;
+		}
 	}
 
 	.title {
@@ -74,22 +81,43 @@
 
 	.link-1 {
 		grid-area: 1 / 1 / 2 / 2;
+
+		@include media('<phone') {
+			grid-area: 4 / 1 / 5 / 4;
+		}
 	}
 	.link-2 {
 		grid-area: 1 / 3 / 2 / 4;
+
+		@include media('<phone') {
+			grid-area: 4 / 4 / 5 / 7;
+		}
 	}
 	.newsletter {
 		grid-area: 1 / 7 / 2 / 13;
+
+		@include media('<phone') {
+			grid-area: 2 / 1 / 4 / 7;
+		}
 	}
 
 	.news-title {
 		font-size: 2.4vw;
 		line-height: 1;
 		padding-bottom: $default-gap;
+
+		@include media('<phone') {
+			font-size: 5vw;
+		}
 	}
 
 	.news-message {
 		font-size: 3vw;
+
+		@include media('<phone') {
+			font-size: 5vw;
+			padding: 16px 0;
+		}
 	}
 
 	.news-policy {
@@ -98,16 +126,33 @@
 	}
 	.logo-wrapper {
 		grid-area: 2 / 1 / 3 / 4;
+
+		@include media('<phone') {
+			grid-area: 1 / 1 / 2 / 4;
+			height: 120px;
+			width: 100%;
+			object-fit: cover;
+		}
 	}
 	.button-top {
 		grid-area: 2 / 6 / 3 / 8;
 		align-self: end;
 		cursor: pointer;
 		font-variation-settings: 'wght' 500;
+
+		@include media('<phone') {
+			grid-area: 5 / 1 / 6 / 7;
+			justify-self: center;
+		}
 	}
 	.copyrights {
 		grid-area: 2 / 11 / 3 / 13;
 		align-self: end;
 		font-variation-settings: 'wght' 500;
+
+		@include media('<phone') {
+			grid-area: 6 / 1 / 7 / 7;
+			justify-self: center;
+		}
 	}
 </style>

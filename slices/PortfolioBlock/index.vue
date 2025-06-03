@@ -154,7 +154,6 @@
 	.video iframe {
 		position: absolute;
 		inset: 0;
-		@include test;
 	}
 
 	.link {

@@ -66,6 +66,10 @@
 		font-size: 1.2vw;
 		line-height: 1.4;
 		font-variation-settings: 'wght' 480;
+
+		@include media('<phone') {
+			font-size: 4vw;
+		}
 	}
 
 	.date {
@@ -82,5 +86,9 @@
 		// background: red;
 		padding: 8px 20px;
 		border-radius: 50px;
+
+		@include media('<phone') {
+			font-size: 2.8vw;
+		}
 	}
 </style>

@@ -41,6 +41,13 @@
 		min-height: 100svh;
 		background-color: $color-white;
 		@include default-grid;
+
+		@include media('<phone') {
+			border: none;
+			min-height: 100%;
+			padding: 0;
+			padding-bottom: calc($default-gap * 4);
+		}
 	}
 
 	.arrow-wrap {
@@ -58,6 +65,10 @@
 		margin-top: calc($default-gap * 2);
 		grid-column: 7 / 12;
 		grid-row-start: 2;
+
+		@include media('<phone') {
+			margin-top: calc($default-gap * 2);
+		}
 	}
 
 	.link {
@@ -67,6 +78,11 @@
 		position: relative;
 		overflow: hidden;
 		cursor: pointer;
+
+		@include media('<phone') {
+			margin-top: calc($default-gap * 2);
+			grid-column: 1 / 11;
+		}
 	}
 
 	.link::after {

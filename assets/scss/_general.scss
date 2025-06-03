@@ -38,3 +38,87 @@ img {
 .orange {
 	background: $color-orange;
 }
+
+// .link {
+// 	position: relative;
+// 	@include test;
+// 	margin: 6px 0;
+// 	line-height: 1.9;
+// 	// overflow: hidden;
+// }
+
+// .link::after {
+// 	content: '';
+// 	position: absolute;
+// 	background: $color-black;
+// 	height: 1px;
+// 	width: 100%;
+// 	bottom: 0;
+// }
+
+// .link::before {
+// 	content: '';
+// 	position: absolute;
+// 	background: $color-black;
+// 	height: 1px;
+// 	width: 100%;
+// 	bottom: 0;
+// 	transform: translateX(-120%);
+// }
+
+.link {
+	position: relative;
+
+	margin: 6px 0;
+	line-height: 1.9;
+	cursor: pointer;
+	overflow: hidden;
+
+	font-size: 1.58vw;
+	font-variation-settings: 'wght' 500;
+
+	// Optional: add color variable fallback
+	$line-color: $color-black !default;
+
+	// Add a transition trigger, e.g., on hover
+	&::before,
+	&::after {
+		content: '';
+		position: absolute;
+		background: $line-color;
+		height: 1px;
+		width: 100%;
+		bottom: 0;
+		transition: transform 0.4s ease-in-out;
+	}
+
+	&::before {
+		transform: translateX(-120%);
+	}
+
+	&::after {
+		transform: translateX(0);
+	}
+
+	// On hover, animate
+	&:hover::before {
+		transform: translateX(0);
+	}
+
+	&:hover::after {
+		transform: translateX(140%);
+	}
+
+	// &:hover::after {
+	// 	opacity: 0;
+	// }
+}
+
+.link {
+	font-size: 1.58vw;
+	font-variation-settings: 'wght' 500;
+
+	@include media('<phone') {
+		font-size: 5.1vw;
+	}
+}

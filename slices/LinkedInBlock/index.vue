@@ -69,6 +69,9 @@
 	.subtitle {
 		max-width: 400px;
 		text-align: right;
+		@include media('<phone') {
+			grid-template-columns: 1fr;
+		}
 	}
 
 	.cards {
@@ -77,6 +80,10 @@
 		grid-auto-rows: min-content;
 		gap: calc($default-gap / 2);
 		padding-bottom: calc($default-gap * 2);
+
+		@include media('<phone') {
+			grid-template-columns: 1fr;
+		}
 	}
 
 	.cards.news {

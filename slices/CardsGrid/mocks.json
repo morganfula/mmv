@@ -22,8 +22,8 @@
 							[
 								"item",
 								{
+									"key": "47f9c303-793a-4c59-a54c-e6f02b04d81f",
 									"__TYPE__": "LinkContent",
-									"key": "3a57eb7a-4bc3-40d3-be90-a24c6316bb3c",
 									"value": {
 										"__TYPE__": "DocumentLink",
 										"id": "mock_document_id"
@@ -33,6 +33,15 @@
 						]
 					}
 				]
+			},
+			"link": {
+				"key": "8638981f-c7c5-46d4-be93-829770291df5",
+				"__TYPE__": "LinkContent",
+				"value": {
+					"__TYPE__": "ExternalLink",
+					"url": "https://prismic.io",
+					"text": "flew"
+				}
 			}
 		},
 		"items": []
@@ -71,6 +80,15 @@
 						]
 					}
 				]
+			},
+			"link": {
+				"__TYPE__": "LinkContent",
+				"key": "38687f24-b711-49e4-b23f-223c7b5bbc16",
+				"value": {
+					"__TYPE__": "ExternalLink",
+					"url": "https://prismic.io",
+					"text": "bill"
+				}
 			}
 		},
 		"items": [

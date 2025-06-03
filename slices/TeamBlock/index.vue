@@ -54,7 +54,6 @@
 	}
 
 	.card {
-		// @include test;
 	}
 
 	.image {
