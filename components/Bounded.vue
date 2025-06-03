@@ -7,13 +7,13 @@
 <template>
 	<Component
 		:is="as"
-		class="container">
+		class="_container">
 		<slot />
 	</Component>
 </template>
 
 <style scoped lang="scss">
-	.container {
+	._container {
 		margin: 0 auto;
 		width: 100%;
 		padding-left: $default-gap;
