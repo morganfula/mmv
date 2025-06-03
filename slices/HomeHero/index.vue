@@ -17,11 +17,15 @@
 	<section
 		:data-slice-type="slice.slice_type"
 		:data-slice-variation="slice.variation">
-		<h1 class="title h1">
-			{{ slice.primary.title }}
-		</h1>
+		<div class="title-wrap">
+			<h1 class="title h1 default-title">
+				{{ slice.primary.title }}
+			</h1>
+		</div>
 		<div class="video-wrap">
-			<VimeoBackground :video-url="slice.primary.video.url" />
+			<VimeoBackground
+				class="video"
+				:video-url="slice.primary.video.url" />
 		</div>
 	</section>
 </template>
@@ -41,7 +45,10 @@
 			background: $color-white;
 		}
 	}
-	.title {
+
+	.title-wrap {
+		overflow: hidden;
+		position: absolute;
 		font-size: 3.2vw;
 		position: absolute;
 		z-index: 1;
@@ -58,6 +65,9 @@
 			line-height: 1.1;
 			max-width: 85%;
 		}
+	}
+	.title {
+		width: 100%;
 	}
 
 	.video-wrap {

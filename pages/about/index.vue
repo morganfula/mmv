@@ -15,6 +15,8 @@
 	import i18n from '~/plugins/i18n';
 	import { components } from '~/slices';
 
+	definePageMeta(transition);
+
 	const prismic = usePrismic();
 	const { data: page } = useAsyncData('[about]', () =>
 		prismic.client.getSingle('about', {
