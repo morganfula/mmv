@@ -50,7 +50,6 @@
 		overflow: hidden;
 		position: absolute;
 		font-size: 3.2vw;
-		position: absolute;
 		z-index: 1;
 		color: $color-white;
 		bottom: $default-gap;
@@ -60,10 +59,11 @@
 			color: $color-black;
 			top: 20%;
 			display: block;
-			height: 100%;
+			// height: 100%;
 			font-size: 9.4vw;
 			line-height: 1.1;
 			max-width: 85%;
+			height: 25%;
 		}
 	}
 	.title {

@@ -63,10 +63,20 @@
 		min-height: 70svh;
 
 		@include default-grid;
+
+		@include media('<phone') {
+			display: block;
+		}
 	}
 
 	.text {
 		grid-column: 6/12;
+
+		@include media('<phone') {
+			display: flex;
+			flex-direction: column;
+			gap: calc($default-gap * 2);
+		}
 	}
 	.description {
 		margin-top: $default-gap;
@@ -87,8 +97,6 @@
 	}
 
 	.arrow-wrap {
-		height: 60px;
-		// width: 70px;
-		grid-column: 1 / 2;
+		display: none;
 	}
 </style>

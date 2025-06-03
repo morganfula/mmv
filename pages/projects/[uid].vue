@@ -67,5 +67,10 @@
 		color: $color-white;
 		text-transform: uppercase;
 		max-width: 70%;
+
+		@include media('<phone') {
+			font-size: 8vw;
+			top: 70%;
+		}
 	}
 </style>

@@ -21,7 +21,6 @@
 	grid-template-columns: repeat(12, 1fr);
 
 	@include media('<phone') {
-		@include test;
 		grid-template-columns: repeat(6, 1fr);
 	}
 }

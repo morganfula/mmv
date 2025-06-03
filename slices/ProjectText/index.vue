@@ -28,7 +28,11 @@
 <style lang="scss" scoped>
 	section {
 		@include default-grid;
-		margin: $default-gap 0;
+		padding: $default-gap 0;
+
+		@include media('<phone') {
+			display: block;
+		}
 	}
 
 	.description {
