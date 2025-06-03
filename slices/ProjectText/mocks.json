@@ -3,13 +3,13 @@
 		"__TYPE__": "SharedSliceContent",
 		"variation": "default",
 		"primary": {
-			"text": {
+			"description": {
 				"__TYPE__": "StructuredTextContent",
 				"value": [
 					{
 						"type": "paragraph",
 						"content": {
-							"text": "Irure fugiat do incididunt labore aute pariatur occaecat ut. Sunt voluptate id adipisicing consectetur quis fugiat tempor ea exercitation ea non cupidatat. Elit cillum est ex."
+							"text": "Labore qui et non eiusmod anim proident aute qui excepteur fugiat cupidatat. Magna anim in aute. Voluptate veniam deserunt excepteur irure nisi."
 						}
 					}
 				]

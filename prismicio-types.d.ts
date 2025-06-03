@@ -529,6 +529,10 @@ export type NewsDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithoutUID<Simplify<NewsDocumentData>, "news", Lang>;
 
 type ProjectDocumentDataSlicesSlice =
+  | ProjectTextSlice
+  | ProjectTitleSlice
+  | ProjectIntroSlice
+  | ProjectHeroSlice
   | VideoBlockSlice
   | ClientsBlockSlice
   | QuoteBlockSlice;
@@ -1693,6 +1697,241 @@ export type PortfolioBlockSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Primary content in *ProjectHero → Default → Primary*
+ */
+export interface ProjectHeroSliceDefaultPrimary {
+  /**
+   * Image field in *ProjectHero → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project_hero.default.primary.image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+}
+
+/**
+ * Default variation for ProjectHero Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ProjectHeroSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<ProjectHeroSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *ProjectHero*
+ */
+type ProjectHeroSliceVariation = ProjectHeroSliceDefault;
+
+/**
+ * ProjectHero Shared Slice
+ *
+ * - **API ID**: `project_hero`
+ * - **Description**: ProjectHero
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ProjectHeroSlice = prismic.SharedSlice<
+  "project_hero",
+  ProjectHeroSliceVariation
+>;
+
+/**
+ * Item in *ProjectIntro → Default → Primary → Items*
+ */
+export interface ProjectIntroSliceDefaultPrimaryItemsItem {
+  /**
+   * Service Title field in *ProjectIntro → Default → Primary → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project_intro.default.primary.items[].service_title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  service_title: prismic.KeyTextField;
+
+  /**
+   * Services field in *ProjectIntro → Default → Primary → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project_intro.default.primary.items[].services
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  services: prismic.KeyTextField;
+}
+
+/**
+ * Primary content in *ProjectIntro → Default → Primary*
+ */
+export interface ProjectIntroSliceDefaultPrimary {
+  /**
+   * Title field in *ProjectIntro → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project_intro.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Description field in *ProjectIntro → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project_intro.default.primary.description
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  description: prismic.RichTextField;
+
+  /**
+   * Details Title field in *ProjectIntro → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project_intro.default.primary.details_title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  details_title: prismic.KeyTextField;
+
+  /**
+   * Items field in *ProjectIntro → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project_intro.default.primary.items[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  items: prismic.GroupField<Simplify<ProjectIntroSliceDefaultPrimaryItemsItem>>;
+}
+
+/**
+ * Default variation for ProjectIntro Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ProjectIntroSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<ProjectIntroSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *ProjectIntro*
+ */
+type ProjectIntroSliceVariation = ProjectIntroSliceDefault;
+
+/**
+ * ProjectIntro Shared Slice
+ *
+ * - **API ID**: `project_intro`
+ * - **Description**: ProjectIntro
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ProjectIntroSlice = prismic.SharedSlice<
+  "project_intro",
+  ProjectIntroSliceVariation
+>;
+
+/**
+ * Primary content in *ProjectText → Default → Primary*
+ */
+export interface ProjectTextSliceDefaultPrimary {
+  /**
+   * Description field in *ProjectText → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project_text.default.primary.description
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  description: prismic.RichTextField;
+}
+
+/**
+ * Default variation for ProjectText Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ProjectTextSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<ProjectTextSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *ProjectText*
+ */
+type ProjectTextSliceVariation = ProjectTextSliceDefault;
+
+/**
+ * ProjectText Shared Slice
+ *
+ * - **API ID**: `project_text`
+ * - **Description**: ProjectText
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ProjectTextSlice = prismic.SharedSlice<
+  "project_text",
+  ProjectTextSliceVariation
+>;
+
+/**
+ * Primary content in *ProjectTitle → Default → Primary*
+ */
+export interface ProjectTitleSliceDefaultPrimary {
+  /**
+   * Title field in *ProjectTitle → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project_title.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+}
+
+/**
+ * Default variation for ProjectTitle Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ProjectTitleSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<ProjectTitleSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *ProjectTitle*
+ */
+type ProjectTitleSliceVariation = ProjectTitleSliceDefault;
+
+/**
+ * ProjectTitle Shared Slice
+ *
+ * - **API ID**: `project_title`
+ * - **Description**: ProjectTitle
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ProjectTitleSlice = prismic.SharedSlice<
+  "project_title",
+  ProjectTitleSliceVariation
+>;
+
+/**
  * Default variation for ProjectsBlock Slice
  *
  * - **API ID**: `default`
@@ -2004,6 +2243,23 @@ declare module "@prismicio/client" {
       PortfolioBlockSliceDefaultPrimary,
       PortfolioBlockSliceVariation,
       PortfolioBlockSliceDefault,
+      ProjectHeroSlice,
+      ProjectHeroSliceDefaultPrimary,
+      ProjectHeroSliceVariation,
+      ProjectHeroSliceDefault,
+      ProjectIntroSlice,
+      ProjectIntroSliceDefaultPrimaryItemsItem,
+      ProjectIntroSliceDefaultPrimary,
+      ProjectIntroSliceVariation,
+      ProjectIntroSliceDefault,
+      ProjectTextSlice,
+      ProjectTextSliceDefaultPrimary,
+      ProjectTextSliceVariation,
+      ProjectTextSliceDefault,
+      ProjectTitleSlice,
+      ProjectTitleSliceDefaultPrimary,
+      ProjectTitleSliceVariation,
+      ProjectTitleSliceDefault,
       ProjectsBlockSlice,
       ProjectsBlockSliceVariation,
       ProjectsBlockSliceDefault,

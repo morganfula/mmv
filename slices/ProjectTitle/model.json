@@ -1,8 +1,8 @@
 {
-  "id": "new_text",
+  "id": "project_title",
   "type": "SharedSlice",
-  "name": "NewText",
-  "description": "NewText",
+  "name": "ProjectTitle",
+  "description": "ProjectTitle",
   "variations": [
     {
       "id": "default",
@@ -12,13 +12,11 @@
       "description": "Default",
       "imageUrl": "",
       "primary": {
-        "text": {
-          "type": "StructuredText",
+        "title": {
+          "type": "Text",
           "config": {
-            "label": "Text",
-            "placeholder": "",
-            "allowTargetBlank": true,
-            "multi": "paragraph,strong,em,hyperlink,list-item,o-list-item"
+            "label": "Title",
+            "placeholder": ""
           }
         }
       },

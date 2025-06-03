@@ -1,0 +1,56 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"title": {
+				"__TYPE__": "FieldContent",
+				"value": "basis",
+				"type": "Text"
+			},
+			"description": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "In et dolore reprehenderit est ea reprehenderit proident nostrud labore id aliquip cillum nostrud ullamco voluptate. Ullamco nostrud adipisicing Lorem ex in proident sit minim Lorem consectetur ad exercitation proident quis. Veniam in nisi cupidatat quis et."
+						}
+					}
+				]
+			},
+			"details_title": {
+				"__TYPE__": "FieldContent",
+				"value": "mind",
+				"type": "Text"
+			},
+			"items": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"service_title",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "lamp",
+									"type": "Text"
+								}
+							],
+							[
+								"services",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "slightly",
+									"type": "Text"
+								}
+							]
+						]
+					}
+				]
+			}
+		},
+		"items": []
+	}
+]

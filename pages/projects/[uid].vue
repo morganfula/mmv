@@ -3,10 +3,18 @@
 		<NuxtLayout
 			name="custom"
 			:page-name="$route.name">
+			<section class="image-wrap">
+				<PrismicImage
+					class="image"
+					:field="page?.data.image" />
+				<h1 class="h1 title">{{ page?.data.title }}</h1>
+			</section>
+
 			<SliceZone
 				wrapper="main"
 				:slices="page?.data.slices ?? []"
-				:components="components" />
+				:components="components"
+				:context="page?.data.category" />
 		</NuxtLayout>
 	</div>
 </template>
@@ -20,11 +28,9 @@
 
 	const { data: page } = await useAsyncData(route.params.uid, () =>
 		prismic.client.getByUID('project', route.params.uid, {
-			fetchLinks: ['project.uid', 'new.title'],
+			fetchLinks: ['project.uid', 'project.category', 'new.title'],
 		})
 	);
-
-	console.log(page);
 
 	useSeoMeta({
 		// title: page.value?.data.meta_title ?? undefined,
@@ -35,4 +41,29 @@
 	});
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+	.image-wrap {
+		position: relative;
+		overflow: hidden;
+		height: 100svh;
+		min-height: 100svh;
+		width: 100%;
+	}
+
+	.image {
+		position: absolute;
+		inset: 0;
+		height: 100%;
+		width: 100%;
+		object-fit: cover;
+	}
+
+	.title {
+		position: absolute;
+		left: $default-gap;
+		top: 60%;
+		color: $color-white;
+		text-transform: uppercase;
+		max-width: 70%;
+	}
+</style>
