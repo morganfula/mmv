@@ -11,7 +11,10 @@
 		font-weight: $weight;
 
 		font-display: swap;
-		font-style: normal;
+		font-style: oblique 0deg 0deg;
+		font-variation-settings:
+			'wght' 400,
+			'slnt' 0;
 	}
 }
 
