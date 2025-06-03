@@ -118,6 +118,10 @@
 </template>
 
 <style lang="scss" scoped>
+	section {
+		background-color: $color-white;
+	}
+
 	.form {
 		min-height: 80svh;
 	}

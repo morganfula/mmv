@@ -65,6 +65,9 @@
 </script>
 
 <style lang="scss" scoped>
+	section {
+		background-color: $color-white;
+	}
 	// .container {
 	// 	@include test;
 	// 	width: 100%;
@@ -73,7 +76,7 @@
 	// }
 
 	.title {
-		padding-top: calc($default-gap * 3);
+		padding-top: calc($default-gap * 4);
 		padding-bottom: $default-gap;
 		font-variation-settings: 'wght' 440;
 		text-transform: uppercase;

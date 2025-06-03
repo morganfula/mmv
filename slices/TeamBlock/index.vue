@@ -37,8 +37,9 @@
 
 <style lang="scss" scoped>
 	section {
-		margin: $default-gap 0;
-		margin-bottom: ($default-gap * 3);
+		padding: $default-gap 0;
+		padding-bottom: ($default-gap * 3);
+		background-color: $color-white;
 	}
 	.big-title {
 		margin-bottom: $default-gap;

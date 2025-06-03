@@ -33,9 +33,8 @@
 	.card {
 		position: relative;
 		min-height: 100%;
-		// height: 800px;
+
 		width: 100%;
-		padding-bottom: 100px;
 	}
 
 	.card__link {
@@ -51,6 +50,8 @@
 	.image {
 		position: absolute;
 		// inset: 0;
+		width: 100%;
+		height: 100%;
 		object-fit: cover;
 	}
 

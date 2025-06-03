@@ -33,7 +33,7 @@
 	section {
 		padding: $default-gap 0;
 		min-height: 100svh;
-
+		background-color: $color-white;
 		display: grid;
 		grid-template-columns: repeat(12, 1fr);
 	}

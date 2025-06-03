@@ -6,4 +6,6 @@ export const general = reactive({
 	isTransitionStart: true,
 	isTransitionFinish: true,
 	isNavOpen: false,
+
+	headerTheme: 'light',
 });

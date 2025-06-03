@@ -63,7 +63,7 @@
 		font-size: 3.2vw;
 
 		position: absolute;
-		z-index: 2;
+		z-index: 1;
 		color: #ffffff;
 		// mix-blend-mode: difference;
 		bottom: $default-gap;

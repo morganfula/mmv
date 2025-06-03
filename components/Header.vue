@@ -1,64 +1,74 @@
 <template>
 	<header class="header">
-		<Bounded as="section">
+		<NuxtLink
+			to="/"
+			class="logo-wrap">
+			<Logo />
+		</NuxtLink>
+
+		<div class="menu-wrap">
+			<div class="menu">Menu</div>
+
 			<NuxtLink
-				to="/"
-				class="logo"
-				>Montreux Media Ventures</NuxtLink
-			>
-
-			<ul class="menu">
-				<li
-					class="menu__item"
-					v-for="(item, i) in settings?.data.navigation"
-					:key="i">
-					<NuxtLink :to="item.url.url">{{ item.url.text }}</NuxtLink>
-				</li>
-			</ul>
-
-			<NuxtLink :to="settings?.data.cta.url">{{
-				settings?.data.cta.text
-			}}</NuxtLink>
-		</Bounded>
+				class="cta"
+				:to="settings?.data.cta.url">
+				{{ settings?.data.cta.text }}
+			</NuxtLink>
+		</div>
 	</header>
 </template>
 
 <script setup>
+	import { onMounted, onBeforeUnmount } from 'vue';
 	const settings = useSettings();
 </script>
 
 <style lang="scss" scoped>
 	.header {
+		margin-top: calc($default-gap/2);
+		padding: 0 $default-gap;
 		position: fixed;
-		width: 100vw;
+		z-index: $z-header;
+		width: 100%;
+
 		display: flex;
-		z-index: 2;
-		color: $color-white;
-		mix-blend-mode: difference;
+		align-items: flex-start;
 		justify-content: space-between;
-		align-items: center;
+
+		mix-blend-mode: difference;
+		color: $color-white;
+		background: transparent;
+
+		// filter: invert(50%);
 	}
 
-	.container {
-		color: $color-white;
-		mix-blend-mode: difference;
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
+	.logo-wrap {
 	}
 
-	.logo {
-		font-size: 1.4rem;
+	.menu-wrap {
+		font-size: 1.38vw;
+		font-variation-settings: 'wght' 480;
+		// text-transform: uppercase;
+		display: flex;
+		align-items: center;
+		gap: 24px;
+		color: inherit;
+		line-height: 1;
 	}
+
 	.menu {
 		display: flex;
 		gap: 24px;
-		font-size: 2rem;
+
 		list-style: none;
 		padding: 0;
 	}
 
 	.menu__item {
 		padding: 0;
+	}
+
+	.cta {
+		line-height: 1.1;
 	}
 </style>

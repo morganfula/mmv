@@ -85,6 +85,9 @@
 </template>
 
 <style lang="scss" scoped>
+	section {
+		background-color: $color-white;
+	}
 	.big-title {
 		margin-bottom: $default-gap;
 	}

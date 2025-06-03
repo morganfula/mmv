@@ -52,7 +52,8 @@
 
 <style lang="scss" scoped>
 	section {
-		margin-top: $default-gap;
+		padding-top: $default-gap;
+		background-color: $color-white;
 	}
 
 	.titles {

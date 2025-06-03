@@ -84,6 +84,7 @@
 <style lang="scss" scoped>
 	.portfolio-wrapper {
 		counter-reset: i; /* base counter for custom property */
+		background-color: $color-white;
 	}
 
 	.portfolio {

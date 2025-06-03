@@ -28,7 +28,8 @@
 
 <style lang="scss" scoped>
 	section {
-		margin: calc($default-gap * 2) 0;
+		padding: calc($default-gap * 2) 0;
+		background-color: $color-white;
 	}
 
 	.text {

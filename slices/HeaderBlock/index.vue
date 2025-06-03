@@ -33,6 +33,7 @@
 	section {
 		min-height: 50svh;
 		padding: $default-gap 0;
+		background-color: $color-white;
 	}
 
 	.title {
