@@ -90,7 +90,7 @@
 		grid-area: 1 / 3 / 2 / 4;
 
 		@include media('<phone') {
-			grid-area: 4 / 4 / 5 / 7;
+			grid-area: 4 / 3 / 5 / 7;
 		}
 	}
 	.newsletter {
@@ -132,6 +132,7 @@
 			height: 120px;
 			width: 100%;
 			object-fit: cover;
+			margin-bottom: calc($default-gap * 2);
 		}
 	}
 	.button-top {

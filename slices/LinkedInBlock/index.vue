@@ -42,10 +42,10 @@
 					target="_blank"
 					rel="noopener"
 					class="card">
-					<!-- <img
-						:src="p.image"
-						:alt="p.title" /> -->
-					<h4>{{ p.title }}</h4>
+					<img
+						src="@/assets/image/linkedin.png"
+						:alt="p.title" />
+					<h4 class="card-title">{{ p.title }}</h4>
 				</a>
 			</div>
 		</Bounded>
@@ -70,7 +70,7 @@
 		max-width: 400px;
 		text-align: right;
 		@include media('<phone') {
-			grid-template-columns: 1fr;
+			display: none;
 		}
 	}
 
@@ -83,7 +83,17 @@
 
 		@include media('<phone') {
 			grid-template-columns: 1fr;
+			gap: calc($default-gap * 2);
 		}
+	}
+
+	.card {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.card-title {
+		padding-top: 16px;
 	}
 
 	.cards.news {
