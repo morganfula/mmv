@@ -67,6 +67,7 @@
 <style lang="scss" scoped>
 	section {
 		background-color: $color-white;
+		padding-bottom: calc($default-gap * 4);
 	}
 
 	.title {
@@ -78,9 +79,18 @@
 
 		font-size: 5vw;
 		text-transform: none;
+
+		@include media('<phone') {
+			padding-top: 30vw;
+			font-size: 9vw;
+		}
 	}
 	.article-wrapper {
 		display: flex;
+
+		@include media('<phone') {
+			flex-direction: column;
+		}
 	}
 
 	.infos {
@@ -92,10 +102,20 @@
 		top: 0;
 		text-transform: uppercase;
 		gap: 12px;
+
+		@include media('<phone') {
+			height: 100%;
+			width: 100%;
+			margin: $default-gap * 2 0;
+		}
 	}
 
 	.articles {
 		// flex-grow: 1;
 		width: 60%;
+
+		@include media('<phone') {
+			width: 100%;
+		}
 	}
 </style>

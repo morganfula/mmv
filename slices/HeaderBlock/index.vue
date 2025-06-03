@@ -34,6 +34,10 @@
 		min-height: 50svh;
 		padding: $default-gap 0;
 		background-color: $color-white;
+
+		@include media('<phone') {
+			min-height: 100%;
+		}
 	}
 
 	.title {
@@ -42,6 +46,11 @@
 		font-variation-settings: 'wght' 440;
 		text-transform: uppercase;
 		line-height: 1;
+
+		@include media('<phone') {
+			margin-top: calc($default-gap * 8);
+			font-size: 10vw;
+		}
 	}
 
 	.subtitle {

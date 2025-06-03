@@ -79,12 +79,21 @@
 		grid-auto-rows: min-content;
 		gap: calc($default-gap / 2);
 		padding-bottom: calc($default-gap * 2);
+
+		@include media('<phone') {
+			grid-template-columns: 1fr;
+			gap: calc($default-gap * 2);
+		}
 	}
 
 	.filters {
 		display: flex;
 		gap: 16px;
 		margin: calc($default-gap/2) 0;
+
+		@include media('<phone') {
+			margin: ($default-gap * 2) 0;
+		}
 	}
 
 	.filters button {
@@ -93,6 +102,12 @@
 		border: none;
 		font-size: 1.2vw;
 		transition: $default-transition;
+
+		@include media('<phone') {
+			padding: 8px 14px;
+			font-size: 4vw;
+			color: $color-black;
+		}
 	}
 
 	.filters button.active {

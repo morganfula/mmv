@@ -98,6 +98,10 @@
 		}
 		counter-increment: i;
 		--i: counter(i); /* expose counter as CSS var for the calc */
+
+		@include media('<phone') {
+			padding: calc($default-gap * 2) 0;
+		}
 	}
 	.sticky {
 		position: sticky;
@@ -118,6 +122,10 @@
 		display: flex;
 		flex-direction: column;
 		gap: 60px;
+
+		@include media('<phone') {
+			gap: 16px;
+		}
 	}
 
 	.top {
@@ -135,12 +143,23 @@
 		// flex-direction: column;
 		grid-template-columns: repeat(12, 1fr);
 		gap: calc($default-gap / 2);
+
+		@include media('<phone') {
+			grid-template-columns: repeat(6, 1fr);
+			gap: 16px;
+		}
 	}
 
 	.description {
 		font-size: 1.2vw;
 		line-height: 1.2;
 		grid-column: 1 /5;
+
+		@include media('<phone') {
+			grid-row-start: 3;
+			font-size: 4.3vw;
+			grid-column: 1 /7;
+		}
 	}
 
 	.video {
@@ -149,6 +168,17 @@
 		grid-column: 5 /13;
 		max-height: 600px;
 		position: relative;
+
+		@include media('<phone') {
+			grid-row-start: 1;
+			grid-column: 1 /7;
+		}
+	}
+
+	.title {
+		@include media('<phone') {
+			font-size: 7vw;
+		}
 	}
 
 	.video iframe {
@@ -161,5 +191,9 @@
 		font-size: 24px;
 		display: flex;
 		flex-direction: column;
+
+		@include media('<phone') {
+			display: none;
+		}
 	}
 </style>

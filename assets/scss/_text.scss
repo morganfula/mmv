@@ -12,6 +12,11 @@
 	line-height: 1;
 	color: $color-black;
 	font-variation-settings: 'wght' 480;
+
+	@include media('<phone') {
+		font-size: 8.5vw;
+		padding: $default-gap 0;
+	}
 }
 
 .big-title {
@@ -41,4 +46,8 @@
 	font-size: 1.58vw;
 	line-height: 1.1;
 	font-variation-settings: 'wght' 480;
+
+	@include media('<phone') {
+		font-size: 5.4vw;
+	}
 }

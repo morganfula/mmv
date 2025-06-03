@@ -42,10 +42,19 @@
 		justify-content: space-between;
 		font-size: 3vw;
 		font-variation-settings: 'wght' 480;
+
+		@include media('<phone') {
+			font-size: 5vw;
+			display: inline-block;
+		}
 	}
 
 	.mail {
 		position: relative;
+
+		@include media('<phone') {
+			padding-top: $default-gap;
+		}
 	}
 
 	.mail::after {

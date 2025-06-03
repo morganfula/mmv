@@ -119,6 +119,10 @@
 		.card:hover & {
 			animation-play-state: paused;
 		}
+
+		@include media('<phone') {
+			margin-top: $default-gap;
+		}
 	}
 
 	.marquee:hover .cards {
@@ -131,21 +135,37 @@
 		display: flex;
 		flex-direction: column;
 		transition: $default-transition;
+
+		@include media('<phone') {
+			height: 100%;
+		}
 	}
 
 	.logo {
 		margin-bottom: calc($default-gap / 2);
 		width: auto;
 		height: 105px;
+
+		@include media('<phone') {
+			height: 120px;
+		}
 	}
 
 	.name {
 		margin-bottom: calc($default-gap / 2);
+
+		@include media('<phone') {
+			display: none;
+		}
 	}
 
 	.description-wrap {
 		position: relative;
 		overflow: hidden;
+
+		@include media('<phone') {
+			display: none;
+		}
 	}
 
 	.description {

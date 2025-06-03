@@ -61,10 +61,15 @@
 	}
 
 	.video-wrap {
-		position: absolute;
-		bottom: 0;
-		height: 70svh;
+		height: 100%;
 		width: 100%;
-		aspect-ratio: 7/5;
+
+		@include media('<phone') {
+			position: absolute;
+			bottom: 0;
+			height: 70svh;
+			width: 100%;
+			aspect-ratio: 7/5;
+		}
 	}
 </style>
