@@ -7,10 +7,33 @@
 	padding: 0;
 }
 
+html.lenis,
+html.lenis body {
+	height: auto;
+}
+
+.lenis:not(.lenis-autoToggle).lenis-stopped {
+	overflow: clip;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+	overscroll-behavior: contain;
+}
+
+.lenis.lenis-smooth iframe {
+	pointer-events: none;
+}
+
+.lenis.lenis-autoToggle {
+	transition-property: overflow;
+	transition-duration: 1ms;
+	transition-behavior: allow-discrete;
+}
+
 body {
 	font-family: $font;
 	font-stretch: normal;
-	// overflow: hidden;
+
 	text-rendering: optimizeLegibility;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
@@ -39,33 +62,6 @@ img {
 .orange {
 	background: $color-orange;
 }
-
-// .link {
-// 	position: relative;
-// 	@include test;
-// 	margin: 6px 0;
-// 	line-height: 1.9;
-// 	// overflow: hidden;
-// }
-
-// .link::after {
-// 	content: '';
-// 	position: absolute;
-// 	background: $color-black;
-// 	height: 1px;
-// 	width: 100%;
-// 	bottom: 0;
-// }
-
-// .link::before {
-// 	content: '';
-// 	position: absolute;
-// 	background: $color-black;
-// 	height: 1px;
-// 	width: 100%;
-// 	bottom: 0;
-// 	transform: translateX(-120%);
-// }
 
 .link {
 	position: relative;

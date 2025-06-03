@@ -42,7 +42,7 @@
 
 <template>
 	<Bounded as="div">
-		<section
+		<div
 			class="portfolio-wrapper"
 			:data-slice-type="slice.slice_type"
 			:data-slice-variation="slice.variation">
@@ -77,7 +77,7 @@
 					</div>
 				</div>
 			</section>
-		</section>
+		</div>
 	</Bounded>
 </template>
 
@@ -94,7 +94,7 @@
 
 		/* pull each subsequent section upward by exactly one viewport height */
 		&:nth-child(n + 2) {
-			top: calc(-100vh * (var(--i, 1)));
+			top: calc(-100vh * var(--i));
 		}
 		counter-increment: i;
 		--i: counter(i); /* expose counter as CSS var for the calc */
@@ -106,7 +106,7 @@
 	.sticky {
 		position: sticky;
 		width: 100%;
-		height: 100svh;
+		height: 100vh;
 		top: 0;
 		/* padding: 2rem; */
 		will-change: filter, transform;
@@ -115,6 +115,9 @@
 	.wrapper {
 		width: 100%;
 		height: 100%;
+		position: relative;
+
+		@include test;
 	}
 
 	.card {

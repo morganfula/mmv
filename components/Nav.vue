@@ -75,11 +75,6 @@
 
 		scrollSpeed = y - oldScrollY;
 		oldScrollY = y;
-
-		gsap.to(navLink.value, {
-			scale: 1 - Math.min(100, Math.abs(scrollSpeed)) * 0.002,
-			rotate: scrollSpeed * 0.1,
-		});
 	};
 
 	onMounted(() => {
