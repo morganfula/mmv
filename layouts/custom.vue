@@ -20,4 +20,7 @@
 		padding-left: 60px;
 		padding-right: 60px;
 	}
+	.page-wrap {
+		position: relative;
+	}
 </style>

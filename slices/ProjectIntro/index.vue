@@ -19,9 +19,7 @@
 			:data-slice-type="slice.slice_type"
 			:data-slice-variation="slice.variation">
 			<div class="arrow-wrap">
-				<!-- <ArrowRightIcon
-					size="32px"
-					color="#ff0000" /> -->
+				<ArrowRight />
 			</div>
 
 			<div class="text">

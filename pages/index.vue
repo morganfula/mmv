@@ -3,16 +3,6 @@
 		<NuxtLayout
 			name="custom"
 			page-name="index">
-			<section class="">
-				<h1 class="title h1">
-					{{ page?.data.title }}
-				</h1>
-
-				<VimeoBackground :video-url="page?.data.video.url" />
-
-				<PrismicRichText :field="page?.data.description" />
-			</section>
-
 			<SliceZone
 				wrapper="main"
 				:slices="page?.data.slices ?? []"
@@ -55,8 +45,9 @@
 
 <style lang="scss" scoped>
 	section {
-		position: relative;
+		position: fixed;
 		min-height: 100svh;
+		width: 100%;
 	}
 
 	.title {

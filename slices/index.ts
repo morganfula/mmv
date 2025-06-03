@@ -13,6 +13,7 @@ export const components = defineSliceZoneComponents({
   contact_block: defineAsyncComponent(() => import("./ContactBlock/index.vue")),
   contact_form: defineAsyncComponent(() => import("./ContactForm/index.vue")),
   header_block: defineAsyncComponent(() => import("./HeaderBlock/index.vue")),
+  home_hero: defineAsyncComponent(() => import("./HomeHero/index.vue")),
   intro_block: defineAsyncComponent(() => import("./IntroBlock/index.vue")),
   linked_in_block: defineAsyncComponent(
     () => import("./LinkedInBlock/index.vue"),

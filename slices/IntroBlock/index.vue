@@ -20,9 +20,7 @@
 			:data-slice-type="slice.slice_type"
 			:data-slice-variation="slice.variation">
 			<div class="arrow-wrap">
-				<!-- <ArrowRightIcon
-					size="32px"
-					color="#ff0000" /> -->
+				<ArrowRight />
 			</div>
 			<h1 class="h1 title">
 				{{ slice.primary.title }}
@@ -46,7 +44,6 @@
 	}
 
 	.arrow-wrap {
-		@include test;
 		height: 60px;
 		// width: 70px;
 		grid-column: 1 / 2;

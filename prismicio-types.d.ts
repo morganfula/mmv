@@ -338,6 +338,7 @@ export type FooterDocument<Lang extends string = string> =
   >;
 
 type HomeDocumentDataSlicesSlice =
+  | HomeHeroSlice
   | QuoteBlockSlice
   | LinkedInBlockSlice
   | CardsGridSlice
@@ -1362,6 +1363,61 @@ export type HeaderBlockSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Primary content in *HomeHero → Default → Primary*
+ */
+export interface HomeHeroSliceDefaultPrimary {
+  /**
+   * Title field in *HomeHero → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home_hero.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Video field in *HomeHero → Default → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home_hero.default.primary.video
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  video: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
+}
+
+/**
+ * Default variation for HomeHero Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type HomeHeroSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<HomeHeroSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *HomeHero*
+ */
+type HomeHeroSliceVariation = HomeHeroSliceDefault;
+
+/**
+ * HomeHero Shared Slice
+ *
+ * - **API ID**: `home_hero`
+ * - **Description**: HomeHero
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type HomeHeroSlice = prismic.SharedSlice<
+  "home_hero",
+  HomeHeroSliceVariation
+>;
+
+/**
  * Primary content in *IntroBlock → Default → Primary*
  */
 export interface IntroBlockSliceDefaultPrimary {
@@ -2221,6 +2277,10 @@ declare module "@prismicio/client" {
       HeaderBlockSliceDefaultPrimary,
       HeaderBlockSliceVariation,
       HeaderBlockSliceDefault,
+      HomeHeroSlice,
+      HomeHeroSliceDefaultPrimary,
+      HomeHeroSliceVariation,
+      HomeHeroSliceDefault,
       IntroBlockSlice,
       IntroBlockSliceDefaultPrimary,
       IntroBlockSliceVariation,

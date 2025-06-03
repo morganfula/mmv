@@ -29,6 +29,9 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "home_hero": {
+              "type": "SharedSlice"
+            },
             "quote_block": {
               "type": "SharedSlice"
             },
