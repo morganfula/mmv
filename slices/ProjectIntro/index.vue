@@ -59,8 +59,9 @@
 
 <style lang="scss" scoped>
 	section {
-		margin-top: $default-gap;
+		padding-top: $default-gap;
 		min-height: 70svh;
+		background-color: $color-white;
 
 		@include default-grid;
 

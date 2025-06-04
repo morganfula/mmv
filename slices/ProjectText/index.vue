@@ -29,6 +29,7 @@
 	section {
 		@include default-grid;
 		padding: $default-gap 0;
+		background-color: $color-white;
 
 		@include media('<phone') {
 			display: block;
