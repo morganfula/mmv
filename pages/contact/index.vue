@@ -16,6 +16,7 @@
 	import { components } from '~/slices';
 
 	definePageMeta(transition);
+	const { asImageSrc } = usePrismic();
 
 	const prismic = usePrismic();
 	const { data: page } = useAsyncData('[contact]', () =>
@@ -23,11 +24,10 @@
 	);
 
 	useSeoMeta({
-		// title: page.value?.data.meta_title ?? undefined,
-		// ogTitle: page.value?.data.meta_title ?? undefined,
-		// description: page.value?.data.meta_description ?? undefined,
-		// keywords: page.value?.data.meta_keywords ?? undefined,
-		// ogImage: asImageSrc(page.value?.data.meta_image),
+		title: page.value?.data.meta_title ?? undefined,
+		ogTitle: page.value?.data.meta_title ?? undefined,
+		description: page.value?.data.meta_description ?? undefined,
+		ogImage: asImageSrc(page.value?.data.meta_image),
 	});
 </script>
 

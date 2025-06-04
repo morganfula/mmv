@@ -38,6 +38,7 @@
 	import { components } from '~/slices';
 
 	definePageMeta(transition);
+	const { asImageSrc } = usePrismic();
 
 	const prismic = usePrismic();
 	const route = useRoute();
@@ -56,11 +57,10 @@
 	);
 
 	useSeoMeta({
-		// title: page.value?.data.meta_title ?? undefined,
-		// ogTitle: page.value?.data.meta_title ?? undefined,
-		// description: page.value?.data.meta_description ?? undefined,
-		// keywords: page.value?.data.meta_keywords ?? undefined,
-		// ogImage: asImageSrc(page.value?.data.meta_image),
+		title: page.value?.data.title ?? undefined,
+		ogTitle: page.value?.data.title ?? undefined,
+
+		ogImage: asImageSrc(page.value?.data.image),
 	});
 </script>
 

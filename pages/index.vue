@@ -15,9 +15,8 @@
 	import i18n from '~/plugins/i18n';
 	import { components } from '~/slices';
 
-	const { asImageSrc } = usePrismic();
-
 	definePageMeta(transition);
+	const { asImageSrc } = usePrismic();
 
 	const prismic = usePrismic();
 	const { data: page } = useAsyncData('[home]', () =>
