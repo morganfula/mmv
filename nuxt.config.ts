@@ -5,6 +5,28 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: ["@nuxtjs/prismic"],
 
+app: {
+		head: {
+			title: 'Montreux Media Ventures',
+			htmlAttrs: {
+				lang: 'en',
+			},
+			meta: [
+				{ charset: 'utf-8' },
+				{ name: 'viewport', content: 'width=device-width, initial-scale=1' },
+				{ name: 'description', content: 'Where Music Meets Innovation, Shaping the Future.' },
+				{ name: 'theme-color', content: '#000000' },
+				{ property: 'og:type', content: 'website' },
+				{ property: 'og:site_name', content: 'Montreux Media Ventures' },
+				{ property: 'og:image', content: '/default-og.jpg' }, // fallback OG image
+			],
+			link: [
+				{ rel: 'icon', href: '/favicon.ico' },
+			],
+		},
+	},
+  
+
   prismic: {
     endpoint: apiEndpoint || repositoryName
   },
