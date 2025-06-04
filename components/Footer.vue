@@ -35,9 +35,11 @@
 			<div class="news-title">
 				{{ footer.data.newsletter_title }}
 			</div>
-			<div class="news-message">
-				{{ footer.data.newsletter_message }}
-			</div>
+
+			<input
+				class="news-message"
+				:type="footer.data.newsletter_message"
+				:placeholder="footer.data.newsletter_message" />
 			<div class="news-policy">
 				{{ footer.data.newsletter_policy }}
 			</div>
@@ -113,11 +115,24 @@
 
 	.news-message {
 		font-size: 3vw;
+		background: none;
+		border: none;
+		position: relative;
+		width: 100%;
+		color: $color-white;
 
 		@include media('<phone') {
 			font-size: 5vw;
 			padding: 16px 0;
 		}
+	}
+
+	.news-message::after {
+		position: absolute;
+		content: '';
+		height: 1px;
+		width: 100%;
+		background: $color-white;
 	}
 
 	.news-policy {
