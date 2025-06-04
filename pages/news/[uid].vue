@@ -55,8 +55,6 @@
 		})
 	);
 
-	console.log(page);
-
 	useSeoMeta({
 		// title: page.value?.data.meta_title ?? undefined,
 		// ogTitle: page.value?.data.meta_title ?? undefined,

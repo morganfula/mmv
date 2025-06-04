@@ -72,7 +72,7 @@
 	}
 
 	.link {
-		margin-top: calc($default-gap * 2);
+		margin: calc($default-gap * 2) 0;
 		grid-column: 7 /10;
 		grid-row-start: 3;
 		position: relative;

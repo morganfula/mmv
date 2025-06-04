@@ -4,8 +4,6 @@ export function firstScreenAnimation({ parent }) {
 	const title = parentEl.querySelector('.default-title');
 	const video = parentEl.querySelector('.video');
 
-	console.log(video);
-
 	const tl = gsap.timeline();
 
 	tl.from(video, {
