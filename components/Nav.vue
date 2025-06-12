@@ -147,6 +147,10 @@
 		opacity: 0;
 		visibility: hidden;
 		pointer-events: none;
+
+		@include media('<phone') {
+			min-height: 100svh;
+		}
 	}
 
 	.nav {
@@ -167,6 +171,10 @@
 		line-height: 1.1;
 		text-transform: capitalize;
 		display: inline-flex;
+
+		@include media('<phone') {
+			font-size: 12vw;
+		}
 	}
 
 	.nav__item {

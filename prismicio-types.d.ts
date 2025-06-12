@@ -990,6 +990,21 @@ export type SettingsDocument<Lang extends string = string> =
   >;
 
 /**
+ * Item in *Team → Socials*
+ */
+export interface TeamDocumentDataSocialsItem {
+  /**
+   * Link field in *Team → Socials*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: team.socials[].link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  link: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
+}
+
+/**
  * Content for Team documents
  */
 interface TeamDocumentData {
@@ -1014,6 +1029,17 @@ interface TeamDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#image
    */
   photo: prismic.ImageField<never>;
+
+  /**
+   * Socials field in *Team*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: team.socials[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  socials: prismic.GroupField<Simplify<TeamDocumentDataSocialsItem>>;
 }
 
 /**
@@ -2405,6 +2431,7 @@ declare module "@prismicio/client" {
       SettingsDocumentDataNavigationItem,
       TeamDocument,
       TeamDocumentData,
+      TeamDocumentDataSocialsItem,
       AllDocumentTypes,
       AddressBlockSlice,
       AddressBlockSliceDefaultPrimary,

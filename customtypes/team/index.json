@@ -26,6 +26,26 @@
           "constraint": {},
           "thumbnails": []
         }
+      },
+      "socials": {
+        "type": "Group",
+        "config": {
+          "label": "Socials",
+          "repeat": true,
+          "fields": {
+            "link": {
+              "type": "Link",
+              "config": {
+                "label": "Link",
+                "placeholder": "",
+                "select": null,
+                "allowTargetBlank": false,
+                "allowText": true,
+                "repeat": false
+              }
+            }
+          }
+        }
       }
     }
   }

@@ -141,6 +141,8 @@
 	}
 	.logo-wrapper {
 		grid-area: 2 / 1 / 3 / 4;
+		height: 200px;
+		width: 100%;
 
 		@include media('<phone') {
 			grid-area: 1 / 1 / 2 / 4;
