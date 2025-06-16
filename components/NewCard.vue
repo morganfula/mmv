@@ -3,9 +3,11 @@
 		<NuxtLink
 			class="card__link"
 			:to="`/news/${props.new.item.uid}`">
-			<img
-				class="image"
-				:src="props.new.item.data.image.url" />
+			<div class="image-wrap">
+				<img
+					class="image"
+					:src="props.new.item.data.image.url" />
+			</div>
 			<div class="text">
 				<div class="date">{{ props.new.item.data.date }}</div>
 				<h3>{{ props.new.item.data.title }}</h3>
@@ -47,8 +49,18 @@
 		flex-direction: column;
 	}
 
+	.card:hover .image {
+		transform: scale(1.025);
+	}
+
 	.card__link {
 		display: block;
+	}
+
+	.image-wrap {
+		overflow: hidden;
+		position: relative;
+		width: 100%;
 	}
 
 	.image {
@@ -56,6 +68,7 @@
 		// inset: 0;
 		width: 100%;
 		object-fit: cover;
+		transition: $default-transition;
 	}
 
 	.text {

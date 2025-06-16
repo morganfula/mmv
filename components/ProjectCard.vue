@@ -37,6 +37,10 @@
 		width: 100%;
 	}
 
+	.card:hover .image {
+		transform: scale(1.025);
+	}
+
 	.card__link {
 		display: block;
 	}
@@ -45,6 +49,8 @@
 		position: relative;
 		aspect-ratio: 4/5;
 		width: 100%;
+		overflow: hidden;
+		border-radius: 4px;
 
 		@include media('<phone') {
 			aspect-ratio: 1/1;
@@ -57,6 +63,7 @@
 		width: 100%;
 		height: 100%;
 		object-fit: cover;
+		transition: $default-transition;
 	}
 
 	.text {
