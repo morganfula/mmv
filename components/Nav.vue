@@ -32,105 +32,95 @@
 	// VARS
 	let menuHeight, itemHeight, wrapHeight;
 
-	let scrollSpeed = 0,
-		oldScrollY = 0,
-		scrollY = 0,
-		y = 0;
+	// let scrollSpeed = 0,
+	// 	oldScrollY = 0,
+	// 	scrollY = 0,
+	// 	y = 0;
 
-	let touchStart = 0,
-		touchY = 0;
+	// let touchStart = 0,
+	// 	touchY = 0;
 
-	function getHeight() {
-		menuHeight = navbar.value.clientHeight;
-		itemHeight = navLink.value[0].clientHeight;
-		wrapHeight = navLink.value.length * itemHeight;
-	}
+	// function getHeight() {
+	// 	menuHeight = navbar.value.clientHeight;
+	// 	itemHeight = navLink.value[0].clientHeight;
+	// 	wrapHeight = navLink.value.length * itemHeight;
+	// }
 
-	function dispose(scroll) {
-		gsap.set(navLink.value, {
-			y: i => i * itemHeight + scroll,
-			modifiers: {
-				y: y => {
-					const s = gsap.utils.wrap(
-						-itemHeight,
-						wrapHeight - itemHeight,
-						parseInt(y)
-					);
-					return `${s}px`;
-				},
-			},
-		});
-	}
+	// function dispose(scroll) {
+	// 	gsap.set(navLink.value, {
+	// 		y: i => i * itemHeight + scroll,
+	// 		modifiers: {
+	// 			y: y => {
+	// 				const s = gsap.utils.wrap(
+	// 					-itemHeight,
+	// 					wrapHeight - itemHeight,
+	// 					parseInt(y)
+	// 				);
+	// 				return `${s}px`;
+	// 			},
+	// 		},
+	// 	});
+	// }
 
-	function lerp(number0, number1, time) {
-		return number0 * (1 - time) + number1 * time;
-	}
+	// function lerp(number0, number1, time) {
+	// 	return number0 * (1 - time) + number1 * time;
+	// }
 
-	const render = () => {
-		requestAnimationFrame(render);
+	// const render = () => {
+	// 	requestAnimationFrame(render);
 
-		y = lerp(y * 0.9, scrollY, 0.05);
+	// 	y = lerp(y * 0.9, scrollY, 0.05);
 
-		dispose(y);
+	// 	dispose(y);
 
-		scrollSpeed = y - oldScrollY;
-		oldScrollY = y;
-	};
+	// 	scrollSpeed = y - oldScrollY;
+	// 	oldScrollY = y;
+	// };
 
-	onMounted(() => {
-		getHeight();
-		dispose(0);
+	// onMounted(() => {
+	// 	getHeight();
+	// 	dispose(0);
 
-		window.addEventListener('resize', () => {
-			getHeight();
-		});
+	// 	window.addEventListener('resize', () => {
+	// 		getHeight();
+	// 	});
 
-		render();
-	});
+	// 	render();
+	// });
 
-	const handleMouseWheel = e => {
-		scrollY -= e.deltaY;
-	};
+	// const handleMouseWheel = e => {
+	// 	scrollY -= e.deltaY;
+	// };
 
-	const handleTouchStart = e => {
-		touchStart = e.clientY || e.touches[0].clientY;
-		isDragging.value = true;
-	};
+	// const handleTouchStart = e => {
+	// 	touchStart = e.clientY || e.touches[0].clientY;
+	// 	isDragging.value = true;
+	// };
 
-	const handleTouchMove = e => {
-		if (!isDragging.value) return;
-		touchY = e.clientY || e.touches[0].clientY;
-		scrollY += (touchY - touchStart) * 8;
-		touchStart = touchY;
-	};
+	// const handleTouchMove = e => {
+	// 	if (!isDragging.value) return;
+	// 	touchY = e.clientY || e.touches[0].clientY;
+	// 	scrollY += (touchY - touchStart) * 8;
+	// 	touchStart = touchY;
+	// };
 
-	const handleTouchEnd = () => {
-		isDragging.value = false;
-	};
+	// const handleTouchEnd = () => {
+	// 	isDragging.value = false;
+	// };
 </script>
 <template>
 	<nav class="nav__wrap">
 		<ul
 			class="nav"
 			ref="navbar"
-			:class="{ 'is-dragging': isDragging }"
-			@mousewheel="handleMouseWheel"
-			@touchstart="handleTouchStart"
-			@touchmove="handleTouchMove"
-			@touchend="handleTouchEnd"
-			@mousedown="handleTouchStart"
-			@mousemove="handleTouchMove"
-			@mouseleave="handleTouchEnd"
-			@mouseup="handleTouchEnd"
-			@selectstart="() => false">
+			:class="{ 'is-dragging': isDragging }">
 			<li
 				v-for="link in links"
 				class="nav__item"
 				ref="navLink">
 				<nuxt-link
 					class="nav__link"
-					:to="link.href"
-					@dragstart.prevent>
+					:to="link.href">
 					{{ link.text }}
 				</nuxt-link>
 			</li>
@@ -155,8 +145,19 @@
 
 	.nav {
 		height: 100svh;
+		padding-top: calc($default-gap * 3);
+		padding-left: $default-gap;
 		overflow: hidden;
 		list-style-type: none;
+
+		display: flex;
+		flex-direction: column;
+
+		@include media('<phone') {
+			padding-top: calc($default-gap * 9);
+			align-items: center;
+			height: 100%;
+		}
 	}
 
 	.nav.is-dragging {
@@ -167,20 +168,20 @@
 		color: $color-white;
 		text-decoration: none;
 		cursor: pointer;
-		font-size: 10vw;
+		font-size: 5vw;
 		line-height: 1.1;
 		text-transform: capitalize;
 		display: inline-flex;
 
 		@include media('<phone') {
-			font-size: 12vw;
+			font-size: 14vw;
 		}
 	}
 
 	.nav__item {
-		padding: 24px 0;
+		padding: 16px 0;
 		text-align: center;
-		position: absolute;
+		// position: absolute;
 		z-index: 1;
 		top: 0;
 		left: 0;

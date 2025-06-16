@@ -12,6 +12,7 @@
 		@click="general.isNavOpen = !general.isNavOpen">
 		<div class="burger__line1"></div>
 		<div class="burger__line2"></div>
+		<!-- <div class="burger__line3"></div> -->
 	</div>
 </template>
 <style lang="scss" scoped>
@@ -19,7 +20,7 @@
 		// position: fixed;
 		// right: 32px;
 		// top: 32px;
-		height: 50px;
+		height: 80px;
 		width: 80px;
 		z-index: 6;
 		cursor: pointer;
@@ -36,19 +37,23 @@
 	}
 
 	.burger__line1,
-	.burger__line2 {
+	.burger__line2,
+	.burger__line3 {
 		position: absolute;
 		left: 50%;
 		top: 50%;
-		height: 1px;
+		height: 2px;
 		width: 100%;
 		background: $color-white;
 	}
 
 	.burger__line1 {
-		transform: translate(-50%, -5px);
+		transform: translate(-50%, -7px);
 	}
 	.burger__line2 {
-		transform: translate(-50%, 5px);
+		transform: translate(-50%, 7px);
+	}
+	.burger__line3 {
+		transform: translate(-50%, 0);
 	}
 </style>

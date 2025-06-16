@@ -7,12 +7,6 @@
 		</NuxtLink>
 
 		<div class="menu-wrap">
-			<NuxtLink
-				class="cta"
-				:to="settings?.data.cta.url">
-				{{ settings?.data.cta.text }}
-			</NuxtLink>
-
 			<div class="menu">
 				<MenuButton />
 			</div>
