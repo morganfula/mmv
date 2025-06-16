@@ -16,5 +16,5 @@ export const useSmoothScroll = () => {
 
 	gsap.ticker.lagSmoothing(0);
 	general.scrollLenis.stop();
-	general.scrollLenis.scrollTo(0);
+	general.scrollLenis.scrollTo(0, { immediate: true });
 };

@@ -21,24 +21,22 @@
 
 <style lang="scss" scoped>
 	.header {
-		margin-top: calc($default-gap/2);
-		padding: 0 $default-gap;
+		padding: calc($default-gap/2) $default-gap;
 		position: fixed;
 		z-index: $z-header;
 		width: 100%;
 
+		background: rgba($color-white, 0.4);
 		display: flex;
 		align-items: flex-start;
 		justify-content: space-between;
 
-		mix-blend-mode: difference;
+		// mix-blend-mode: difference;
 		color: $color-white;
-		background: transparent;
-
+		// background: transparent;
+		background: $color-black;
+		backdrop-filter: blur(10px);
 		// filter: invert(50%);
-	}
-
-	.logo-wrap {
 	}
 
 	.menu-wrap {

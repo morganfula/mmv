@@ -34,7 +34,7 @@
 
 <style lang="scss" scoped>
 	svg {
-		height: 120px;
+		height: 80px;
 		width: auto;
 
 		@include media('<phone') {
