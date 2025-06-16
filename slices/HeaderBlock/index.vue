@@ -42,6 +42,11 @@
 		}
 	}
 
+	.dark-mode section {
+		background-color: $color-dark;
+		color: $color-white;
+	}
+
 	.title {
 		margin-top: calc($default-gap * 3);
 		font-size: 9vw;

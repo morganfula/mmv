@@ -60,6 +60,11 @@
 		background-color: $color-white;
 	}
 
+	.dark-mode section {
+		background-color: $color-dark;
+		color: $color-white;
+	}
+
 	.titles {
 		display: flex;
 		justify-content: space-between;

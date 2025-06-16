@@ -1,6 +1,12 @@
 <script setup>
 	import gsap from 'gsap';
+	const colorMode = useColorMode();
 	const settings = useSettings();
+
+	const isDark = computed({
+		get: () => colorMode.preference === 'dark',
+		set: v => (colorMode.preference = v ? 'dark' : 'light'),
+	});
 
 	watch(
 		() => general.isNavOpen,
@@ -28,85 +34,6 @@
 	const navbar = ref();
 	const navLink = ref([]);
 	const isDragging = ref(false);
-
-	// VARS
-	let menuHeight, itemHeight, wrapHeight;
-
-	// let scrollSpeed = 0,
-	// 	oldScrollY = 0,
-	// 	scrollY = 0,
-	// 	y = 0;
-
-	// let touchStart = 0,
-	// 	touchY = 0;
-
-	// function getHeight() {
-	// 	menuHeight = navbar.value.clientHeight;
-	// 	itemHeight = navLink.value[0].clientHeight;
-	// 	wrapHeight = navLink.value.length * itemHeight;
-	// }
-
-	// function dispose(scroll) {
-	// 	gsap.set(navLink.value, {
-	// 		y: i => i * itemHeight + scroll,
-	// 		modifiers: {
-	// 			y: y => {
-	// 				const s = gsap.utils.wrap(
-	// 					-itemHeight,
-	// 					wrapHeight - itemHeight,
-	// 					parseInt(y)
-	// 				);
-	// 				return `${s}px`;
-	// 			},
-	// 		},
-	// 	});
-	// }
-
-	// function lerp(number0, number1, time) {
-	// 	return number0 * (1 - time) + number1 * time;
-	// }
-
-	// const render = () => {
-	// 	requestAnimationFrame(render);
-
-	// 	y = lerp(y * 0.9, scrollY, 0.05);
-
-	// 	dispose(y);
-
-	// 	scrollSpeed = y - oldScrollY;
-	// 	oldScrollY = y;
-	// };
-
-	// onMounted(() => {
-	// 	getHeight();
-	// 	dispose(0);
-
-	// 	window.addEventListener('resize', () => {
-	// 		getHeight();
-	// 	});
-
-	// 	render();
-	// });
-
-	// const handleMouseWheel = e => {
-	// 	scrollY -= e.deltaY;
-	// };
-
-	// const handleTouchStart = e => {
-	// 	touchStart = e.clientY || e.touches[0].clientY;
-	// 	isDragging.value = true;
-	// };
-
-	// const handleTouchMove = e => {
-	// 	if (!isDragging.value) return;
-	// 	touchY = e.clientY || e.touches[0].clientY;
-	// 	scrollY += (touchY - touchStart) * 8;
-	// 	touchStart = touchY;
-	// };
-
-	// const handleTouchEnd = () => {
-	// 	isDragging.value = false;
-	// };
 </script>
 <template>
 	<nav class="nav__wrap">
@@ -125,6 +52,18 @@
 				</nuxt-link>
 			</li>
 		</ul>
+
+		<label
+			class="theme-toggle"
+			aria-label="Toggle dark mode">
+			<input
+				type="checkbox"
+				class="theme-toggle__checkbox"
+				v-model="isDark"
+				role="switch"
+				:aria-checked="isDark" />
+			<span class="theme-toggle__slider" />
+		</label>
 	</nav>
 </template>
 
@@ -186,5 +125,60 @@
 		top: 0;
 		left: 0;
 		width: 100%;
+	}
+
+	.theme-toggle {
+		position: absolute;
+		z-index: 1000;
+		bottom: $default-gap;
+		left: $default-gap;
+	}
+
+	.theme-toggle {
+		position: absolute;
+		bottom: $default-gap;
+		left: $default-gap;
+		width: 3.25rem; // 52px
+		height: 1.75rem; // 28px
+		display: inline-block;
+
+		.theme-toggle__checkbox {
+			opacity: 0;
+			width: 0;
+			height: 0;
+		}
+
+		.theme-toggle__slider {
+			position: absolute;
+			inset: 0;
+			cursor: pointer;
+			border-radius: 999px;
+			background: $color-white;
+			transition: background 0.25s ease;
+
+			&::before {
+				content: '';
+				position: absolute;
+				height: 1.25rem; // 20px
+				width: 1.25rem;
+				left: 0.25rem; // 4px
+				top: 0.25rem;
+				border-radius: 999px;
+				background: $color-black;
+				transition:
+					transform 0.25s ease,
+					background 0.25s ease;
+			}
+		}
+
+		// checked state
+		.theme-toggle__checkbox:checked + .theme-toggle__slider {
+			background: $color-dark;
+
+			&::before {
+				transform: translateX(1.5rem); // move knob to the right
+				background: $color-white;
+			}
+		}
 	}
 </style>

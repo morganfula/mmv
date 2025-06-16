@@ -45,6 +45,13 @@
 			padding-bottom: calc($default-gap * 6);
 		}
 	}
+
+	.dark-mode section {
+		background-color: $color-dark;
+		color: $color-white;
+		transition: $default-transition;
+	}
+
 	.big-title {
 		margin-bottom: $default-gap;
 	}

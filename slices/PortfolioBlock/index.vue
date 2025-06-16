@@ -144,6 +144,11 @@
 		}
 	}
 
+	.dark-mode .container {
+		background-color: $color-dark;
+		color: $color-white;
+	}
+
 	/***** 5) CONTENU DE LA CARTE *****/
 	.card {
 		background-color: $color-white;
@@ -155,6 +160,10 @@
 		@include media('<phone') {
 			gap: 16px;
 		}
+	}
+	.dark-mode .card {
+		background-color: $color-dark;
+		color: $color-white;
 	}
 
 	.top {

@@ -44,6 +44,11 @@
 		}
 	}
 
+	.dark-mode section {
+		background-color: $color-dark;
+		color: $color-white;
+	}
+
 	.title {
 		grid-column: 2 /12;
 		font-size: 8vw;

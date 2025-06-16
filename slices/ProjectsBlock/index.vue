@@ -73,6 +73,12 @@
 		background: $color-white;
 	}
 
+	.dark-mode section {
+		background-color: $color-dark;
+		color: $color-white;
+		transition: $default-transition;
+	}
+
 	.cards {
 		display: grid;
 		grid-template-columns: repeat(2, 1fr);

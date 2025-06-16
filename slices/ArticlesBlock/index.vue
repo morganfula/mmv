@@ -73,6 +73,11 @@
 		background-color: $color-white;
 	}
 
+	.dark-mode section {
+		background-color: $color-dark;
+		color: $color-white;
+	}
+
 	.cards {
 		display: grid;
 		grid-template-columns: repeat(3, 1fr);
@@ -120,5 +125,10 @@
 		cursor: pointer;
 		background: rgba($color-black, 0.2);
 		// color: $color-white;
+	}
+
+	.dark-mode .filters button:hover {
+		background-color: $color-dark;
+		color: $color-white;
 	}
 </style>

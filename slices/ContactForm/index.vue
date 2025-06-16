@@ -122,6 +122,12 @@
 		background-color: $color-white;
 	}
 
+	.dark-mode section {
+		background-color: $color-dark;
+		color: $color-white;
+		transition: $default-transition;
+	}
+
 	.form {
 		min-height: 80svh;
 	}
@@ -159,6 +165,13 @@
 		border-radius: 6px;
 		font: inherit;
 	}
+
+	.dark-mode input,
+	.dark-mode textarea {
+		background-color: $color-dark;
+		color: $color-white;
+		transition: $default-transition;
+	}
 	textarea {
 		resize: vertical;
 	}
@@ -172,6 +185,11 @@
 		border-radius: 30px;
 		background: #111;
 		color: #fff;
+	}
+
+	.dark-mode button {
+		background: $color-white;
+		color: $color-black;
 	}
 
 	.success {

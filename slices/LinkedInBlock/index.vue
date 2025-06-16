@@ -58,6 +58,11 @@
 		background: #e7f0f9;
 	}
 
+	.dark-mode section {
+		background-color: #132449;
+		color: $color-white;
+	}
+
 	.titles {
 		display: flex;
 		justify-content: space-between;

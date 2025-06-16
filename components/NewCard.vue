@@ -96,7 +96,6 @@
 		right: 16px;
 		color: $color-white;
 		font-size: 0.93vw;
-		// background: red;
 		padding: 8px 20px;
 		border-radius: 50px;
 

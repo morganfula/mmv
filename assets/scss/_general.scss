@@ -52,6 +52,10 @@ img {
 	height: auto;
 }
 
+.size-full {
+	width: 100%;
+}
+
 .purple {
 	background: $color-purple;
 }
@@ -111,6 +115,13 @@ img {
 	// }
 }
 
+.dark-mode .link {
+	&::before,
+	&::after {
+		background: $color-white;
+	}
+}
+
 .link {
 	font-size: 1.58vw;
 	font-variation-settings: 'wght' 500;
@@ -128,4 +139,23 @@ img {
 .page-leave-to {
 	opacity: 0;
 	// filter: blur(1rem);
+}
+
+.dark-mode body {
+	// background-color: #222124 !important;
+	// color: #ebf4f1 !important;
+	background-color: $color-dark;
+	color: $color-white;
+	transition: $default-transition;
+}
+.light-mode body {
+	// background-color: #f1e7d0 !important;
+	// color: #433422 !important;
+	transition: $default-transition;
+}
+
+.dark-mode section {
+	background-color: $color-dark;
+	color: $color-white;
+	transition: $default-transition;
 }

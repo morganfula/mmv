@@ -50,6 +50,11 @@
 		}
 	}
 
+	.dark-mode section {
+		background-color: $color-dark;
+		color: $color-white;
+	}
+
 	.arrow-wrap {
 		height: 60px;
 		// width: 70px;

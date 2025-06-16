@@ -37,6 +37,11 @@
 		padding: calc($default-gap * 2) 0;
 		background-color: $color-white;
 	}
+
+	.dark-mode section {
+		background-color: $color-dark;
+		color: $color-white;
+	}
 	.text {
 		display: flex;
 		justify-content: space-between;
@@ -65,5 +70,9 @@
 		background: $color-black;
 		height: 2px;
 		width: 100%;
+	}
+
+	.dark-mode .mail::after {
+		background: $color-white;
 	}
 </style>

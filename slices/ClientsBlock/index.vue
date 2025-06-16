@@ -88,6 +88,12 @@
 	section {
 		background-color: $color-white;
 	}
+
+	.dark-mode section {
+		background-color: $color-dark;
+		color: $color-white;
+	}
+
 	.big-title {
 		margin-bottom: $default-gap;
 	}
@@ -149,6 +155,10 @@
 		@include media('<phone') {
 			height: 120px;
 		}
+	}
+
+	.dark-mode .logo {
+		filter: invert(100%);
 	}
 
 	.name {

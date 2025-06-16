@@ -32,6 +32,11 @@
 		background-color: $color-white;
 	}
 
+	.dark-mode section {
+		background-color: $color-dark;
+		color: $color-white;
+	}
+
 	.text {
 		margin-top: 20px;
 		font-size: 1.2vw;
