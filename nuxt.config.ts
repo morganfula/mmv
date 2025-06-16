@@ -24,6 +24,8 @@ app: {
 				{ rel: 'icon', href: '/favicon.ico' },
 			],
 		},
+
+    pageTransition: { name: 'page', mode: 'out-in' }
 	},
   
 
