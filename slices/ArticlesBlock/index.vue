@@ -102,6 +102,7 @@
 		border: none;
 		font-size: 1.2vw;
 		transition: $default-transition;
+		font-variation-settings: 'wght' 600;
 
 		@include media('<phone') {
 			padding: 8px 14px;
@@ -113,5 +114,11 @@
 	.filters button.active {
 		color: $color-white;
 		background: $color-black;
+	}
+
+	.filters button:hover {
+		cursor: pointer;
+		background: rgba($color-black, 0.2);
+		// color: $color-white;
 	}
 </style>
