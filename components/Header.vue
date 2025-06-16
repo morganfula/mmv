@@ -21,7 +21,7 @@
 
 <style lang="scss" scoped>
 	.header {
-		padding: calc($default-gap/2) $default-gap;
+		padding: calc($default-gap/6) $default-gap;
 		position: fixed;
 		z-index: $z-header;
 		width: 100%;
