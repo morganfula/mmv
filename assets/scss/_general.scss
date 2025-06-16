@@ -129,25 +129,3 @@ img {
 	opacity: 0;
 	// filter: blur(1rem);
 }
-
-.cursor {
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 20px;
-	height: 20px;
-	border: 2px solid #fff;
-	border-radius: 50%;
-	pointer-events: none;
-	transform: translate(-50%, -50%);
-	transition:
-		transform 0.25s ease,
-		opacity 0.25s ease;
-	mix-blend-mode: difference; // white on dark, dark on white
-	z-index: 9999;
-
-	&.link-grow {
-		// class toggled on hover targets
-		transform: translate(-50%, -50%) scale(2.5);
-	}
-}
