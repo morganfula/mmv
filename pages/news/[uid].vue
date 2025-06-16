@@ -70,6 +70,11 @@
 		padding-bottom: calc($default-gap * 4);
 	}
 
+	.dark-mode section {
+		background-color: $color-dark;
+		color: $color-white;
+	}
+
 	.title {
 		padding-top: calc($default-gap * 4);
 		padding-bottom: $default-gap;

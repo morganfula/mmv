@@ -79,7 +79,7 @@ img {
 	font-variation-settings: 'wght' 500;
 
 	// Optional: add color variable fallback
-	$line-color: $color-black !default;
+	$line-color: $color-black;
 
 	// Add a transition trigger, e.g., on hover
 	&::before,

@@ -99,4 +99,8 @@
 		width: 100%;
 		height: 1px;
 	}
+
+	.dark-mode .link::after {
+		background: $color-white;
+	}
 </style>

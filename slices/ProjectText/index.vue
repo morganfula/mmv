@@ -36,6 +36,11 @@
 		}
 	}
 
+	.dark-mode section {
+		background-color: $color-dark;
+		color: $color-white;
+	}
+
 	.description {
 		grid-column: 6/12;
 	}

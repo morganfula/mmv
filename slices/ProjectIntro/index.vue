@@ -70,6 +70,11 @@
 		}
 	}
 
+	.dark-mode section {
+		background-color: $color-dark;
+		color: $color-white;
+	}
+
 	.text {
 		grid-column: 6/12;
 
