@@ -400,6 +400,7 @@ export type FooterDocument<Lang extends string = string> =
   >;
 
 type HomeDocumentDataSlicesSlice =
+  | ClientsBlockSlice
   | HomeHeroSlice
   | QuoteBlockSlice
   | LinkedInBlockSlice

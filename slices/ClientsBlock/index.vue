@@ -95,7 +95,8 @@
 	}
 
 	.big-title {
-		margin-bottom: $default-gap;
+		padding: $default-gap 0;
+		// text-transform: capitalize;
 	}
 
 	.marquee {
@@ -118,7 +119,7 @@
 		flex-shrink: 0;
 		min-width: 100%;
 		animation: scroll 80s linear infinite;
-		margin-bottom: $default-gap;
+		margin-bottom: 48px;
 
 		transition: animation-duration 2s ease-in-out;
 
@@ -180,7 +181,8 @@
 
 	.description {
 		transform: translateY(100%);
-		font-size: 1.1vw;
+		font-size: 1vw;
+		line-height: 1.1;
 		color: rgba($color-grey, 0);
 		color: rgba($color-grey, 1);
 		transition: $default-transition;

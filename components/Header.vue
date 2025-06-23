@@ -26,16 +26,16 @@
 		z-index: $z-header;
 		width: 100%;
 
-		background: rgba($color-white, 0.4);
+		// background: rgba($color-white, 0.4);
 		display: flex;
 		align-items: flex-start;
 		justify-content: space-between;
 
-		// mix-blend-mode: difference;
+		mix-blend-mode: difference;
 		color: $color-white;
-		// background: transparent;
-		background: $color-black;
-		backdrop-filter: blur(10px);
+		background: transparent;
+		// background: $color-black;
+		// backdrop-filter: blur(10px);
 		// filter: invert(50%);
 	}
 
