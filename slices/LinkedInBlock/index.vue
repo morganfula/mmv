@@ -1,4 +1,5 @@
 <script setup lang="ts">
+	import { decode } from 'he';
 	import type { Content } from '@prismicio/client';
 
 	// The array passed to `getSliceComponentProps` is purely optional.
@@ -18,9 +19,17 @@
 		.map(i => i.post_url.url);
 
 	/* fetch OG previews for every URL (server-side once) */
-	const { data: previews } = await useAsyncData('liPreviews', () =>
-		Promise.all(urls.map(url => $fetch('/api/og', { query: { url } })))
-	);
+	const { data: previews } = await useAsyncData('liPreviews', async () => {
+		const raw = await Promise.all(
+			urls.map(url => $fetch('/api/og', { query: { url } }))
+		);
+
+		// double decode
+		return raw.map(p => ({
+			...p,
+			title: decode(decode(p.title)),
+		}));
+	});
 </script>
 
 <template>
@@ -45,7 +54,9 @@
 					<img
 						src="@/assets/image/linkedin.png"
 						:alt="p.title" />
-					<h4 class="card-title">{{ p.title }}</h4>
+					<h4
+						class="card-title"
+						v-html="p.title"></h4>
 				</a>
 			</div>
 		</Bounded>
@@ -81,7 +92,7 @@
 
 	.cards {
 		display: grid;
-		grid-template-columns: repeat(3, 1fr);
+		grid-template-columns: repeat(4, 1fr);
 		grid-auto-rows: min-content;
 		gap: calc($default-gap / 2);
 		padding-bottom: calc($default-gap * 2);

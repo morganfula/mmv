@@ -9,7 +9,7 @@
 					:src="props.new.item.data.image.url" />
 			</div>
 			<div class="text">
-				<div class="date">{{ props.new.item.data.date }}</div>
+				<!-- <div class="date">{{ props.new.item.data.date }}</div> -->
 				<h3>{{ props.new.item.data.title }}</h3>
 				<div
 					class="category"
