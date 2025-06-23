@@ -37,10 +37,10 @@
               "type": "Link",
               "config": {
                 "label": "Link",
-                "placeholder": "",
+                "placeholder": "Linked In Url",
                 "select": null,
                 "allowTargetBlank": false,
-                "allowText": true,
+                "allowText": false,
                 "repeat": false
               }
             }

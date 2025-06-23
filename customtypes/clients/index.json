@@ -24,8 +24,8 @@
               "config": {
                 "label": "Logo",
                 "constraint": {
-                  "width": 150,
-                  "height": 150
+                  "width": null,
+                  "height": 105
                 },
                 "thumbnails": []
               }

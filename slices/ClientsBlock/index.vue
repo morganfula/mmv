@@ -152,6 +152,7 @@
 		margin-bottom: calc($default-gap / 2);
 		width: auto;
 		height: 105px;
+		object-fit: contain;
 
 		@include media('<phone') {
 			height: 120px;

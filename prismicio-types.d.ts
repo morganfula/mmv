@@ -998,7 +998,7 @@ export interface TeamDocumentDataSocialsItem {
    * Link field in *Team → Socials*
    *
    * - **Field Type**: Link
-   * - **Placeholder**: *None*
+   * - **Placeholder**: Linked In Url
    * - **API ID Path**: team.socials[].link
    * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
    */
