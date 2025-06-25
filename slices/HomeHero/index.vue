@@ -46,6 +46,15 @@
 		}
 	}
 
+	.dark-mode section {
+		background-color: $color-dark;
+		color: $color-white;
+	}
+
+	.dark-mode .title-wrap {
+		color: $color-white;
+	}
+
 	.title-wrap {
 		overflow: hidden;
 		position: absolute;
@@ -57,9 +66,9 @@
 
 		@include media('<phone') {
 			color: $color-black;
-			top: 20%;
+			top: 25%;
 			display: block;
-			// height: 100%;
+
 			font-size: 9.4vw;
 			line-height: 1.1;
 			max-width: 85%;
@@ -76,10 +85,10 @@
 
 		@include media('<phone') {
 			position: absolute;
-			bottom: 0;
-			height: 70svh;
+			bottom: 20%;
+			height: 245px;
 			width: 100%;
-			aspect-ratio: 7/5;
+			aspect-ratio: 16/9;
 		}
 	}
 </style>

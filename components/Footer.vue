@@ -44,7 +44,7 @@
 			<PrismicImage :field="footer.data.logo" />
 		</nuxt-link>
 
-		<div class="newsletter">
+		<!-- <div class="newsletter">
 			<div class="news-title">
 				{{ footer.data.newsletter_title }}
 			</div>
@@ -56,7 +56,7 @@
 			<div class="news-policy">
 				{{ footer.data.newsletter_policy }}
 			</div>
-		</div>
+		</div> -->
 
 		<div
 			class="button-top"
@@ -122,7 +122,7 @@
 		grid-area: 1 / 3 / 2 / 4;
 
 		@include media('<phone') {
-			grid-area: 4 / 3 / 5 / 7;
+			display: none;
 		}
 	}
 	.newsletter {
