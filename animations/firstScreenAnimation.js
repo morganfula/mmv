@@ -6,14 +6,6 @@ export function firstScreenAnimation({ parent }) {
 
 	const tl = gsap.timeline();
 
-	tl.from(video, {
-		scale: 1.4,
-		clearProps: 'all',
-		transformOrigin: 'center center',
-		ease: 'power3.inOut',
-		duration: 1.3,
-	});
-
 	tl.from(title, {
 		yPercent: 100,
 		opacity: 0,

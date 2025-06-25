@@ -1,11 +1,34 @@
 <script setup lang="ts">
-	import { onMounted, onUnmounted } from 'vue';
+	import { onMounted } from 'vue';
 	import type { Content } from '@prismicio/client';
-	import { getSliceComponentProps } from '@prismicio/vue';
 
 	const pad2 = (n: number) => n.toString().padStart(2, '0');
 
-	// --- your slice props as before ---
+	onMounted(() => {
+		const stickySections = Array.from(
+			document.querySelectorAll<HTMLElement>('.sticky')
+		);
+
+		const animate = () => {
+			stickySections.forEach((el, idx) => {
+				const { top } = el.parentElement!.getBoundingClientRect();
+				let transTop = top > 0 ? 0 : top * -1;
+				if (transTop >= 1000) transTop = 1000;
+
+				if (top <= 0 && idx !== stickySections.length - 1) {
+					el.style.filter = `blur(${transTop * 0.0005}px)`;
+					const scale = 1 - transTop * 0.0001;
+					el.style.transform = `scale3d(${scale},${scale},1)`;
+					el.style.opacity = `${1 - transTop * 0.001}`;
+				}
+			});
+
+			requestAnimationFrame(animate);
+		};
+
+		animate();
+	});
+
 	defineProps(
 		getSliceComponentProps<Content.PortfolioBlockSlice>([
 			'slice',
@@ -14,55 +37,10 @@
 			'context',
 		])
 	);
-
-	// we'll store each `.sticky` + its parent offsetTop
-	type StickyItem = { el: HTMLElement; offsetTop: number };
-	const stickies: StickyItem[] = [];
-	let rafId = 0;
-
-	onMounted(() => {
-		// find all sticky elements
-		const els = Array.from(document.querySelectorAll<HTMLElement>('.sticky'));
-		// cache element + parent.offsetTop
-		els.forEach(el => {
-			const parent = el.parentElement!;
-			stickies.push({ el, offsetTop: parent.offsetTop });
-		});
-		const lastIdx = stickies.length - 1;
-
-		// our loop
-		const loop = () => {
-			const scrollY = window.scrollY;
-
-			stickies.forEach(({ el, offsetTop }, idx) => {
-				if (idx === lastIdx) return; // skip last
-
-				// compute how far past top of viewport
-				let top = offsetTop - scrollY;
-				let t = top > 0 ? 0 : -top;
-				if (t > 1000) t = 1000;
-
-				if (top <= 0) {
-					// apply effects
-					el.style.filter = `blur(${t * 0.0005}px)`;
-					const scale = 1 - t * 0.0001;
-					el.style.transform = `scale3d(${scale},${scale},1)`;
-					el.style.opacity = `${1 - t * 0.001}`;
-				}
-			});
-
-			rafId = requestAnimationFrame(loop);
-		};
-
-		loop();
-	});
-
-	onUnmounted(() => {
-		cancelAnimationFrame(rafId);
-	});
 </script>
 
 <template>
+	<!-- 1) On place TOUTES les <section> dans un seul conteneur pour le compteur CSS -->
 	<div class="portfolio-wrapper">
 		<section
 			v-for="(item, i) in slice.primary.items"
@@ -76,13 +54,16 @@
 							<div class="title">{{ item.title }}</div>
 							<div class="number">{{ pad2(i + 1) }}</div>
 						</div>
+
 						<div class="content">
 							<div class="description">
 								<PrismicRichText :field="item.description" />
 							</div>
+
 							<VimeoBackground
 								class="video"
 								:video-url="item.video.url" />
+
 							<PrismicLink
 								class="link"
 								:field="item.link" />

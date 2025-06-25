@@ -1,11 +1,12 @@
-import Lenis from 'Lenis';
+import Lenis from 'lenis';
 
 export const useSmoothScroll = () => {
 	general.scrollLenis = new Lenis({
-		duration: 1.7,
-		orientation: 'vertical',
-		gestureOrientation: 'vertical',
+		duration: 1.2,
+		// orientation: 'vertical',
+		// gestureOrientation: 'vertical',
 		smoothWheel: true,
+		// easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
 	});
 
 	general.scrollLenis.on('scroll', ScrollTrigger.update);
@@ -15,6 +16,5 @@ export const useSmoothScroll = () => {
 	});
 
 	gsap.ticker.lagSmoothing(0);
-	general.scrollLenis.stop();
-	general.scrollLenis.scrollTo(0, { immediate: true });
+	general.scrollLenis.scrollTo(0);
 };
