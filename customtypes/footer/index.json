@@ -60,6 +60,33 @@
           }
         }
       },
+      "links_3_title": {
+        "type": "Text",
+        "config": {
+          "label": "Links 3 Title",
+          "placeholder": ""
+        }
+      },
+      "links_3": {
+        "type": "Group",
+        "config": {
+          "label": "Links 3",
+          "repeat": true,
+          "fields": {
+            "link": {
+              "type": "Link",
+              "config": {
+                "label": "link",
+                "placeholder": "",
+                "select": null,
+                "allowTargetBlank": true,
+                "allowText": true,
+                "repeat": false
+              }
+            }
+          }
+        }
+      },
       "logo": {
         "type": "Image",
         "config": {

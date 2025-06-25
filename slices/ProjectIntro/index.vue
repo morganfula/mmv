@@ -60,6 +60,7 @@
 <style lang="scss" scoped>
 	section {
 		padding-top: $default-gap;
+		padding-bottom: calc($default-gap / 2);
 		min-height: 70svh;
 		background-color: $color-white;
 

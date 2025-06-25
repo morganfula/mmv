@@ -269,6 +269,21 @@ export interface FooterDocumentDataLinks2Item {
 }
 
 /**
+ * Item in *Footer → Links 3*
+ */
+export interface FooterDocumentDataLinks3Item {
+  /**
+   * link field in *Footer → Links 3*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.links_3[].link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  link: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
+}
+
+/**
  * Content for Footer documents
  */
 interface FooterDocumentData {
@@ -315,6 +330,28 @@ interface FooterDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#group
    */
   links_2: prismic.GroupField<Simplify<FooterDocumentDataLinks2Item>>;
+
+  /**
+   * Links 3 Title field in *Footer*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.links_3_title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  links_3_title: prismic.KeyTextField;
+
+  /**
+   * Links 3 field in *Footer*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.links_3[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  links_3: prismic.GroupField<Simplify<FooterDocumentDataLinks3Item>>;
 
   /**
    * Logo field in *Footer*
@@ -653,6 +690,49 @@ interface NewsDocumentData {
  */
 export type NewsDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithoutUID<Simplify<NewsDocumentData>, "news", Lang>;
+
+/**
+ * Content for privacy documents
+ */
+interface PrivacyDocumentData {
+  /**
+   * Title field in *privacy*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: privacy.title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * description field in *privacy*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: privacy.description
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  description: prismic.RichTextField;
+}
+
+/**
+ * privacy document from Prismic
+ *
+ * - **API ID**: `privacy`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type PrivacyDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<PrivacyDocumentData>,
+    "privacy",
+    Lang
+  >;
 
 type ProjectDocumentDataSlicesSlice =
   | ProjectTextSlice
@@ -1063,6 +1143,7 @@ export type AllDocumentTypes =
   | HomeDocument
   | NewDocument
   | NewsDocument
+  | PrivacyDocument
   | ProjectDocument
   | ProjectsDocument
   | ServicesDocument
@@ -2409,6 +2490,7 @@ declare module "@prismicio/client" {
       FooterDocumentData,
       FooterDocumentDataLinks1Item,
       FooterDocumentDataLinks2Item,
+      FooterDocumentDataLinks3Item,
       HomeDocument,
       HomeDocumentData,
       HomeDocumentDataSlicesSlice,
@@ -2418,6 +2500,8 @@ declare module "@prismicio/client" {
       NewsDocument,
       NewsDocumentData,
       NewsDocumentDataSlicesSlice,
+      PrivacyDocument,
+      PrivacyDocumentData,
       ProjectDocument,
       ProjectDocumentData,
       ProjectDocumentDataSlicesSlice,

@@ -8,9 +8,9 @@
 <script setup>
 	// const settings = useSettings();
 
-	// onMounted(() => {
-	// 	useSmoothScroll();
-	// });
+	onMounted(() => {
+		useSmoothScroll();
+	});
 
 	// useSeoMeta({
 	// 	title: computed(() => settings?.value.data.site_title),

@@ -17,8 +17,6 @@
 </template>
 
 <script setup>
-	import { NuxtLink } from '#components';
-
 	const prismic = usePrismic();
 
 	const props = defineProps({

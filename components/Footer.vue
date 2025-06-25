@@ -25,6 +25,19 @@
 			</div>
 		</div>
 
+		<div class="link-3">
+			<div class="title">
+				{{ footer.data.links_3_title }}
+			</div>
+			<div
+				v-for="(item, i) in footer.data.links_3"
+				:key="i">
+				<PrismicLink
+					class="footer-link"
+					:field="item.link" />
+			</div>
+		</div>
+
 		<nuxt-link
 			to="/"
 			class="logo-wrapper">
@@ -98,6 +111,14 @@
 		}
 	}
 	.link-2 {
+		grid-area: 1 / 2 / 2 / 4;
+
+		@include media('<phone') {
+			grid-area: 4 / 3 / 5 / 7;
+		}
+	}
+
+	.link-3 {
 		grid-area: 1 / 3 / 2 / 4;
 
 		@include media('<phone') {

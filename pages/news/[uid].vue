@@ -19,7 +19,7 @@
 						{{ page?.data.category }}
 					</span>
 					<span>
-						{{ page?.data.date }}
+						{{ formatDate(page?.data.date) }}
 					</span>
 				</div>
 				<div class="articles">
@@ -36,9 +36,12 @@
 <script setup>
 	import i18n from '~/plugins/i18n';
 	import { components } from '~/slices';
+	import { useFormatDate } from '~/composables/useFormatDate';
 
 	definePageMeta(transition);
+
 	const { asImageSrc } = usePrismic();
+	const { formatDate } = useFormatDate();
 
 	const prismic = usePrismic();
 	const route = useRoute();
