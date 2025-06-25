@@ -151,7 +151,7 @@
 	.logo {
 		margin-bottom: calc($default-gap / 2);
 		width: auto;
-		max-width: 200px;
+		max-width: 120px;
 		height: 105px;
 		object-fit: contain;
 

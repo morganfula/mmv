@@ -84,7 +84,7 @@
 
 	.nav {
 		height: 100svh;
-		padding-top: calc($default-gap * 3);
+		padding-top: calc($default-gap * 2);
 		padding-left: $default-gap;
 		overflow: hidden;
 		list-style-type: none;

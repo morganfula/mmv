@@ -45,7 +45,12 @@
 			</div>
 		</div>
 
-		<div class="button-top">
+		<div
+			class="button-top"
+			role="button"
+			tabindex="0"
+			@click="scrollToTop"
+			@keyup.enter="scrollToTop">
 			{{ footer.data.button_message }}
 		</div>
 		<div class="copyrights">
@@ -56,6 +61,10 @@
 
 <script setup>
 	const footer = useFooter();
+
+	const scrollToTop = () => {
+		window.scrollTo({ top: 0, behavior: 'smooth' });
+	};
 </script>
 
 <style lang="scss" scoped>
@@ -153,6 +162,7 @@
 		}
 	}
 	.button-top {
+		text-align: center;
 		grid-area: 2 / 6 / 3 / 8;
 		align-self: end;
 		cursor: pointer;
