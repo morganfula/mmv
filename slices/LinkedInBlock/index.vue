@@ -1,10 +1,43 @@
 <script setup lang="ts">
-	import * as he from 'he';
-	const decode = he.decode;
 	import type { Content } from '@prismicio/client';
+	import { getSliceComponentProps } from '@prismicio/vue';
 
-	// The array passed to `getSliceComponentProps` is purely optional.
-	// Consider it as a visual hint for you when templating your slice.
+	// helper de décodage
+	function decodeHtml(html: string): string {
+		// si on est en client on profite du textarea
+		if (typeof document !== 'undefined') {
+			const txt = document.createElement('textarea');
+			txt.innerHTML = html;
+			return txt.value;
+		}
+		// fallback serveur (décodage numérique + entités courantes)
+		return (
+			html
+				// décodage &#123; et &#x1aF;
+				.replace(/&#(\d+);/g, (_, dec) => String.fromCharCode(+dec))
+				.replace(/&#x([\da-fA-F]+);/g, (_, hex) =>
+					String.fromCharCode(parseInt(hex, 16))
+				)
+				// entités nommées de base
+				.replace(/&quot;|&amp;|&lt;|&gt;|&apos;/g, entity => {
+					switch (entity) {
+						case '&quot;':
+							return '"';
+						case '&amp;':
+							return '&';
+						case '&lt;':
+							return '<';
+						case '&gt;':
+							return '>';
+						case '&apos;':
+							return "'";
+						default:
+							return entity;
+					}
+				})
+		);
+	}
+
 	const props = defineProps(
 		getSliceComponentProps<Content.CardsGridSlice>([
 			'slice',
@@ -14,21 +47,20 @@
 		])
 	);
 
-	/* 🔑 grab URLs from slice.primary.items */
+	// extraire les URLs…
 	const urls = (props.slice.primary.items ?? [])
 		.filter(i => i.post_url?.url)
-		.map(i => i.post_url.url);
+		.map(i => i.post_url!.url!);
 
-	/* fetch OG previews for every URL (server-side once) */
+	// fetch OG previews
 	const { data: previews } = await useAsyncData('liPreviews', async () => {
 		const raw = await Promise.all(
 			urls.map(url => $fetch('/api/og', { query: { url } }))
 		);
-
-		// double decode
 		return raw.map(p => ({
 			...p,
-			title: decode(decode(p.title)),
+			// double‐decode si besoin
+			title: decodeHtml(decodeHtml(p.title)),
 		}));
 	});
 </script>
@@ -93,7 +125,7 @@
 
 	.cards {
 		display: grid;
-		grid-template-columns: repeat(4, 1fr);
+		grid-template-columns: repeat(3, 1fr);
 		grid-auto-rows: min-content;
 		gap: calc($default-gap / 2);
 		padding-bottom: calc($default-gap * 2);
@@ -103,10 +135,22 @@
 			gap: calc($default-gap * 2);
 		}
 	}
-
+	img {
+		height: 120px;
+		width: 120px;
+		object-fit: cover;
+	}
+	h4 {
+		padding-left: 16px;
+	}
 	.card {
 		display: flex;
-		flex-direction: column;
+		transition: $default-transition;
+		// flex-direction: column;
+	}
+
+	.card:hover {
+		transform: translateY(-10%);
 	}
 
 	.card-title {

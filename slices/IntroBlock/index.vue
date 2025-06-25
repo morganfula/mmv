@@ -1,6 +1,16 @@
 <script setup lang="ts">
 	import type { Content } from '@prismicio/client';
 
+	// watch(
+	// 	() => general.isPreloaderVisible,
+	// 	() => {
+	// 		ScrollTrigger.create({
+	// 			trigger: '.page-content__block',
+	// 			animation: useAnimateText('.page-content__block'),
+	// 		});
+	// 	}
+	// );
+
 	// The array passed to `getSliceComponentProps` is purely optional.
 	// Consider it as a visual hint for you when templating your slice.
 	defineProps(
@@ -16,7 +26,7 @@
 <template>
 	<Bounded as="div">
 		<section
-			class="section"
+			class="section page-content__block"
 			:data-slice-type="slice.slice_type"
 			:data-slice-variation="slice.variation">
 			<div class="arrow-wrap">

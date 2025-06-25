@@ -1,6 +1,16 @@
 <script setup lang="ts">
 	import type { Content } from '@prismicio/client';
 
+	// watch(
+	// 	() => general.isPreloaderVisible,
+	// 	() => {
+	// 		ScrollTrigger.create({
+	// 			trigger: '.title__block',
+	// 			animation: useAnimateText('.title__block'),
+	// 		});
+	// 	}
+	// );
+
 	// The array passed to `getSliceComponentProps` is purely optional.
 	// Consider it as a visual hint for you when templating your slice.
 	defineProps(
@@ -18,9 +28,11 @@
 		<section
 			:data-slice-type="slice.slice_type"
 			:data-slice-variation="slice.variation">
-			<h1 class="title">
-				{{ slice.primary.title }}
-			</h1>
+			<div class="title__wrap">
+				<h1 class="title title__block">
+					{{ slice.primary.title }}
+				</h1>
+			</div>
 
 			<h2 class="subtitle p1--grey">
 				{{ slice.primary.subtitle }}
@@ -33,6 +45,7 @@
 	section {
 		min-height: 50svh;
 		padding: $default-gap 0;
+		padding-top: calc($default-gap * 3);
 		background-color: $color-white;
 
 		@include media('<phone') {
@@ -47,12 +60,18 @@
 		color: $color-white;
 	}
 
+	.title__wrap {
+		// @include test;
+		line-height: 1;
+		overflow: hidden;
+	}
+
 	.title {
-		margin-top: calc($default-gap * 3);
+		// margin-top: calc($default-gap * 3);
 		font-size: 9vw;
 		font-variation-settings: 'wght' 440;
 		text-transform: uppercase;
-		line-height: 1;
+		line-height: 0.81;
 
 		@include media('<phone') {
 			margin-top: calc($default-gap * 8);

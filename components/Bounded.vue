@@ -14,6 +14,7 @@
 
 <style scoped lang="scss">
 	._container {
+		overflow: hidden;
 		margin: 0 auto;
 		width: 100%;
 		padding-left: $default-gap;
