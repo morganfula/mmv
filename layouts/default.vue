@@ -9,7 +9,7 @@
 	// const settings = useSettings();
 
 	onMounted(() => {
-		useSmoothScroll();
+		// useSmoothScroll();
 	});
 
 	// useSeoMeta({

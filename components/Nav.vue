@@ -42,14 +42,12 @@
 			ref="navbar"
 			:class="{ 'is-dragging': isDragging }">
 			<li
-				v-for="link in links"
+				v-for="link in settings.data.navigation"
 				class="nav__item"
 				ref="navLink">
-				<nuxt-link
-					class="nav__link"
-					:to="link.href">
-					{{ link.text }}
-				</nuxt-link>
+				<div class="nav__link">
+					<PrismicLink :field="link.url" />
+				</div>
 			</li>
 		</ul>
 
