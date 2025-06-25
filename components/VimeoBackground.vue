@@ -33,7 +33,7 @@
 
 		height: 100%;
 		width: 100%;
-		transform: scale(1.2);
+		transform: scale(1.5);
 		/* transform: translate(-50%, -50%); */
 		pointer-events: none;
 
