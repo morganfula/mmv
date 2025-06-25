@@ -13,7 +13,7 @@
 <script setup>
 	const props = defineProps({ videoUrl: { type: String, required: true } });
 
-	const { embedUrl } = useVimeoEmbedUrl(props.videoUrl);
+	const { embedUrl } = useVideoEmbedUrl(props.videoUrl);
 </script>
 
 <style lang="scss" scoped>
