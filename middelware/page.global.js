@@ -2,6 +2,9 @@
 export default defineNuxtRouteMiddleware((to, from) => {
 	// Stopper Lenis avant de quitter la page
 	from.meta.pageTransition.onLeave = (_el, done) => {
+		general.isTransitionFinish = false;
+		general.isTransitionStart = false;
+		general.isTransitionStart = true;
 		general.scrollLenis.stop();
 		done();
 	};
@@ -9,6 +12,8 @@ export default defineNuxtRouteMiddleware((to, from) => {
 	// Relancer Lenis **seulement** une fois que la page est FULLY loaded
 	to.meta.pageTransition.onEnter = (_el, done) => {
 		const restartLenis = () => {
+			general.isTransitionFinish = true;
+			general.isTransitionStart = false;
 			general.scrollLenis.start();
 			done();
 		};

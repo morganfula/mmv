@@ -6,7 +6,7 @@ export function useAnimateText(el) {
 	if (element) {
 		tl.from(element, {
 			// opacity: 0,
-			y: 110,
+			y: 130,
 			duration: 0.6,
 			delay: 1,
 			ease: 'power4.out',

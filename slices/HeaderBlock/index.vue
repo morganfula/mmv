@@ -1,15 +1,17 @@
 <script setup lang="ts">
 	import type { Content } from '@prismicio/client';
 
-	// watch(
-	// 	() => general.isPreloaderVisible,
-	// 	() => {
-	// 		ScrollTrigger.create({
-	// 			trigger: '.title__block',
-	// 			animation: useAnimateText('.title__block'),
-	// 		});
-	// 	}
-	// );
+	watch(
+		() => [general.isTransitionFinish, general.isPreloaderVisible],
+		([transitionFinish, preloaderVisibility]) => {
+			if (transitionFinish && !preloaderVisibility) {
+				ScrollTrigger.create({
+					trigger: '.title__block',
+					animation: useAnimateText('.title__block'),
+				});
+			}
+		}
+	);
 
 	// The array passed to `getSliceComponentProps` is purely optional.
 	// Consider it as a visual hint for you when templating your slice.
@@ -48,6 +50,8 @@
 		padding-top: calc($default-gap * 3);
 		background-color: $color-white;
 
+		@include test;
+
 		@include media('<phone') {
 			min-height: 100%;
 
@@ -71,7 +75,6 @@
 		font-size: 9vw;
 		font-variation-settings: 'wght' 440;
 		text-transform: uppercase;
-		line-height: 0.81;
 
 		@include media('<phone') {
 			margin-top: calc($default-gap * 8);

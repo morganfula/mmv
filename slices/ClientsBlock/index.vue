@@ -35,7 +35,9 @@
 			:data-slice-variation="slice.variation">
 			<h2 class="big-title">{{ page?.data.title }}</h2>
 
-			<div class="marquee">
+			<div
+				class="marquee"
+				ref="marquee">
 				<!-- First pass -->
 				<div class="cards marquee__content">
 					<PrismicLink
