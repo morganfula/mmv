@@ -20,24 +20,64 @@
 		])
 	);
 
-	const cardsWrap = ref<HTMLElement | null>(null);
+	const sectionRef = ref<HTMLElement | null>(null);
+	const titleRef = ref<HTMLElement | null>(null);
+	const cardsRef = ref<HTMLElement | null>(null);
 
-	const items = computed(() => {
-		const arr = page.value?.data.items ?? [];
-		return [...arr, ...arr]; // duplicate array
+	onMounted(() => {
+		// register the plugin
+		gsap.registerPlugin(gsap.ScrollTrigger);
+
+		const triggerOpts = {
+			trigger: sectionRef.value,
+			start: 'top 80%',
+			toggleActions: 'play none none none',
+		};
+
+		// build one timeline tied to scroll
+		const tl = gsap.timeline({
+			scrollTrigger: triggerOpts,
+		});
+
+		// 1) title fades/slides in over 1s
+		tl.from(titleRef.value, {
+			y: 50,
+			opacity: 0,
+			duration: 0.6,
+			ease: 'power4.out',
+		});
+
+		// 2) link only starts after the above finishes
+		tl.from(
+			cardsRef.value,
+			{
+				y: 30,
+				opacity: 0,
+				duration: 0.8,
+				delay: 0.3,
+				ease: 'power4.out',
+				stagger: 0.1,
+			},
+			'<'
+		);
 	});
 </script>
 
 <template>
 	<Bounded as="div">
 		<section
+			ref="sectionRef"
 			:data-slice-type="slice.slice_type"
 			:data-slice-variation="slice.variation">
-			<h2 class="big-title">{{ page?.data.title }}</h2>
+			<h2
+				class="big-title"
+				ref="titleRef">
+				{{ page?.data.title }}
+			</h2>
 
 			<div
 				class="marquee"
-				ref="marquee">
+				ref="cardsRef">
 				<!-- First pass -->
 				<div class="cards marquee__content">
 					<PrismicLink

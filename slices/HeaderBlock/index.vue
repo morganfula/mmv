@@ -50,8 +50,6 @@
 		padding-top: calc($default-gap * 3);
 		background-color: $color-white;
 
-		@include test;
-
 		@include media('<phone') {
 			min-height: 100%;
 

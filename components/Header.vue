@@ -6,7 +6,9 @@
 			<Logo />
 		</NuxtLink>
 
-		<div class="menu-wrap">
+		<div
+			class="menu-wrap"
+			@click="general.isNavOpen = !general.isNavOpen">
 			<div class="menu">
 				<MenuButton />
 			</div>
@@ -17,6 +19,13 @@
 <script setup>
 	import { onMounted, onBeforeUnmount } from 'vue';
 	const settings = useSettings();
+
+	watch(
+		() => general.isNavOpen,
+		val => {
+			toggleMenu(val);
+		}
+	);
 </script>
 
 <style lang="scss" scoped>

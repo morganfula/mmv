@@ -1,4 +1,5 @@
 <script setup lang="ts">
+	import { ref, onMounted } from 'vue';
 	import type { Content } from '@prismicio/client';
 
 	// The array passed to `getSliceComponentProps` is purely optional.
@@ -11,16 +12,60 @@
 			'context',
 		])
 	);
+
+	const sectionRef = ref<HTMLElement | null>(null);
+	const titleRef = ref<HTMLElement | null>(null);
+	const cardsRef = ref<HTMLElement | null>(null);
+
+	onMounted(() => {
+		// register the plugin
+		gsap.registerPlugin(gsap.ScrollTrigger);
+
+		const triggerOpts = {
+			trigger: sectionRef.value,
+			start: 'top 80%',
+			toggleActions: 'play none none none',
+		};
+
+		// build one timeline tied to scroll
+		const tl = gsap.timeline({
+			scrollTrigger: triggerOpts,
+		});
+
+		// 1) title fades/slides in over 1s
+		tl.from(titleRef.value, {
+			y: 50,
+			opacity: 0,
+			duration: 0.6,
+			ease: 'power4.out',
+		});
+
+		// 2) link only starts after the above finishes
+		tl.from(
+			cardsRef.value,
+			{
+				y: 30,
+				opacity: 0,
+				duration: 0.8,
+				delay: 0.3,
+				ease: 'power4.out',
+				stagger: 0.1,
+			},
+			'<'
+		);
+	});
 </script>
 
 <template>
 	<Bounded as="div">
 		<section
+			ref="sectionRef"
 			:data-slice-type="slice.slice_type"
 			:data-slice-variation="slice.variation">
 			<div
 				v-if="slice.primary.title"
-				class="titles">
+				class="titles"
+				ref="titleRef">
 				<h3 class="h1 big-title">
 					{{ slice.primary.title }}
 				</h3>
@@ -29,6 +74,7 @@
 
 			<div
 				class="cards"
+				ref="cardsRef"
 				:class="{ news: slice.variation === 'news' }">
 				<ProjectCard
 					v-if="slice.variation === 'default'"

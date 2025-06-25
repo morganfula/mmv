@@ -1,15 +1,6 @@
-<script setup>
-	watch(
-		() => general.isNavOpen,
-		val => {
-			toggleMenu(val);
-		}
-	);
-</script>
+<script setup></script>
 <template>
-	<div
-		class="burger"
-		@click="general.isNavOpen = !general.isNavOpen">
+	<div class="burger">
 		<div class="burger__line1"></div>
 		<div class="burger__line2"></div>
 		<!-- <div class="burger__line3"></div> -->

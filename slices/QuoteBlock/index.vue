@@ -1,9 +1,28 @@
-<script setup lang="ts">
-	import type { Content } from '@prismicio/client';
-	import Bounded from '~/components/Bounded.vue';
+<template>
+	<Bounded as="div">
+		<section
+			ref="sectionRef"
+			:data-slice-type="slice.slice_type"
+			:data-slice-variation="slice.variation">
+			<div
+				class="title"
+				ref="titleRef">
+				{{ slice.primary.title }}
+			</div>
+			<PrismicLink
+				class="link"
+				:field="slice.primary.link"
+				ref="linkRef" />
+		</section>
+	</Bounded>
+</template>
 
-	// The array passed to `getSliceComponentProps` is purely optional.
-	// Consider it as a visual hint for you when templating your slice.
+<script setup lang="ts">
+	import { ref, onMounted } from 'vue';
+	import { getSliceComponentProps, PrismicLink } from '@prismicio/vue';
+	import type { Content } from '@prismicio/client';
+
+	// get your slice props
 	defineProps(
 		getSliceComponentProps<Content.QuoteBlockSlice>([
 			'slice',
@@ -12,22 +31,48 @@
 			'context',
 		])
 	);
-</script>
 
-<template>
-	<Bounded as="div">
-		<section
-			:data-slice-type="slice.slice_type"
-			:data-slice-variation="slice.variation">
-			<div class="title">
-				{{ slice.primary.title }}
-			</div>
-			<PrismicLink
-				class="link"
-				:field="slice.primary.link" />
-		</section>
-	</Bounded>
-</template>
+	// element refs
+	const sectionRef = ref<HTMLElement | null>(null);
+	const titleRef = ref<HTMLElement | null>(null);
+	const linkRef = ref<HTMLElement | null>(null);
+
+	onMounted(() => {
+		// register the plugin
+		gsap.registerPlugin(gsap.ScrollTrigger);
+
+		const triggerOpts = {
+			trigger: sectionRef.value,
+			start: 'top 50%',
+			toggleActions: 'play none none none',
+		};
+
+		// build one timeline tied to scroll
+		const tl = gsap.timeline({
+			scrollTrigger: triggerOpts,
+		});
+
+		// 1) title fades/slides in over 1s
+		tl.from(titleRef.value, {
+			y: 50,
+			opacity: 0,
+			duration: 1,
+			ease: 'power4.out',
+		});
+
+		// 2) link only starts after the above finishes
+		tl.from(
+			linkRef.value,
+			{
+				y: 30,
+				opacity: 0,
+				duration: 0.8,
+				ease: 'power4.out',
+			},
+			'>'
+		);
+	});
+</script>
 
 <style lang="scss" scoped>
 	section {
@@ -39,7 +84,6 @@
 
 		@include media('<phone') {
 			display: block;
-
 			padding: calc($default-gap * 5) 0;
 		}
 	}
@@ -50,7 +94,7 @@
 	}
 
 	.title {
-		grid-column: 2 /12;
+		grid-column: 2 / 12;
 		font-size: 8vw;
 		line-height: 1;
 		text-transform: uppercase;
@@ -66,7 +110,7 @@
 	.link {
 		align-self: start;
 		margin-top: $default-gap;
-		grid-column: 2 /12;
+		grid-column: 2 / 12;
 		grid-row-start: 2;
 		width: max-content;
 

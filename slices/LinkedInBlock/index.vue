@@ -1,4 +1,5 @@
 <script setup lang="ts">
+	import { ref, onMounted } from 'vue';
 	import type { Content } from '@prismicio/client';
 	import { getSliceComponentProps } from '@prismicio/vue';
 
@@ -63,20 +64,66 @@
 			title: decodeHtml(decodeHtml(p.title)),
 		}));
 	});
+
+	const sectionRef = ref<HTMLElement | null>(null);
+	const titleRef = ref<HTMLElement | null>(null);
+	const cardsRef = ref<HTMLElement | null>(null);
+
+	onMounted(() => {
+		// register the plugin
+		gsap.registerPlugin(gsap.ScrollTrigger);
+
+		const triggerOpts = {
+			trigger: sectionRef.value,
+			start: 'top 80%',
+			toggleActions: 'play none none none',
+		};
+
+		// build one timeline tied to scroll
+		const tl = gsap.timeline({
+			scrollTrigger: triggerOpts,
+		});
+
+		// 1) title fades/slides in over 1s
+		tl.from(titleRef.value, {
+			y: 50,
+			opacity: 0,
+			duration: 0.6,
+			ease: 'power4.out',
+		});
+
+		// 2) link only starts after the above finishes
+		tl.from(
+			cardsRef.value,
+			{
+				y: 30,
+				opacity: 0,
+				duration: 0.8,
+				delay: 0.3,
+				ease: 'power4.out',
+			},
+			'<'
+		);
+	});
 </script>
 
 <template>
 	<section
 		class="section"
+		ref="sectionRef"
 		:data-slice-type="slice.slice_type"
 		:data-slice-variation="slice.variation">
 		<Bounded as="div">
-			<div class="titles">
+			<div
+				class="titles"
+				ref="titleRef">
 				<h3 class="h1 big-title">{{ slice.primary.title }}</h3>
 				<h4 class="p1--black subtitle">{{ slice.primary.subtitle }}</h4>
 			</div>
 
-			<div class="cards">
+			<div
+				class="cards"
+				ref="cardsRef">
 				<a
 					v-for="p in previews"
 					:key="p.url"
@@ -98,7 +145,7 @@
 
 <style lang="scss" scoped>
 	section {
-		padding: $default-gap 0;
+		padding: calc($default-gap / 2) 0;
 		background: #e7f0f9;
 	}
 
@@ -112,7 +159,7 @@
 		justify-content: space-between;
 		align-items: end;
 
-		margin-bottom: calc($default-gap * 2);
+		margin-bottom: calc($default-gap);
 	}
 
 	.subtitle {
@@ -128,7 +175,7 @@
 		grid-template-columns: repeat(3, 1fr);
 		grid-auto-rows: min-content;
 		gap: calc($default-gap / 2);
-		padding-bottom: calc($default-gap * 2);
+		padding-bottom: calc($default-gap);
 
 		@include media('<phone') {
 			grid-template-columns: 1fr;
