@@ -23,6 +23,7 @@
 	const sectionRef = ref<HTMLElement | null>(null);
 	const titleRef = ref<HTMLElement | null>(null);
 	const cardsRef = ref<HTMLElement | null>(null);
+	const cardRef = ref<HTMLElement | null>(null);
 
 	onMounted(() => {
 		// register the plugin
@@ -79,7 +80,9 @@
 				class="marquee"
 				ref="cardsRef">
 				<!-- First pass -->
-				<div class="cards marquee__content">
+				<div
+					class="cards marquee__content"
+					ref="cardRef">
 					<PrismicLink
 						v-for="(item, i) in page?.data.items"
 						:key="i"
