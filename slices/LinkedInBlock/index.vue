@@ -1,5 +1,6 @@
 <script setup lang="ts">
-	import { decode } from 'he';
+	import * as he from 'he';
+	const decode = he.decode;
 	import type { Content } from '@prismicio/client';
 
 	// The array passed to `getSliceComponentProps` is purely optional.
