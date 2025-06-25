@@ -185,6 +185,7 @@
 		border-radius: 30px;
 		background: #111;
 		color: #fff;
+		cursor: pointer;
 	}
 
 	.dark-mode button {

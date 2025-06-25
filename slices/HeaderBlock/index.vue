@@ -1,17 +1,17 @@
 <script setup lang="ts">
 	import type { Content } from '@prismicio/client';
 
-	watch(
-		() => [general.isTransitionFinish, general.isPreloaderVisible],
-		([transitionFinish, preloaderVisibility]) => {
-			if (transitionFinish && !preloaderVisibility) {
-				ScrollTrigger.create({
-					trigger: '.title__block',
-					animation: useAnimateText('.title__block'),
-				});
-			}
-		}
-	);
+	// watch(
+	// 	() => [general.isTransitionFinish, general.isPreloaderVisible],
+	// 	([transitionFinish, preloaderVisibility]) => {
+	// 		if (transitionFinish && !preloaderVisibility) {
+	// 			ScrollTrigger.create({
+	// 				trigger: '.title__block',
+	// 				animation: useAnimateText('.title__block'),
+	// 			});
+	// 		}
+	// 	}
+	// );
 
 	// The array passed to `getSliceComponentProps` is purely optional.
 	// Consider it as a visual hint for you when templating your slice.
