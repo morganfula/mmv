@@ -1,6 +1,14 @@
 <script setup lang="ts">
+	import { onMounted } from 'vue';
+
 	import { useTheme } from '@/composables/useTheme';
 	const { theme, toggle } = useTheme();
+
+	onMounted(() => {
+		if (theme.value !== 'light') {
+			toggle();
+		}
+	});
 </script>
 
 <template>
