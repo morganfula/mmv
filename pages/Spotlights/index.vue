@@ -18,8 +18,8 @@
 	definePageMeta(transition);
 
 	const prismic = usePrismic();
-	const { data: page } = useAsyncData('[services]', () =>
-		prismic.client.getSingle('services', {
+	const { data: page } = useAsyncData('[spotlights]', () =>
+		prismic.client.getSingle('spotlights', {
 			fetchLinks: [
 				'portfolioitem.title',
 				'portfolioitem.description',

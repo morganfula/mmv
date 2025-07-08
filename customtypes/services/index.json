@@ -18,6 +18,9 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "selector": {
+              "type": "SharedSlice"
+            },
             "clients_block": {
               "type": "SharedSlice"
             },
@@ -25,9 +28,6 @@
               "type": "SharedSlice"
             },
             "contact_block": {
-              "type": "SharedSlice"
-            },
-            "portfolio_block": {
               "type": "SharedSlice"
             },
             "header_block": {

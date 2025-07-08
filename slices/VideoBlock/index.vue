@@ -18,7 +18,9 @@
 		:data-slice-type="slice.slice_type"
 		:data-slice-variation="slice.variation">
 		<div class="video-wrap">
-			<VimeoBackground :video-url="slice.primary.video.url" />
+			<VimeoBackground
+				:video-url="slice.primary.video.url"
+				:controls="true" />
 		</div>
 	</section>
 </template>

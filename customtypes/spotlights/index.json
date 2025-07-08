@@ -1,0 +1,41 @@
+{
+  "format": "custom",
+  "id": "spotlights",
+  "label": "Spotlights",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "title": {
+        "type": "Text",
+        "config": {
+          "label": "Title",
+          "placeholder": ""
+        }
+      },
+      "slices": {
+        "type": "Slices",
+        "fieldset": "Slice Zone",
+        "config": {
+          "choices": {
+            "project_text": {
+              "type": "SharedSlice"
+            },
+            "clients_block": {
+              "type": "SharedSlice"
+            },
+            "contact_block": {
+              "type": "SharedSlice"
+            },
+            "header_block": {
+              "type": "SharedSlice"
+            },
+            "selector": {
+              "type": "SharedSlice"
+            }
+          }
+        }
+      }
+    }
+  }
+}

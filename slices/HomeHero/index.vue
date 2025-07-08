@@ -25,7 +25,8 @@
 		<div class="video-wrap">
 			<VimeoBackground
 				class="video"
-				:video-url="slice.primary.video.url" />
+				:video-url="slice.primary.video.url"
+				:controls="false" />
 		</div>
 	</section>
 </template>
@@ -90,5 +91,9 @@
 			width: 100%;
 			aspect-ratio: 16/9;
 		}
+	}
+
+	.video-background iframe {
+		pointer-events: none !important;
 	}
 </style>

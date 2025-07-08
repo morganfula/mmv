@@ -89,6 +89,7 @@
 		display: grid;
 		grid-template-columns: repeat(12, 1fr);
 		grid-template-rows: 1fr 0.7fr;
+		gap: 0 $default-gap;
 
 		@include media('<phone') {
 			padding: calc($default-gap * 2) 0;
@@ -104,7 +105,7 @@
 	}
 
 	.link-1 {
-		grid-area: 1 / 1 / 2 / 2;
+		grid-area: 1 / 1 / 2 / 3;
 
 		@include media('<phone') {
 			grid-area: 4 / 1 / 5 / 4;
@@ -119,7 +120,7 @@
 	}
 
 	.link-3 {
-		grid-area: 1 / 3 / 2 / 4;
+		grid-area: 1 / 3 / 2 / 6;
 
 		@include media('<phone') {
 			display: none;

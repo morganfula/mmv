@@ -21,15 +21,6 @@
 		}
 	);
 
-	const links = [
-		{ href: '/', text: 'home' },
-		{ href: '/news', text: 'News' },
-		{ href: '/portfolio', text: 'Portfolio' },
-		{ href: '/projects', text: 'Projects' },
-		{ href: '/contact', text: 'contact' },
-		{ href: '/about', text: 'about' },
-	];
-
 	// REFS
 	const navbar = ref();
 	const navLink = ref([]);
@@ -190,5 +181,9 @@
 				background: $color-white;
 			}
 		}
+	}
+
+	.set {
+		color: whitesmoke;
 	}
 </style>

@@ -691,6 +691,104 @@ interface NewsDocumentData {
 export type NewsDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithoutUID<Simplify<NewsDocumentData>, "news", Lang>;
 
+type PortfolioitemDocumentDataSlicesSlice = VideoBlockSlice;
+
+/**
+ * Content for PortfolioItem documents
+ */
+interface PortfolioitemDocumentData {
+  /**
+   * Title field in *PortfolioItem*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: portfolioitem.title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Description field in *PortfolioItem*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: portfolioitem.description
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  description: prismic.RichTextField;
+
+  /**
+   * Image field in *PortfolioItem*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: portfolioitem.image
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * Slice Zone field in *PortfolioItem*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: portfolioitem.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<PortfolioitemDocumentDataSlicesSlice> /**
+   * Meta Title field in *PortfolioItem*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: portfolioitem.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_title: prismic.KeyTextField;
+
+  /**
+   * Meta Description field in *PortfolioItem*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: portfolioitem.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *PortfolioItem*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: portfolioitem.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+}
+
+/**
+ * PortfolioItem document from Prismic
+ *
+ * - **API ID**: `portfolioitem`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type PortfolioitemDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<PortfolioitemDocumentData>,
+    "portfolioitem",
+    Lang
+  >;
+
 /**
  * Content for privacy documents
  */
@@ -893,10 +991,10 @@ export type ProjectsDocument<Lang extends string = string> =
   >;
 
 type ServicesDocumentDataSlicesSlice =
+  | SelectorSlice
   | ClientsBlockSlice
   | QuoteBlockSlice
   | ContactBlockSlice
-  | PortfolioBlockSlice
   | HeaderBlockSlice;
 
 /**
@@ -1075,6 +1173,56 @@ export type SettingsDocument<Lang extends string = string> =
     Lang
   >;
 
+type SpotlightsDocumentDataSlicesSlice =
+  | ProjectTextSlice
+  | ClientsBlockSlice
+  | ContactBlockSlice
+  | HeaderBlockSlice
+  | SelectorSlice;
+
+/**
+ * Content for Spotlights documents
+ */
+interface SpotlightsDocumentData {
+  /**
+   * Title field in *Spotlights*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: spotlights.title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Slice Zone field in *Spotlights*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: spotlights.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<SpotlightsDocumentDataSlicesSlice>;
+}
+
+/**
+ * Spotlights document from Prismic
+ *
+ * - **API ID**: `spotlights`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type SpotlightsDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<SpotlightsDocumentData>,
+    "spotlights",
+    Lang
+  >;
+
 /**
  * Content for Team documents
  */
@@ -1150,11 +1298,13 @@ export type AllDocumentTypes =
   | HomeDocument
   | NewDocument
   | NewsDocument
+  | PortfolioitemDocument
   | PrivacyDocument
   | ProjectDocument
   | ProjectsDocument
   | ServicesDocument
   | SettingsDocument
+  | SpotlightsDocument
   | TeamDocument;
 
 /**
@@ -2349,6 +2499,76 @@ export type QuoteBlockSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Item in *Selector → Default → Primary → Items*
+ */
+export interface SelectorSliceDefaultPrimaryItemsItem {
+  /**
+   * Item field in *Selector → Default → Primary → Items*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: selector.default.primary.items[].item
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  item: prismic.ContentRelationshipField<"portfolioitem">;
+}
+
+/**
+ * Primary content in *Selector → Default → Primary*
+ */
+export interface SelectorSliceDefaultPrimary {
+  /**
+   * Title field in *Selector → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: selector.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Items field in *Selector → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: selector.default.primary.items[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  items: prismic.GroupField<Simplify<SelectorSliceDefaultPrimaryItemsItem>>;
+}
+
+/**
+ * Default variation for Selector Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type SelectorSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<SelectorSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *Selector*
+ */
+type SelectorSliceVariation = SelectorSliceDefault;
+
+/**
+ * Selector Shared Slice
+ *
+ * - **API ID**: `selector`
+ * - **Description**: Selector
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type SelectorSlice = prismic.SharedSlice<
+  "selector",
+  SelectorSliceVariation
+>;
+
+/**
  * Item in *TeamBlock → Default → Primary → Items*
  */
 export interface TeamBlockSliceDefaultPrimaryItemsItem {
@@ -2507,6 +2727,9 @@ declare module "@prismicio/client" {
       NewsDocument,
       NewsDocumentData,
       NewsDocumentDataSlicesSlice,
+      PortfolioitemDocument,
+      PortfolioitemDocumentData,
+      PortfolioitemDocumentDataSlicesSlice,
       PrivacyDocument,
       PrivacyDocumentData,
       ProjectDocument,
@@ -2521,6 +2744,9 @@ declare module "@prismicio/client" {
       SettingsDocument,
       SettingsDocumentData,
       SettingsDocumentDataNavigationItem,
+      SpotlightsDocument,
+      SpotlightsDocumentData,
+      SpotlightsDocumentDataSlicesSlice,
       TeamDocument,
       TeamDocumentData,
       AllDocumentTypes,
@@ -2602,6 +2828,11 @@ declare module "@prismicio/client" {
       QuoteBlockSliceDefaultPrimary,
       QuoteBlockSliceVariation,
       QuoteBlockSliceDefault,
+      SelectorSlice,
+      SelectorSliceDefaultPrimaryItemsItem,
+      SelectorSliceDefaultPrimary,
+      SelectorSliceVariation,
+      SelectorSliceDefault,
       TeamBlockSlice,
       TeamBlockSliceDefaultPrimaryItemsItem,
       TeamBlockSliceDefaultPrimary,

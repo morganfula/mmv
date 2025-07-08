@@ -30,6 +30,7 @@ export const components = defineSliceZoneComponents({
     () => import("./ProjectsBlock/index.vue"),
   ),
   quote_block: defineAsyncComponent(() => import("./QuoteBlock/index.vue")),
+  selector: defineAsyncComponent(() => import("./Selector/index.vue")),
   team_block: defineAsyncComponent(() => import("./TeamBlock/index.vue")),
   video_block: defineAsyncComponent(() => import("./VideoBlock/index.vue")),
 });
