@@ -37,7 +37,7 @@
 		tl.from(arrowRef.value, {
 			y: 50,
 			opacity: 0,
-			duration: 0.6,
+			duration: 1.6,
 			ease: 'power4.out',
 		});
 
@@ -45,10 +45,10 @@
 		tl.from(
 			titleRef.value,
 			{
-				y: 30,
+				y: 50,
 				opacity: 0,
-				duration: 0.8,
-				delay: 0.3,
+				duration: 1.6,
+				delay: 0.6,
 				ease: 'power4.out',
 			},
 			'<'
@@ -59,7 +59,7 @@
 			{
 				y: 30,
 				opacity: 0,
-				duration: 0.8,
+				duration: 1.6,
 				delay: 0.3,
 				ease: 'power4.out',
 			},

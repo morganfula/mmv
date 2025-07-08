@@ -44,7 +44,7 @@
 		tl.from(titleRef.value, {
 			y: 50,
 			opacity: 0,
-			duration: 0.6,
+			duration: 1.6,
 			ease: 'power4.out',
 		});
 
@@ -54,8 +54,8 @@
 			{
 				y: 30,
 				opacity: 0,
-				duration: 0.8,
-				delay: 0.3,
+				duration: 1.2,
+				delay: 0.8,
 				ease: 'power4.out',
 				stagger: 0.1,
 			},

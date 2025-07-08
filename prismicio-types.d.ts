@@ -691,7 +691,11 @@ interface NewsDocumentData {
 export type NewsDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithoutUID<Simplify<NewsDocumentData>, "news", Lang>;
 
-type PortfolioitemDocumentDataSlicesSlice = VideoBlockSlice;
+type PortfolioitemDocumentDataSlicesSlice =
+  | QuoteBlockSlice
+  | ProjectTitleSlice
+  | ClientsBlockSlice
+  | VideoBlockSlice;
 
 /**
  * Content for PortfolioItem documents

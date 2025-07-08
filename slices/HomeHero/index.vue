@@ -92,8 +92,4 @@
 			aspect-ratio: 16/9;
 		}
 	}
-
-	.video-background iframe {
-		pointer-events: none !important;
-	}
 </style>
