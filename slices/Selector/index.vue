@@ -86,6 +86,10 @@
 			gap: 2rem;
 			padding: $default-gap;
 			list-style: none;
+
+			@include media('<phone') {
+				gap: 18px;
+			}
 			// justify-content: center;
 
 			.menu-item {
@@ -97,10 +101,20 @@
 				text-transform: capitalize;
 				transition: $default-transition;
 
+				@include media('<phone') {
+					font-size: 8vw;
+					color: rgba($color-white, 1);
+				}
+
 				&:hover {
 					color: rgba($color-white, 1);
 				}
 			}
+		}
+
+		@include media('<phone') {
+			min-height: 60svh;
+			height: 60svh;
 		}
 	}
 </style>

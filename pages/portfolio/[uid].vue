@@ -7,13 +7,10 @@
 				<div class="title">
 					{{ page?.data.title }}
 				</div>
-			</Bounded>
-
-			<Bounded
-				as="section"
-				class="text">
-				<div class="description p1--black">
-					<PrismicRichText :field="page?.data.description" />
+				<div class="text">
+					<div class="description p1--black">
+						<PrismicRichText :field="page?.data.description" />
+					</div>
 				</div>
 			</Bounded>
 
@@ -57,7 +54,7 @@
 <style lang="scss" scoped>
 	section {
 		background-color: $color-white;
-		padding-bottom: calc($default-gap * 4);
+		padding-bottom: $default-gap;
 	}
 
 	.dark-mode section {
@@ -67,7 +64,7 @@
 
 	.title {
 		padding-top: calc($default-gap * 4);
-		// padding-bottom: $default-gap;
+		padding-bottom: $default-gap;
 		font-variation-settings: 'wght' 440;
 		text-transform: uppercase;
 		line-height: 1;

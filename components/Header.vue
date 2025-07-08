@@ -46,6 +46,10 @@
 		// background: $color-black;
 		// backdrop-filter: blur(10px);
 		// filter: invert(50%);
+
+		@include media('<phone') {
+			align-items: center;
+		}
 	}
 
 	.menu-wrap {

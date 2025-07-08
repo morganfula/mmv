@@ -47,7 +47,7 @@
 			inset: 0;
 			width: 100%;
 			height: 100%;
-			pointer-events: none; /* blocage par défaut */
+			pointer-events: none !important; /* blocage par défaut */
 		}
 
 		/* quand on a la classe controls-active SUR LE CONTENEUR, on autorise l’interaction */
