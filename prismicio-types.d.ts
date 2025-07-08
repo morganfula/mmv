@@ -777,7 +777,12 @@ interface ProjectDocumentData {
    * - **Tab**: Main
    * - **Documentation**: https://prismic.io/docs/field#select
    */
-  category: prismic.SelectField<"Live Perfomances" | "Music Videos">;
+  category: prismic.SelectField<
+    | "Live Perfomances"
+    | "Music Videos"
+    | "Live Recordings"
+    | "Live Sessions / Music Capture"
+  >;
 
   /**
    * Slice Zone field in *Project*
@@ -1071,21 +1076,6 @@ export type SettingsDocument<Lang extends string = string> =
   >;
 
 /**
- * Item in *Team → Socials*
- */
-export interface TeamDocumentDataSocialsItem {
-  /**
-   * Link field in *Team → Socials*
-   *
-   * - **Field Type**: Link
-   * - **Placeholder**: Linked In Url
-   * - **API ID Path**: team.socials[].link
-   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
-   */
-  link: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
-}
-
-/**
  * Content for Team documents
  */
 interface TeamDocumentData {
@@ -1112,15 +1102,32 @@ interface TeamDocumentData {
   photo: prismic.ImageField<never>;
 
   /**
-   * Socials field in *Team*
+   * Job Title field in *Team*
    *
-   * - **Field Type**: Group
+   * - **Field Type**: Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: team.socials[]
+   * - **API ID Path**: team.job_title
    * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#group
+   * - **Documentation**: https://prismic.io/docs/field#key-text
    */
-  socials: prismic.GroupField<Simplify<TeamDocumentDataSocialsItem>>;
+  job_title: prismic.KeyTextField;
+
+  /**
+   * LinkedIn URL field in *Team*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: team.linkedin_url
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  linkedin_url: prismic.LinkField<
+    string,
+    string,
+    unknown,
+    prismic.FieldState,
+    never
+  >;
 }
 
 /**
@@ -2516,7 +2523,6 @@ declare module "@prismicio/client" {
       SettingsDocumentDataNavigationItem,
       TeamDocument,
       TeamDocumentData,
-      TeamDocumentDataSocialsItem,
       AllDocumentTypes,
       AddressBlockSlice,
       AddressBlockSliceDefaultPrimary,

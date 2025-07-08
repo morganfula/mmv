@@ -27,24 +27,22 @@
           "thumbnails": []
         }
       },
-      "socials": {
-        "type": "Group",
+      "job_title": {
+        "type": "Text",
         "config": {
-          "label": "Socials",
-          "repeat": true,
-          "fields": {
-            "link": {
-              "type": "Link",
-              "config": {
-                "label": "Link",
-                "placeholder": "Linked In Url",
-                "select": null,
-                "allowTargetBlank": false,
-                "allowText": false,
-                "repeat": false
-              }
-            }
-          }
+          "label": "Job Title",
+          "placeholder": ""
+        }
+      },
+      "linkedin_url": {
+        "type": "Link",
+        "config": {
+          "label": "LinkedIn URL",
+          "placeholder": "",
+          "select": null,
+          "allowTargetBlank": true,
+          "allowText": false,
+          "repeat": false
         }
       }
     }

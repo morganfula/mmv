@@ -83,7 +83,7 @@
 	.nav {
 		height: 100svh;
 		padding-top: calc($default-gap * 2);
-		padding-left: $default-gap;
+		// padding-left: $default-gap;
 		overflow: hidden;
 		list-style-type: none;
 
@@ -109,6 +109,7 @@
 		line-height: 1.1;
 		text-transform: capitalize;
 		display: inline-flex;
+		transition: $default-transition;
 
 		@include media('<phone') {
 			font-size: 14vw;
@@ -123,6 +124,17 @@
 		top: 0;
 		left: 0;
 		width: 100%;
+
+		transition: $default-transition;
+	}
+
+	.nav__item:hover {
+		background: $color-white;
+		border-radius: 100px;
+	}
+
+	.nav__item:hover .nav__link {
+		color: $color-black;
 	}
 
 	.theme-toggle {
