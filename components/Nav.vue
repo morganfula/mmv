@@ -96,8 +96,8 @@
 		color: $color-white;
 		text-decoration: none;
 		cursor: pointer;
-		font-size: 5vw;
-		line-height: 1.1;
+		font-size: 4vw;
+		line-height: 1;
 		text-transform: capitalize;
 		display: inline-flex;
 		transition: $default-transition;
@@ -108,7 +108,7 @@
 	}
 
 	.nav__item {
-		padding: 16px 0;
+		padding: 12px 0;
 		text-align: center;
 		// position: absolute;
 		z-index: 1;

@@ -21,6 +21,24 @@
         }
       },
       "items": {}
+    },
+    {
+      "id": "leftAlign",
+      "name": "Left Align",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "Title",
+            "placeholder": ""
+          }
+        }
+      },
+      "items": {}
     }
   ]
 }

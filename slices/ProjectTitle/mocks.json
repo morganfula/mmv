@@ -10,5 +10,22 @@
 			}
 		},
 		"items": []
+	},
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "leftAlign",
+		"primary": {
+			"title": {
+				"__TYPE__": "FieldContent",
+				"value": "dish",
+				"type": "Text"
+			}
+		},
+		"items": [
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": []
+			}
+		]
 	}
 ]

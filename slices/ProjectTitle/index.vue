@@ -18,7 +18,9 @@
 		<section
 			:data-slice-type="slice.slice_type"
 			:data-slice-variation="slice.variation">
-			<h2 class="h1 title">
+			<h2
+				class="h1 title"
+				:class="{ leftAlign: slice.variation === 'leftAlign' }">
 				{{ slice.primary.title }}
 			</h2>
 		</section>
@@ -43,5 +45,10 @@
 
 	.title {
 		grid-column: 6/13;
+	}
+
+	.title.leftAlign {
+		padding-top: $default-gap;
+		grid-column: 1/13;
 	}
 </style>

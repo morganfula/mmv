@@ -2401,9 +2401,39 @@ export type ProjectTitleSliceDefault = prismic.SharedSliceVariation<
 >;
 
 /**
+ * Primary content in *ProjectTitle → Left Align → Primary*
+ */
+export interface ProjectTitleSliceLeftAlignPrimary {
+  /**
+   * Title field in *ProjectTitle → Left Align → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project_title.leftAlign.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+}
+
+/**
+ * Left Align variation for ProjectTitle Slice
+ *
+ * - **API ID**: `leftAlign`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ProjectTitleSliceLeftAlign = prismic.SharedSliceVariation<
+  "leftAlign",
+  Simplify<ProjectTitleSliceLeftAlignPrimary>,
+  never
+>;
+
+/**
  * Slice variation for *ProjectTitle*
  */
-type ProjectTitleSliceVariation = ProjectTitleSliceDefault;
+type ProjectTitleSliceVariation =
+  | ProjectTitleSliceDefault
+  | ProjectTitleSliceLeftAlign;
 
 /**
  * ProjectTitle Shared Slice
@@ -2823,8 +2853,10 @@ declare module "@prismicio/client" {
       ProjectTextSliceDefault,
       ProjectTitleSlice,
       ProjectTitleSliceDefaultPrimary,
+      ProjectTitleSliceLeftAlignPrimary,
       ProjectTitleSliceVariation,
       ProjectTitleSliceDefault,
+      ProjectTitleSliceLeftAlign,
       ProjectsBlockSlice,
       ProjectsBlockSliceVariation,
       ProjectsBlockSliceDefault,
