@@ -26,7 +26,8 @@
 			<VimeoBackground
 				class="video"
 				:video-url="slice.primary.video.url"
-				:controls="false" />
+				:controls="false"
+				:zoomed="true" />
 		</div>
 	</section>
 </template>

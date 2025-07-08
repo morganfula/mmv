@@ -12,7 +12,7 @@
 
 		tl.to(percentage, {
 			progress: 100,
-			duration: 3,
+			duration: 1.6,
 			onUpdate() {
 				percentage.value = Math.floor(percentage.progress);
 			},

@@ -5,6 +5,7 @@
 		v-if="embedUrl">
 		<iframe
 			:src="embedUrl"
+			:class="{ zoomed: zoomed }"
 			frameborder="0"
 			allow="autoplay; fullscreen; picture-in-picture"
 			allowfullscreen></iframe>
@@ -18,6 +19,7 @@
 	const props = defineProps({
 		videoUrl: { type: String, required: true },
 		controls: { type: Boolean, default: false },
+		zoomed: { type: Boolean, default: false },
 	});
 
 	const showControls = toRef(props, 'controls');
@@ -41,5 +43,10 @@
 		&.controls-active iframe {
 			pointer-events: auto; /* autoriser l’interaction si controls=true */
 		}
+	}
+
+	.zoomed {
+		@include test;
+		transform: scale(1.5);
 	}
 </style>
