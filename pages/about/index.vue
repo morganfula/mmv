@@ -20,7 +20,12 @@
 	const prismic = usePrismic();
 	const { data: page } = useAsyncData('[about]', () =>
 		prismic.client.getSingle('about', {
-			fetchLinks: ['team.name', 'team.photo'],
+			fetchLinks: [
+				'team.name',
+				'team.photo',
+				'team.job_title',
+				'team.linkedin_url',
+			],
 		})
 	);
 

@@ -19,6 +19,13 @@
             "placeholder": ""
           }
         },
+        "position": {
+          "type": "Text",
+          "config": {
+            "label": "Position",
+            "placeholder": ""
+          }
+        },
         "items": {
           "type": "Group",
           "config": {
@@ -28,7 +35,7 @@
               "team_member": {
                 "type": "Link",
                 "config": {
-                  "label": "Team member",
+                  "label": "Team Member",
                   "select": "document",
                   "repeat": false,
                   "customtypes": [

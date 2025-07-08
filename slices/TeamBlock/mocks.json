@@ -8,6 +8,11 @@
 				"value": "heavy",
 				"type": "Text"
 			},
+			"position": {
+				"__TYPE__": "FieldContent",
+				"value": "horse",
+				"type": "Text"
+			},
 			"items": {
 				"__TYPE__": "GroupContentType",
 				"value": [
@@ -18,7 +23,7 @@
 								"team_member",
 								{
 									"__TYPE__": "LinkContent",
-									"key": "ee63adcb-8641-4311-a406-a900cd5b5938",
+									"key": "15502a52-f9bf-4b4c-8a4a-cf23bb7704ad",
 									"value": {
 										"__TYPE__": "DocumentLink",
 										"id": "mock_document_id"

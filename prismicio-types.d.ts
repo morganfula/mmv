@@ -2607,7 +2607,7 @@ export type SelectorSlice = prismic.SharedSlice<
  */
 export interface TeamBlockSliceDefaultPrimaryItemsItem {
   /**
-   * Team member field in *TeamBlock → Default → Primary → Items*
+   * Team Member field in *TeamBlock → Default → Primary → Items*
    *
    * - **Field Type**: Content Relationship
    * - **Placeholder**: *None*
@@ -2630,6 +2630,16 @@ export interface TeamBlockSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   title: prismic.KeyTextField;
+
+  /**
+   * Position field in *TeamBlock → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: team_block.default.primary.position
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  position: prismic.KeyTextField;
 
   /**
    * Items field in *TeamBlock → Default → Primary*

@@ -20,16 +20,20 @@
 			:data-slice-variation="slice.variation">
 			<h2 class="big-title">{{ slice.primary.title }}</h2>
 			<div class="team-wrap">
-				<div
+				<PrismicLink
 					class="card"
-					v-for="item in slice.primary.items">
+					v-for="item in slice.primary.items"
+					:field="item.team_member.data.linkedin_url">
 					<PrismicImage
 						class="image"
 						:field="item.team_member.data.photo" />
 					<div class="title p1--black">
 						{{ item.team_member.data.name }}
 					</div>
-				</div>
+					<div class="subtitle p1--black">
+						{{ item.team_member.data.job_title }}
+					</div>
+				</PrismicLink>
 			</div>
 		</section>
 	</Bounded>
@@ -58,6 +62,9 @@
 	.title {
 		margin-top: ($default-gap / 3);
 	}
+	.subtitle {
+		padding-top: 8px;
+	}
 	.team-wrap {
 		display: grid;
 		grid-template-columns: repeat(3, 1fr);
@@ -70,6 +77,12 @@
 	}
 
 	.card {
+		display: block;
+		transition: $default-transition;
+	}
+
+	.card:hover {
+		transform: translateY(-20px);
 	}
 
 	.image {
