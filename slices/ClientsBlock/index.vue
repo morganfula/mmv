@@ -173,8 +173,11 @@
 		}
 
 		@include media('<phone') {
-			margin-top: $default-gap;
+			padding-top: $default-gap;
 		}
+	}
+
+	.logo-wrap {
 	}
 
 	.marquee:hover .cards {
@@ -190,6 +193,7 @@
 
 		@include media('<phone') {
 			height: 100%;
+			width: 180px;
 		}
 	}
 
