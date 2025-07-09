@@ -9,7 +9,7 @@ gsap.registerPlugin(ScrollTrigger);
 export function animateTitleChars(el) {
 	return gsap.from(el, {
 		y: 140,
-		// opacity: 0,
+		opacity: 0,
 		delay: 0.6,
 		duration: 1.3,
 		ease: 'power4.out',
