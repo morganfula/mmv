@@ -1,4 +1,5 @@
 <script setup lang="ts">
+	import { ref, onMounted } from 'vue';
 	import type { Content } from '@prismicio/client';
 
 	// watch(
@@ -23,20 +24,64 @@
 			'context',
 		])
 	);
+
+	const sectionRef = ref<HTMLElement | null>(null);
+	const titleRef = ref<HTMLElement | null>(null);
+	const subtitleRef = ref<HTMLElement | null>(null);
+
+	onMounted(() => {
+		gsap.registerPlugin(gsap.ScrollTrigger);
+
+		const triggerOpts = {
+			trigger: sectionRef.value,
+			start: 'top 80%',
+			toggleActions: 'play none none none',
+		};
+
+		const tl = gsap.timeline({
+			scrollTrigger: triggerOpts,
+		});
+
+		tl.from(titleRef.value, {
+			y: 200,
+			// opacity: 0,
+
+			duration: 1.6,
+			ease: 'power4.out',
+		});
+
+		tl.from(
+			subtitleRef.value,
+			{
+				y: 30,
+				opacity: 0,
+				duration: 1.6,
+				delay: 0.3,
+				ease: 'power4.out',
+				stagger: 0.1,
+			},
+			'<'
+		);
+	});
 </script>
 
 <template>
 	<Bounded as="header">
 		<section
 			:data-slice-type="slice.slice_type"
-			:data-slice-variation="slice.variation">
+			:data-slice-variation="slice.variation"
+			ref="sectionRef">
 			<div class="title__wrap">
-				<h1 class="title title__block">
+				<h1
+					class="title title__block"
+					ref="titleRef">
 					{{ slice.primary.title }}
 				</h1>
 			</div>
 
-			<h2 class="subtitle p1--grey">
+			<h2
+				class="subtitle p1--grey"
+				ref="subtitleRef">
 				{{ slice.primary.subtitle }}
 			</h2>
 		</section>

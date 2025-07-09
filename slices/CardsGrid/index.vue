@@ -34,9 +34,9 @@
 
 		// 1) title fades/slides in over 1s
 		tl.from(titleRef.value, {
-			y: 50,
+			y: 30,
 			opacity: 0,
-			duration: 0.6,
+			duration: 1.6,
 			ease: 'power4.out',
 		});
 
@@ -46,7 +46,7 @@
 			{
 				y: 30,
 				opacity: 0,
-				duration: 0.8,
+				duration: 1.6,
 				delay: 0.3,
 				ease: 'power4.out',
 				stagger: 0.1,

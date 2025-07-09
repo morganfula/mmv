@@ -9,12 +9,14 @@ export function firstScreenAnimation({ parent }) {
 	tl.from(title, {
 		yPercent: 100,
 		opacity: 0,
+		duration: 1.2,
 		ease: 'power3.inOut',
 		clearProps: 'all',
 	});
 
 	tl.from(header, {
 		yPercent: -150,
+		duration: 1.2,
 		ease: 'power3.inOut',
 		clearProps: 'all',
 	});
