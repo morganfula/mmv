@@ -8,7 +8,7 @@
 
 		<div
 			class="menu-wrap"
-			@click="general.isNavOpen = !general.isNavOpen">
+			@click="handleMenu">
 			<div class="menu">
 				<MenuButton />
 			</div>
@@ -19,6 +19,11 @@
 <script setup>
 	import { onMounted, onBeforeUnmount } from 'vue';
 	const settings = useSettings();
+
+	function handleMenu() {
+		general.isNavOpen = !general.isNavOpen;
+		toggleMenu(general.isNavOpen);
+	}
 
 	watch(
 		() => general.isNavOpen,

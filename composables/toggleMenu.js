@@ -11,6 +11,7 @@ export function toggleMenu(params) {
 	if (params) {
 		tl = gsap.timeline({
 			paused: true,
+			reversed: true,
 			onComplete: () => clearStyles(),
 			onReverseComplete: () => clearStyles(),
 		});
