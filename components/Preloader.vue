@@ -18,7 +18,7 @@
 			},
 			onComplete() {
 				general.isPreloaderVisible = false;
-				general.scrollLenis.start();
+				// general.scrollLenis.start();
 			},
 		});
 

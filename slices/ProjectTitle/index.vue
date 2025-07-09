@@ -50,5 +50,9 @@
 	.title.leftAlign {
 		padding-top: $default-gap;
 		grid-column: 1/13;
+
+		@include media('<phone') {
+			font-size: 24px;
+		}
 	}
 </style>

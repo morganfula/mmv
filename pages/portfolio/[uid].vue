@@ -80,6 +80,10 @@
 	.text {
 		@include default-grid;
 		padding-bottom: $default-gap;
+
+		@include media('<phone') {
+			grid-template-columns: 1fr;
+		}
 	}
 
 	.description {

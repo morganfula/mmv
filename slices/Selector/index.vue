@@ -89,8 +89,8 @@
 
 			@include media('<phone') {
 				gap: 18px;
+				padding-top: 24px;
 			}
-			// justify-content: center;
 
 			.menu-item {
 				cursor: pointer;

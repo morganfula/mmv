@@ -24,9 +24,11 @@
 					class="card"
 					v-for="item in slice.primary.items"
 					:field="item.team_member.data.linkedin_url">
-					<PrismicImage
-						class="image"
-						:field="item.team_member.data.photo" />
+					<div class="image-wrap">
+						<PrismicImage
+							class="image"
+							:field="item.team_member.data.photo" />
+					</div>
 					<div class="title p1--black">
 						{{ item.team_member.data.name }}
 					</div>
@@ -61,6 +63,10 @@
 	}
 	.title {
 		margin-top: ($default-gap / 3);
+
+		@include media('<phone') {
+			padding-top: 8px;
+		}
 	}
 	.subtitle {
 		padding-top: 8px;
@@ -79,17 +85,39 @@
 	.card {
 		display: block;
 		transition: $default-transition;
+
+		@include media('<phone') {
+			padding-bottom: 32px;
+		}
 	}
 
-	.card:hover {
-		transform: translateY(-20px);
-	}
+	// .card:hover {
+	// 	transform: translateY(-20px);
+	// }
 
+	.image-wrap {
+		width: 100%;
+		height: 30vw;
+		position: relative;
+		min-width: 100%;
+		min-height: 100%;
+		overflow: hidden;
+
+		@include media('<phone') {
+			height: 300px;
+		}
+	}
 	.image {
-		width: auto;
-		height: auto;
+		position: absolute;
+		width: 100%;
 		min-width: 100%;
 		min-height: 100%;
 		object-fit: cover;
+		will-change: transform;
+		transition: $default-transition;
+	}
+
+	.card:hover .image {
+		transform: scale(1.025);
 	}
 </style>

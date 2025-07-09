@@ -2,18 +2,6 @@
 	import { ref, onMounted } from 'vue';
 	import type { Content } from '@prismicio/client';
 
-	// watch(
-	// 	() => [general.isTransitionFinish, general.isPreloaderVisible],
-	// 	([transitionFinish, preloaderVisibility]) => {
-	// 		if (transitionFinish && !preloaderVisibility) {
-	// 			ScrollTrigger.create({
-	// 				trigger: '.title__block',
-	// 				animation: useAnimateText('.title__block'),
-	// 			});
-	// 		}
-	// 	}
-	// );
-
 	// The array passed to `getSliceComponentProps` is purely optional.
 	// Consider it as a visual hint for you when templating your slice.
 	defineProps(
@@ -32,36 +20,30 @@
 	onMounted(() => {
 		gsap.registerPlugin(gsap.ScrollTrigger);
 
-		const triggerOpts = {
+		// Animation en scroll pour le titre :
+		ScrollTrigger.create({
 			trigger: sectionRef.value,
 			start: 'top 80%',
-			toggleActions: 'play none none none',
-		};
-
-		const tl = gsap.timeline({
-			scrollTrigger: triggerOpts,
+			animation: animateTitleChars(titleRef.value!),
 		});
 
-		tl.from(titleRef.value, {
-			y: 200,
-			// opacity: 0,
-
-			duration: 1.6,
-			ease: 'power4.out',
-		});
-
-		tl.from(
-			subtitleRef.value,
-			{
+		// Animation du sous-titre (inchangé) :
+		gsap
+			.timeline({
+				scrollTrigger: {
+					trigger: sectionRef.value,
+					start: 'top 80%',
+					toggleActions: 'play none none none',
+				},
+			})
+			.from(subtitleRef.value, {
 				y: 30,
 				opacity: 0,
 				duration: 1.6,
-				delay: 0.3,
+				delay: 1.6,
 				ease: 'power4.out',
 				stagger: 0.1,
-			},
-			'<'
-		);
+			});
 	});
 </script>
 
