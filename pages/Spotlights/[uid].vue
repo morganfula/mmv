@@ -88,7 +88,7 @@
 		padding-top: calc($default-gap * 4);
 		// padding-bottom: $default-gap;
 		font-variation-settings: 'wght' 440;
-		text-transform: uppercase;
+
 		line-height: 1;
 
 		font-size: 5vw;
@@ -117,7 +117,7 @@
 		height: 100svh;
 		position: sticky;
 		top: 0;
-		text-transform: uppercase;
+		// text-transform: uppercase;
 		gap: 12px;
 
 		@include media('<phone') {

@@ -28,7 +28,7 @@
 	line-height: 1.1;
 	font-variation-settings: 'wght' 480;
 	letter-spacing: -2px;
-	text-transform: lowercase;
+	// text-transform: lowercase;
 	text-transform: capitalize;
 
 	@include media('<phone') {

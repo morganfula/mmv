@@ -66,7 +66,7 @@
 		padding-top: calc($default-gap * 4);
 		padding-bottom: $default-gap;
 		font-variation-settings: 'wght' 440;
-		text-transform: uppercase;
+
 		line-height: 1;
 
 		font-size: 5vw;
