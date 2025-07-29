@@ -98,7 +98,7 @@
 				font-size: 4vw;
 				white-space: nowrap;
 				line-height: 1;
-				text-transform: capitalize;
+
 				transition: $default-transition;
 
 				@include media('<phone') {

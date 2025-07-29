@@ -124,6 +124,6 @@
 
 	.filters button:hover {
 		cursor: pointer;
-		font-variation-settings: 'wght' 680;
+		// font-variation-settings: 'wght' 680;
 	}
 </style>

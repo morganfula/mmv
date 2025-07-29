@@ -67,9 +67,8 @@
 	.text {
 		margin-top: calc($default-gap / 2);
 
-		line-height: 1.2;
 		font-size: 1.35vw;
-		line-height: 1.4;
+		line-height: 1.2;
 		font-variation-settings: 'wght' 480;
 
 		@include media('<phone') {
@@ -78,6 +77,8 @@
 	}
 
 	.category {
-		text-transform: capitalize;
+		text-transform: uppercase;
+		font-variation-settings: 'wght' 650;
+		padding-top: 8px;
 	}
 </style>

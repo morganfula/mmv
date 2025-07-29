@@ -329,7 +329,7 @@
 								class="logo"
 								:field="item.logo" />
 						</div>
-						<div class="name p1--black">{{ item.name }}</div>
+						<!-- <div class="name p1--black">{{ item.name }}</div> -->
 						<div class="description-wrap">
 							<div class="description">
 								<PrismicRichText :field="item.description" />
@@ -355,7 +355,7 @@
 								class="logo"
 								:field="item.logo" />
 						</div>
-						<div class="name p1--black">{{ item.name }}</div>
+						<!-- <div class="name p1--black">{{ item.name }}</div> -->
 						<div class="description-wrap">
 							<div class="description">
 								<PrismicRichText :field="item.description" />

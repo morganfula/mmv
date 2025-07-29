@@ -91,7 +91,7 @@
 
 	.title__wrap {
 		// @include test;
-		line-height: 1;
+		line-height: 1.05;
 		overflow: hidden;
 	}
 
