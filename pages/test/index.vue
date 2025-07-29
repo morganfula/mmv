@@ -35,7 +35,6 @@
 	}
 
 	.sticky {
-		@include test; // votre mixin (bordure rouge)
 		position: sticky;
 		top: 0;
 		height: 500px;

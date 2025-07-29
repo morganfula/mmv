@@ -41,6 +41,9 @@ html.lenis body {
 body {
 	font-family: $font;
 	font-stretch: normal;
+	font-style: normal;
+	font-synthesis: none;
+	-webkit-font-synthesis: none;
 
 	text-rendering: optimizeLegibility;
 	-webkit-font-smoothing: antialiased;

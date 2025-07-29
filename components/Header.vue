@@ -17,20 +17,13 @@
 </template>
 
 <script setup>
-	import { onMounted, onBeforeUnmount } from 'vue';
+	import { general } from '@/store';
 	const settings = useSettings();
 
 	function handleMenu() {
 		general.isNavOpen = !general.isNavOpen;
 		toggleMenu(general.isNavOpen);
 	}
-
-	watch(
-		() => general.isNavOpen,
-		val => {
-			toggleMenu(val);
-		}
-	);
 </script>
 
 <style lang="scss" scoped>

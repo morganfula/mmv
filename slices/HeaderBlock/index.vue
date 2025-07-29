@@ -99,7 +99,7 @@
 		// margin-top: calc($default-gap * 3);
 		font-size: 9vw;
 		font-variation-settings: 'wght' 440;
-		text-transform: uppercase;
+		// text-transform: capitalize;
 
 		@include media('<phone') {
 			margin-top: calc($default-gap * 8);

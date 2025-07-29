@@ -6,7 +6,7 @@
 			</div>
 			<div
 				v-for="(item, i) in footer.data.links_1"
-				:key="i">
+				:key="item.link?.uid || item.link?.url || i">
 				<PrismicLink
 					class="footer-link"
 					:field="item.link" />
@@ -18,7 +18,7 @@
 			</div>
 			<div
 				v-for="(item, i) in footer.data.links_2"
-				:key="i">
+				:key="item.link?.uid || item.link?.url || i">
 				<PrismicLink
 					class="footer-link"
 					:field="item.link" />
@@ -31,7 +31,7 @@
 			</div>
 			<div
 				v-for="(item, i) in footer.data.links_3"
-				:key="i">
+				:key="item.link?.uid || item.link?.url || i">
 				<PrismicLink
 					class="footer-link"
 					:field="item.link" />
@@ -44,20 +44,6 @@
 			<PrismicImage :field="footer.data.logo" />
 		</nuxt-link>
 
-		<!-- <div class="newsletter">
-			<div class="news-title">
-				{{ footer.data.newsletter_title }}
-			</div>
-
-			<input
-				class="news-message"
-				:type="footer.data.newsletter_message"
-				:placeholder="footer.data.newsletter_message" />
-			<div class="news-policy">
-				{{ footer.data.newsletter_policy }}
-			</div>
-		</div> -->
-
 		<div
 			class="button-top"
 			role="button"
@@ -67,13 +53,14 @@
 			{{ footer.data.button_message }}
 		</div>
 		<div class="copyrights">
-			{{ footer.data.copyrights }} © MMV {{ new Date().getFullYear() }}
+			{{ footer.data.copyrights }} © MMV {{ currentYear }}
 		</div>
 	</Bounded>
 </template>
 
 <script setup>
 	const footer = useFooter();
+	const currentYear = new Date().getFullYear();
 
 	const scrollToTop = () => {
 		window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -89,7 +76,7 @@
 		display: grid;
 		grid-template-columns: repeat(12, 1fr);
 		grid-template-rows: 1fr 0.7fr;
-		gap: 0 $default-gap;
+		gap: 0 160px;
 
 		@include media('<phone') {
 			padding: calc($default-gap * 2) 0;
@@ -172,8 +159,9 @@
 	}
 	.logo-wrapper {
 		grid-area: 2 / 1 / 3 / 4;
-		height: 200px;
+		height: 170px;
 		width: 100%;
+		padding-top: $default-gap;
 
 		@include media('<phone') {
 			grid-area: 1 / 1 / 2 / 4;

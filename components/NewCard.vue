@@ -92,7 +92,7 @@
 	}
 
 	.category {
-		text-transform: uppercase;
+		text-transform: capitalize;
 		position: absolute;
 		top: 16px;
 		right: 16px;

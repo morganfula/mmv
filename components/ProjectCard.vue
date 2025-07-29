@@ -78,6 +78,6 @@
 	}
 
 	.category {
-		text-transform: uppercase;
+		text-transform: capitalize;
 	}
 </style>

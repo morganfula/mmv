@@ -1,3 +1,5 @@
+import { general } from '@/store';
+
 export default defineNuxtPlugin(() => {
 	const router = useRouter();
 

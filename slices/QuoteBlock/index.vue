@@ -97,7 +97,7 @@
 		grid-column: 2 / 12;
 		font-size: 8vw;
 		line-height: 1;
-		text-transform: uppercase;
+		// text-transform: uppercase;
 		font-variation-settings: 'wght' 480;
 		align-self: end;
 

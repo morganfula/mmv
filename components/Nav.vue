@@ -1,5 +1,7 @@
 <script setup>
 	import gsap from 'gsap';
+	import { general } from '@/store';
+	
 	const colorMode = useColorMode();
 	const settings = useSettings();
 
@@ -11,15 +13,24 @@
 	watch(
 		() => general.isNavOpen,
 		val => {
-			if (val) {
-				scrollY -= 5000;
-
-				setTimeout(() => {
-					scrollY += 5000;
-				}, 250);
+			if (process.client) {
+				if (val) {
+					// Prevent scroll when menu is open
+					document.body.style.overflow = 'hidden';
+				} else {
+					// Re-enable scroll when menu is closed
+					document.body.style.overflow = '';
+				}
 			}
 		}
 	);
+
+	// Cleanup on unmount
+	onUnmounted(() => {
+		if (process.client) {
+			document.body.style.overflow = '';
+		}
+	});
 
 	// REFS
 	const navbar = ref();
@@ -33,9 +44,10 @@
 			ref="navbar"
 			:class="{ 'is-dragging': isDragging }">
 			<li
-				v-for="link in settings.data.navigation"
+				v-for="(link, index) in settings.data.navigation"
+				:key="link.url?.uid || link.url?.url || index"
 				class="nav__item"
-				ref="navLink">
+				:ref="el => navLink[index] = el">
 				<div class="nav__link">
 					<PrismicLink :field="link.url" />
 				</div>

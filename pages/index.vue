@@ -45,8 +45,6 @@
 
 <style lang="scss" scoped>
 	p {
-		@include test;
-
 		z-index: 10;
 		color: black;
 	}

@@ -46,7 +46,6 @@
 	}
 
 	.zoomed {
-		@include test;
 		transform: scale(1.5);
 	}
 </style>
