@@ -1,7 +1,7 @@
-import gsap from 'gsap';
-import 'gsap/ScrollTrigger';
+// import gsap from 'gsap';
+// import 'gsap/ScrollTrigger';
 
-gsap.registerPlugin(ScrollTrigger);
+// gsap.registerPlugin(ScrollTrigger);
 
 /**
  * Simple animation de révélation de l’élément `el`.

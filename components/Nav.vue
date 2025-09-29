@@ -1,5 +1,4 @@
 <script setup>
-	import gsap from 'gsap';
 	const colorMode = useColorMode();
 	const settings = useSettings();
 
@@ -61,7 +60,7 @@
 		background: $color-black;
 		position: fixed;
 		inset: 0;
-		z-index: 4;
+		z-index: 1000;
 		opacity: 0;
 		visibility: hidden;
 		pointer-events: none;

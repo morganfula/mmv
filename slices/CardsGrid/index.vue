@@ -20,7 +20,7 @@
 
 	onMounted(() => {
 		// register the plugin
-		gsap.registerPlugin(gsap.ScrollTrigger);
+		// gsap.registerPlugin(gsap.ScrollTrigger);
 
 		const triggerOpts = {
 			trigger: sectionRef.value,
