@@ -16,6 +16,7 @@
 	const sectionRef = ref<HTMLElement | null>(null);
 	const titleRef = ref<HTMLElement | null>(null);
 	const cardsRef = ref<HTMLElement | null>(null);
+	const linkRef = ref<HTMLElement | null>(null);
 
 	onMounted(() => {
 		// register the plugin
