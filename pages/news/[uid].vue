@@ -119,7 +119,6 @@
 	}
 
 	.articles {
-		@include test;
 		// flex-grow: 1;
 		width: 60%;
 
