@@ -82,7 +82,7 @@
 		flex-direction: column;
 
 		@include media('<phone') {
-			padding-top: calc($default-gap * 9);
+			padding: calc($default-gap * 9) 0;
 			align-items: center;
 			height: 100%;
 		}
