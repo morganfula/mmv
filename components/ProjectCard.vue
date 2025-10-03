@@ -79,5 +79,7 @@
 
 	.category {
 		text-transform: uppercase;
+		font-variation-settings: 'wght' 700;
+		padding-top: 12px;
 	}
 </style>
