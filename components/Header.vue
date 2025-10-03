@@ -17,11 +17,15 @@
 </template>
 
 <script setup>
-	import { onMounted, onBeforeUnmount } from 'vue';
+	import { onMounted, onBeforeUnmount, nextTick } from 'vue';
+	import { general } from '@/store';
+	import { toggleMenu } from '~/composables/toggleMenu';
+
 	const settings = useSettings();
 
-	function handleMenu() {
+	async function handleMenu() {
 		general.isNavOpen = !general.isNavOpen;
+		await nextTick(); // s’assure que .burger est dans le DOM
 		toggleMenu(general.isNavOpen);
 	}
 
