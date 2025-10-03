@@ -1,60 +1,95 @@
-// import gsap from 'gsap';
+import gsap from 'gsap';
 
-let tl;
+let tl = null;
 
-export function toggleMenu(params) {
-	gsap.set('.burger', {
+function buildTimeline() {
+	const burger = document.querySelector('.burger');
+	const line1 = document.querySelector('.burger__line1');
+	const line2 = document.querySelector('.burger__line2');
+	const navWrap = document.querySelector('.nav__wrap');
+	const navItemsSel = '.nav__item';
+
+	if (!burger || !line1 || !line2 || !navWrap) return null;
+
+	// ÉTATS INITIAUX (fermé)
+	gsap.set([line1, line2], {
+		yPercent: -50,
+		rotation: 0,
+		force3D: true,
+		transformOrigin: '50% 50%',
+	});
+	// Décalage vertical pour avoir deux barres parallèles
+	gsap.set(line1, { y: -8 });
+	gsap.set(line2, { y: 8 });
+
+	gsap.set(navWrap, {
+		autoAlpha: 0,
 		pointerEvents: 'none',
-		scaleY: 0.8,
+		clipPath: 'polygon(0% 0%,100% 0%,100% 0%,0% 0%)',
+	});
+	gsap.set(burger, { clearProps: 'pointerEvents,scaleY' }); // ne fige pas le bouton
+
+	const timeline = gsap.timeline({
+		paused: true,
+		defaults: { duration: 0.28, ease: 'power2.inOut' },
+		onReverseComplete: () => {
+			// Remet l’état fermé propre
+			gsap.set([line1, line2], { clearProps: 'transform' });
+			gsap.set([line1, line2], {
+				yPercent: -50,
+				rotation: 0,
+				force3D: true,
+				transformOrigin: '50% 50%',
+			});
+			gsap.set(line1, { y: -8 });
+			gsap.set(line2, { y: 8 });
+			gsap.set(navWrap, {
+				autoAlpha: 0,
+				pointerEvents: 'none',
+				clipPath: 'polygon(0% 0%,100% 0%,100% 0%,0% 0%)',
+			});
+		},
 	});
 
-	if (params) {
-		tl = gsap.timeline({
-			paused: true,
-			reversed: true,
-			onComplete: () => clearStyles(),
-			onReverseComplete: () => clearStyles(),
-		});
+	// Burger → croix
+	timeline
+		.to(line1, { y: 0, rotation: 45 }, 0)
+		.to(line2, { y: 0, rotation: -45 }, 0);
 
-		tl.to(['.burger__line1', '.burger__line2'], {
-			rotate: i => (i ? -20 : 20),
-			yPercent: -50,
-			y: 0,
-			duration: 0.2,
-		});
-
-		tl.set('.nav__wrap', {
-			autoAlpha: 1,
-			pointerEvents: 'auto',
-		});
-
-		tl.fromTo(
-			'.nav__item',
-			{
-				opacity: 0,
-			},
-			{
-				opacity: 1,
-			}
+	// Nav visible + items
+	timeline
+		.set(navWrap, { autoAlpha: 1, pointerEvents: 'auto' }, 0)
+		.to(navWrap, { clipPath: 'polygon(0% 0%,100% 0%,100% 100%,0% 100%)' }, 0)
+		.fromTo(
+			navItemsSel,
+			{ opacity: 0 },
+			{ opacity: 1, duration: 0.2, stagger: 0.03 },
+			0.05
 		);
 
-		tl.fromTo(
-			'.nav__wrap',
-			{
-				clipPath: 'polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)',
-			},
-			{
-				clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
-			},
-			'<'
-		);
+	return timeline;
+}
 
-		const clearStyles = () => {
-			gsap.set('.burger', {
-				clearProps: 'all',
-			});
-		};
+export async function toggleMenu(isOpen) {
+	if (typeof window === 'undefined') return;
+
+	// (Re)crée la timeline si absente (ou remount/HMR)
+	if (!tl) {
+		tl = buildTimeline();
+		if (!tl) {
+			// DOM pas prêt → attend un tick et réessaye
+			await Promise.resolve();
+			tl = buildTimeline();
+			if (!tl) return;
+		}
 	}
 
-	params ? tl.play() : tl.reverse();
+	// JAMAIS bloquer le bouton si l’anim ne part pas
+	// (donc pas de pointerEvents: 'none' global)
+
+	if (isOpen) {
+		tl.play();
+	} else {
+		tl.reverse();
+	}
 }

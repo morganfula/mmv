@@ -13,7 +13,7 @@
 		// top: 32px;
 		height: 80px;
 		width: 80px;
-		z-index: 6;
+		z-index: 10000000000;
 		cursor: pointer;
 		transition: transform 0.2s ease-in;
 		will-change: transform;

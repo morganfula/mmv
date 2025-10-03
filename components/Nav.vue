@@ -60,7 +60,7 @@
 		background: $color-black;
 		position: fixed;
 		inset: 0;
-		z-index: 1000;
+		z-index: $z-nav;
 		opacity: 0;
 		visibility: hidden;
 		pointer-events: none;
@@ -130,7 +130,7 @@
 
 	.theme-toggle {
 		position: absolute;
-		z-index: 1000;
+		z-index: $z-nav;
 		bottom: $default-gap;
 		left: $default-gap;
 	}
