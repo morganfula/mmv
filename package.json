@@ -27,8 +27,8 @@
 	},
 	"devDependencies": {
 		"@nuxtjs/prismic": "^4.0.0",
-		"@slicemachine/adapter-nuxt": "^0.3.80",
+		"@slicemachine/adapter-nuxt": "^0.3.84",
 		"sass": "^1.76.0",
-		"slice-machine-ui": "^2.17.1"
+		"slice-machine-ui": "^2.18.2"
 	}
 }

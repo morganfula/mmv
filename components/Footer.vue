@@ -183,6 +183,13 @@
 			margin-bottom: calc($default-gap * 2);
 		}
 	}
+
+	.logo-wrapper img {
+		width: 100%;
+		height: 100%;
+		object-fit: contain;
+	}
+
 	.button-top {
 		text-align: center;
 		grid-area: 2 / 6 / 3 / 8;

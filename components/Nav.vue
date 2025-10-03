@@ -72,12 +72,13 @@
 
 	.nav {
 		height: 100svh;
-		padding-top: calc($default-gap * 2);
+		padding: calc($default-gap * 2) 0;
 		// padding-left: $default-gap;
 		overflow: hidden;
 		list-style-type: none;
 
 		display: flex;
+		justify-content: space-evenly;
 		flex-direction: column;
 
 		@include media('<phone') {
@@ -95,14 +96,14 @@
 		color: $color-white;
 		text-decoration: none;
 		cursor: pointer;
-		font-size: 4vw;
+		font-size: 3.9vw;
 		line-height: 1;
 		text-transform: capitalize;
 		display: inline-flex;
 		transition: $default-transition;
 
 		@include media('<phone') {
-			font-size: 14vw;
+			font-size: 13vw;
 		}
 	}
 

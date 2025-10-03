@@ -28,6 +28,11 @@ app: {
     pageTransition: { name: 'page', mode: 'out-in' }
     },
   
+     colorMode: {
+    preference: 'light',   // thème par défaut
+    fallback: 'light',     // si le navigateur ne supporte pas prefers-color-scheme
+    classSuffix: ''        // ajoute .light ou .dark sur <html>
+  },
 
   prismic: {
     endpoint: apiEndpoint || repositoryName
